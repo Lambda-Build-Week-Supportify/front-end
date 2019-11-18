@@ -59,14 +59,16 @@ export const fetchMembers = () => dispatch => {
 
 }
 
-export const postMember = (nameMember, cityMember, emailMember, lastnameMember) => dispatch => {
+export const postMember = (nameMember, cityMember, emailMember, lastnameMember, roleMember) => dispatch => {
     dispatch(memberLoading())
     axios
         .post('http://localhost:3333/members', 
         { name: nameMember,
             lastname: lastnameMember,
             city: cityMember,
-            email: emailMember}
+            email: emailMember,
+            role: roleMember
+        }
         )
         .then(res => {
             //console.log("this is response.data", res.data)
