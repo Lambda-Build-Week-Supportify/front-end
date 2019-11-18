@@ -1,0 +1,1 @@
+//Take the props from the DashboardGrid component
