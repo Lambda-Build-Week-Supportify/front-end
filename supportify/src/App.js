@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { Route, Switch, Link } from "react-router-dom";
 
-import {fetchMembers} from '../actions'
+import {fetchMembers} from './actions'
 
 import {connect} from 'react-redux'
 
