@@ -96,21 +96,21 @@ export const setSecMemberTrue = () => ({type: SEC_ROLE_ACCESS})
 export const signupUser = data => ({type: SIGNUP_USERNAME, payload: data})
 export const signupPass = data => ({type: SIGNUP_PASSWORD, payload: data})
 export const memberState = data => ({type: STATE_MEMBER, payload: data})
-//////////////////////////////////////////////
+//////////////////////////////////////////////USER ENDPOINT
 
 const authAxios = axiosWithAuth()
 
 export const fetchMembers = () => dispatch => {
     dispatch(memberLoading())
-    axios
-        .get('http://localhost:3333/members')
+    authAxios
+        .get('/users')
         .then(res => {
-            console.log("this is response.data", res.data)
-            dispatch(memberSuccess(res.data))
+            console.log("this is response.data", res)
+            //dispatch(memberSuccess(res.data))
         })
         .catch(error => {
-           //console.log("this is error", error.message)
-           dispatch(memberFailure(error.message))
+           console.log("this is error", error.message)
+           //dispatch(memberFailure(error.message))
         })
 
 }
@@ -190,6 +190,10 @@ export const putMember = (nameMember,
 }
 
 ///////////////////////////////////
+
+
+///////////////////////////////////
+
 
 export const updateName = (name) =>dispatch =>{
     dispatch(memberNaming(name))
