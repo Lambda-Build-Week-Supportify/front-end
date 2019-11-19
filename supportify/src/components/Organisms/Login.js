@@ -21,6 +21,11 @@ const Login = (props) => {
  }
  
 
+//  const handlePassChange = () => e => {
+//   e.preventDefault()
+//  props.status == false ? props.updateUserBoard(e.target.value) : props.updateUserName(e.target.value) 
+// }
+
   const login = (payload) => {
   
     axios
@@ -86,6 +91,7 @@ const inputName = props.admin == false ? "boardname": "username"
           
       />
       <input
+          onClick={adminStatus}
           type="password"
           name="password"
           value= {userInput000['password']}
