@@ -11,6 +11,7 @@ import {
   updatePassBoard} from "../../actions"
 
 import axios from "axios"
+import axiosWithAuth from '../../axios/axiosWithAuth'
 
 const Login = (props) => {
   // make a post request to retrieve a token from the api
@@ -29,8 +30,8 @@ const Login = (props) => {
 }
 
   const login = (payload) => {
-  
-    axios
+  const authAxios = axiosWithAuth()
+    authAxios
         .post(`http://localhost:5000/api/login/`, payload)
         .then(res => {
             console.log("this is res.data", res.data);
@@ -75,14 +76,14 @@ const Login = (props) => {
  // props.userInput['username']
 // because it has to check if props.admin equals true it breaks the simultaneous updating of each login form. Still, the values should be different for whether this is true or not so I will make another userInput-like value to accept Board member login credentials. This will require changing the null in the falsey to the new userInput-like value
 
-console.log("this is props.admin",props.admin)
+// console.log("this is props.admin",props.admin)
 
 
-console.log("this is usernameStateValue", usernameStateValue)
+// console.log("this is usernameStateValue", usernameStateValue)
 
-console.log("this is props.userInputBoard",props.userInputBoard)
+// console.log("this is props.userInputBoard",props.userInputBoard)
 
-console.log("this is props.userInput",props.userInput)
+// console.log("this is props.userInput",props.userInput)
 
 // oh man, I had my true and false on ternaries backwards for forever, jeez
 
