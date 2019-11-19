@@ -51,7 +51,9 @@ const temporaryState = [
 //functional component- export it
 
 function DashboardGrid() {
-  const [gridState, setGridState] = useState([]);
+  const [gridState, setGridState] = useState(
+  const [userState, setUserstate] = useState()
+    []);
   const classes = useStyles();
   useEffect(() => {
     axios
@@ -62,6 +64,7 @@ function DashboardGrid() {
 
   return (
     <div>
+      <h1>Hello World</h1>
       <Grid container className={classes.root} spacing={1}>
         {
           ///mapping over the array to create boxes///
