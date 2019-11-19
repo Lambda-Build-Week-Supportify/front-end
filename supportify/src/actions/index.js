@@ -152,6 +152,43 @@ export const postMember = (nameMember,
 
 }
 
+export const putMember = (nameMember, 
+    cityMember, 
+    emailMember, 
+    lastnameMember, 
+    boardMember, 
+    primMember, 
+    secMember, 
+    signupUsername, 
+    signupPassword, 
+    stateMember) => dispatch => {
+    dispatch(memberLoading())
+
+    authAxios
+        .post('/users/:id', ///DO I NEED TO ENTER THE SPECIFIC ID?
+        {   first_name: nameMember,
+            last_name: lastnameMember,
+            city: cityMember,
+            email: emailMember,
+            board: boardMember, 
+            primary_admin: primMember,
+            sec_admin: secMember,
+            username: signupUsername,
+            password: signupPassword,
+            state: stateMember
+        }
+        )
+        .then(res => {
+            console.log("this is postMember response.data", res)
+           // dispatch(memberMaking(res.data))
+        })
+        .catch(error => {
+           console.log("this is error", error.message)
+           dispatch(memberFailure(error.message))
+        })
+
+}
+
 ///////////////////////////////////
 
 export const updateName = (name) =>dispatch =>{
