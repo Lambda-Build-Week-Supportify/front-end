@@ -1,7 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import {postMember, updateName, updateCity, updateEmail, updateRole, updateLastName} from '../../actions'
+import {
+    postMember, 
+    updateName, 
+    updateCity, 
+    updateEmail, 
+    updateRole, 
+    updateLastName} from '../../actions'
 
 
 function SignUpForm(props){
