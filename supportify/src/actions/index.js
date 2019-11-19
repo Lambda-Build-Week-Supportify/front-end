@@ -1,4 +1,5 @@
 import axios from "axios"
+import axiosWithAuth from '../axios/axiosWithAuth'
 
 export const LOAD_MEMBER_SUCCESS = "LOAD_MEMBER_SUCCESS"
 
@@ -38,10 +39,17 @@ export const DELETE_AREA = "DELETE_AREA"
 
 export const CREATE_AREA = "CREATE_AREA"
 
+export const BOARD_ROLE_ACCESS = "BOARD_ROLE_ACCESS"
+export const PRIMARY_ROLE_ACCESS = "PRIMARY_ROLE_ACCESS"
+export const SEC_ROLE_ACCESS = "SEC_ROLE_ACCESS"
+
+export const SIGNUP_USERNAME = "SIGNUP_USERNAME"
+export const SIGNUP_PASSWORD = "SIGNUP_PASSWORD"
+export const STATE_MEMBER = "STATE_MEMBER"
+
 //////////////////////////////////////////
 
-export const memberSuccess = (data) => 
-({type: LOAD_MEMBER_SUCCESS, payload: data})
+export const memberSuccess = (data) => ({type: LOAD_MEMBER_SUCCESS, payload: data})
 
 
 export const memberFailure = (error) => ({type: LOAD_MEMBER_FAILURE, payload: error})
@@ -80,8 +88,17 @@ export const editAreaStatus = (data) => ({type: EDIT_AREA, payload: data})
 export const createAreaStatus = (data) => ({type: CREATE_AREA, payload: data})
 
 export const deleteAreaStatus = (data) => ({type: DELETE_AREA, payload: data})
+
+export const setBoardMemberTrue = () => ({type: BOARD_ROLE_ACCESS})
+export const setPrimMemberTrue = () => ({type: PRIMARY_ROLE_ACCESS})
+export const setSecMemberTrue = () => ({type: SEC_ROLE_ACCESS})
+
+export const signupUser = data => ({type: SIGNUP_USERNAME, payload: data})
+export const signupPass = data => ({type: SIGNUP_PASSWORD, payload: data})
+export const memberState = data => ({type: STATE_MEMBER, payload: data})
 //////////////////////////////////////////////
 
+const authAxios = axiosWithAuth()
 
 export const fetchMembers = () => dispatch => {
     dispatch(memberLoading())
@@ -98,20 +115,35 @@ export const fetchMembers = () => dispatch => {
 
 }
 
-export const postMember = (nameMember, cityMember, emailMember, lastnameMember, roleMember) => dispatch => {
+export const postMember = (nameMember, 
+    cityMember, 
+    emailMember, 
+    lastnameMember, 
+    boardMember, 
+    primMember, 
+    secMember, 
+    signupUsername, 
+    signupPassword, 
+    stateMember) => dispatch => {
     dispatch(memberLoading())
-    axios
-        .post('http://localhost:3333/members', 
-        { name: nameMember,
-            lastname: lastnameMember,
+
+    authAxios
+        .post('/auth/register', 
+        {   first_name: nameMember,
+            last_name: lastnameMember,
             city: cityMember,
             email: emailMember,
-            role: roleMember
+            board: boardMember, 
+            primary_admin: primMember,
+            sec_admin: secMember,
+            username: signupUsername,
+            password: signupPassword,
+            state: stateMember
         }
         )
         .then(res => {
-            //console.log("this is response.data", res.data)
-            dispatch(memberMaking(res.data))
+            console.log("this is postMember response.data", res)
+           // dispatch(memberMaking(res.data))
         })
         .catch(error => {
            console.log("this is error", error.message)
@@ -182,4 +214,15 @@ export const updateCreateArea = (data) => dispatch => {
 
 export const updateDeleteArea = (data) => dispatch => {
     dispatch(deleteAreaStatus(data))//trigger on delete button mouseenter?
+}
+
+export const updateSignupUser = data => dispatch => {
+    dispatch(signupUser(data))
+}
+export const updateSignupPass = data => dispatch => {
+    dispatch(signupPass(data))
+}
+
+export const updateProvince = data => dispatch => {
+    dispatch(memberState(data))
 }
