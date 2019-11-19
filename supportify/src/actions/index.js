@@ -26,6 +26,10 @@ export const NOT_ADMIN = "NOT_ADMIN"
 
 export const ADMIN = "ADMIN"
 
+export const PASSWORD_MEMBER = "PASSWORD_MEMBER"
+
+export const PASSBOARD_MEMBER = "PASSBOARD_MEMBER"
+
 //////////////////////////////////////////
 
 export const memberSuccess = (data) => 
@@ -56,6 +60,10 @@ export const memberUserBoard = (data) => ({type: USERBOARD_MEMBER, payload: data
 export const memberBoard = () => ({type: NOT_ADMIN})
 
 export const memberAdmin = () => ({type: ADMIN})
+
+export const memberPassWord = (data) => ({type: PASSWORD_MEMBER, payload: data})
+
+export const memberPassBoard = (data) => ({type: PASSBOARD_MEMBER, payload: data})
 //////////////////////////////////////////////
 
 
@@ -133,4 +141,13 @@ export const adminToFalse = () => dispatch => {
 
 export const adminToTrue = () => dispatch => {
     dispatch(memberAdmin())
+}
+
+
+export const updatePassWord = (password) =>dispatch =>{
+    dispatch(memberPassWord(password))
+}
+
+export const updatePassBoard= (password) =>dispatch =>{
+    dispatch(memberPassBoard(password))
 }

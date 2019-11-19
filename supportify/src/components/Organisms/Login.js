@@ -2,7 +2,13 @@ import React, {useState} from "react";
 
 import {connect} from 'react-redux'
 
-import {updateUserName, updateUserBoard, adminToFalse, adminToTrue} from "../../actions"
+import { 
+  updateUserName,
+  updateUserBoard, 
+  adminToFalse, 
+  adminToTrue, 
+  updatePassWord, 
+  updatePassBoard} from "../../actions"
 
 import axios from "axios"
 
@@ -10,21 +16,21 @@ const Login = (props) => {
   // make a post request to retrieve a token from the api
   // when you have handled the token, navigate to the BubblePage route
 
-   const [userInput000, setUserInput] = useState({'username': "", "password": ""})
+  //  const [userInput000, setUserInput] = useState({'username': "", "password": ""})
 
-  const handleChange = type => e => {
-     setUserInput({ ...userInput000, type: userInput000[type] = e.target.value })
-  }
+  // const handleChange = type => e => {
+  //    setUserInput({ ...userInput000, type: userInput000[type] = e.target.value })
+  // }
   const handleUserChange = () => e => {
     e.preventDefault()
    props.status == false ? props.updateUserBoard(e.target.value) : props.updateUserName(e.target.value) 
  }
  
 
-//  const handlePassChange = () => e => {
-//   e.preventDefault()
-//  props.status == false ? props.updateUserBoard(e.target.value) : props.updateUserName(e.target.value) 
-// }
+ const handlePassChange = () => e => {
+  e.preventDefault()
+ props.status == false ? props.updatePassBoard(e.target.value) : props.updatePassWord(e.target.value) 
+}
 
   const login = (payload) => {
   
@@ -45,7 +51,7 @@ const Login = (props) => {
       e.preventDefault()
       let captureEntries = {
           username: props.userInput['username'],
-          password: userInput000['password']
+          password: props.userInput['password']
       }
       login(captureEntries)
   
@@ -60,6 +66,7 @@ const Login = (props) => {
   }
 }
   const usernameStateValue = props.greetName == "boardname" ? props.userInputBoard['username'] : props.userInput['username']
+  const passwordStateValue = props.greetName == "boardname" ? props.userInputBoard['password'] : props.userInput['password']
  // props.userInput['username']
 // because it has to check if props.admin equals true it breaks the simultaneous updating of each login form. Still, the values should be different for whether this is true or not so I will make another userInput-like value to accept Board member login credentials. This will require changing the null in the falsey to the new userInput-like value
 
@@ -77,6 +84,7 @@ console.log("this is props.userInput",props.userInput)
 //solved separation with props.greetName
 
 const inputName = props.admin == false ? "boardname": "username"
+const inputPass = props.admin == false ? "passboard": "password"
 
   return (
     <>
@@ -93,9 +101,9 @@ const inputName = props.admin == false ? "boardname": "username"
       <input
           onClick={adminStatus}
           type="password"
-          name="password"
-          value= {userInput000['password']}
-          onChange={handleChange('password')}
+          name={props.passName}
+          value= {passwordStateValue}
+          onChange={handlePassChange(inputPass)}
       />
       <button>Login!</button>
   </form>
@@ -107,7 +115,9 @@ const mapDispatchToProps = {
   updateUserName,
   updateUserBoard,
   adminToFalse,
-  adminToTrue
+  adminToTrue,
+  updatePassWord,
+  updatePassBoard
 }
 
 export default connect(state=> state, mapDispatchToProps)(Login);

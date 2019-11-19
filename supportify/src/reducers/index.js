@@ -13,7 +13,9 @@ import {
     USERNAME_MEMBER,
     USERBOARD_MEMBER,
     NOT_ADMIN,
-    ADMIN
+    ADMIN,
+    PASSBOARD_MEMBER,
+    PASSWORD_MEMBER
                 } from "../actions"
 
 
@@ -122,6 +124,20 @@ export function reducer(state = initialState, action){
                 return{
                     ...state,
                     admin: true
+                }
+        case PASSWORD_MEMBER:
+                return{
+                    ...state,
+                    userInput:{
+                        password: action.payload
+                    }
+                }
+        case PASSBOARD_MEMBER:
+                return{
+                    ...state,
+                    userInputBoard:{
+                        password: action.payload
+                    }
                 }
         default:
             return state
