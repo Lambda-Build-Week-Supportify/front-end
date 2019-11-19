@@ -30,6 +30,14 @@ export const PASSWORD_MEMBER = "PASSWORD_MEMBER"
 
 export const PASSBOARD_MEMBER = "PASSBOARD_MEMBER"
 
+export const SNACKBAR_OPEN = "SNACKBAR_OPEN"
+
+export const EDIT_AREA = "EDIT_AREA"
+
+export const DELETE_AREA = "DELETE_AREA"
+
+export const CREATE_AREA = "CREATE_AREA"
+
 //////////////////////////////////////////
 
 export const memberSuccess = (data) => 
@@ -64,6 +72,14 @@ export const memberAdmin = () => ({type: ADMIN})
 export const memberPassWord = (data) => ({type: PASSWORD_MEMBER, payload: data})
 
 export const memberPassBoard = (data) => ({type: PASSBOARD_MEMBER, payload: data})
+
+export const snackBarStatus = (data) => ({type: SNACKBAR_OPEN, payload: data})
+
+export const editAreaStatus = (data) => ({type: EDIT_AREA, payload: data})
+
+export const createAreaStatus = (data) => ({type: CREATE_AREA, payload: data})
+
+export const deleteAreaStatus = (data) => ({type: DELETE_AREA, payload: data})
 //////////////////////////////////////////////
 
 
@@ -150,4 +166,20 @@ export const updatePassWord = (password) =>dispatch =>{
 
 export const updatePassBoard= (password) =>dispatch =>{
     dispatch(memberPassBoard(password))
+}
+
+export const updateSnackbar = (data) => dispatch => {
+    dispatch(snackBarStatus(data))
+}
+
+export const updateEditArea = (data) => dispatch => {
+    dispatch(editAreaStatus(data))//trigger on edit form
+}
+
+export const updateCreateArea = (data) => dispatch => {
+    dispatch(createAreaStatus(data))//trigger on create form
+}
+
+export const updateDeleteArea = (data) => dispatch => {
+    dispatch(deleteAreaStatus(data))//trigger on delete button mouseenter?
 }

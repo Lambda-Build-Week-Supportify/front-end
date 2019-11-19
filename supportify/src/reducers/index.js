@@ -15,7 +15,11 @@ import {
     NOT_ADMIN,
     ADMIN,
     PASSBOARD_MEMBER,
-    PASSWORD_MEMBER
+    PASSWORD_MEMBER,
+    SNACKBAR_OPEN,
+    EDIT_AREA,
+    CREATE_AREA,
+    DELETE_AREA
                 } from "../actions"
 
 
@@ -40,6 +44,10 @@ const initialState = {
         username: "",
         password: ""
     },
+    open: false,
+    editButtonArea: false,
+    deleteButtonArea: false,
+    createButtonArea: false
 }
 
 
@@ -138,6 +146,32 @@ export function reducer(state = initialState, action){
                     userInputBoard:{
                         password: action.payload
                     }
+                }
+        case SNACKBAR_OPEN:
+                return{
+                    ...state,
+                    open: action.payload
+                }
+        case EDIT_AREA:
+                return{
+                    ...state,
+                    editButtonArea: action.payload,
+                    createButtonArea: false,
+                    deleteButtonArea: false
+                }
+        case CREATE_AREA:
+                return{
+                    ...state,
+                    createButtonArea: action.payload,
+                    editButtonArea: false,
+                    deleteButtonArea:false
+                }
+        case DELETE_AREA:
+                return{
+                    ...state,
+                    deleteButtonArea: action.payload,
+                    editButtonArea: false,
+                    createButtonArea: false
                 }
         default:
             return state
