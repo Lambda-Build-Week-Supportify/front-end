@@ -55,7 +55,7 @@ function SignUpForm(props){
        let roleChange = e.target.name === 'board-role' ? props.setBoardMemberTrue : (e.target.name === 'prim-role' ? props.setPrimMemberTrue : props.setSecMemberTrue)
 
        roleChange()
-        console.log("this is roles", props.board, props.primary_admin, props.sec_admin)
+        console.log("this is roles", props.board, props.primary_admin, props.sec_admin) //this is it's state before getting clicked, it is actually changing but it isn't changing whether the others are checked or not
     }
 
     return (
@@ -93,6 +93,7 @@ function SignUpForm(props){
 
                 <label>Secondary Member</label>
                 <input type="checkbox" name='sec-role' value={props.board} onClick={handleNewRole}/>
+                {console.log("this is roles2", props.board, props.primary_admin, props.sec_admin)}
 
                 <button type="button" onClick={()=> props.postMember(props.name, 
                     props.city, 
@@ -117,11 +118,11 @@ const mapDispatchToProps ={
     updateEmail,
     updateRole,
     setBoardMemberTrue,
-setPrimMemberTrue,
-setSecMemberTrue,
-updateProvince,
-updateSignupPass,
-updateSignupUser
+    setPrimMemberTrue,
+    setSecMemberTrue,
+    updateProvince,
+    updateSignupPass,
+    updateSignupUser
 }
 
 export default connect(state => state, mapDispatchToProps)(SignUpForm)

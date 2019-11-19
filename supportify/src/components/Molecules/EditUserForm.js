@@ -117,11 +117,13 @@ const mapDispatchToProps ={
     updateEmail,
     updateRole,
     setBoardMemberTrue,
-setPrimMemberTrue,
-setSecMemberTrue,
-updateProvince,
-updateSignupPass,
-updateSignupUser
+    setPrimMemberTrue,
+    setSecMemberTrue,
+    updateProvince,
+    updateSignupPass,
+    updateSignupUser
 }
 
 export default connect(state => state, mapDispatchToProps)(EditUserForm)
+
+///IS THIS PUT SUPPOSED TO BE ID SPECIFIC?

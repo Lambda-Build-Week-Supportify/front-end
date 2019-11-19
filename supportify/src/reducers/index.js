@@ -42,13 +42,13 @@ const initialState = {
     email: "",
     role: "",
     userInput: {
-        username: "",
-        password: ""
+        username: "Example username",
+        password: "Example password"
     },
     admin: true,
     userInputBoard: {
-        username: "",
-        password: ""
+        username: "Example username",
+        password: "Example password"
     },
     open: false,
     editButtonArea: false,
