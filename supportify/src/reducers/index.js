@@ -19,7 +19,13 @@ import {
     SNACKBAR_OPEN,
     EDIT_AREA,
     CREATE_AREA,
-    DELETE_AREA
+    DELETE_AREA,
+    BOARD_ROLE_ACCESS,
+    PRIMARY_ROLE_ACCESS,
+    SEC_ROLE_ACCESS,
+    SIGNUP_USERNAME,
+    SIGNUP_PASSWORD,
+    STATE_MEMBER
                 } from "../actions"
 
 
@@ -47,7 +53,13 @@ const initialState = {
     open: false,
     editButtonArea: false,
     deleteButtonArea: false,
-    createButtonArea: false
+    createButtonArea: false,
+    board: false,
+    primary_admin: false,
+    sec_admin: false,
+    signupUsername: "",
+    signupPassword: "",
+    province: ""
 }
 
 
@@ -113,14 +125,16 @@ export function reducer(state = initialState, action){
                 return{
                     ...state,
                     userInput:{
-                        username: action.payload
+                        username: action.payload,
+                        password: state.userInput.password
                     }
                 }
         case USERBOARD_MEMBER:
                 return{
                     ...state,
                     userInputBoard:{
-                        username: action.payload
+                        username: action.payload,
+                        password: state.userInputBoard.password
                     }
                 }
         case NOT_ADMIN:
@@ -137,6 +151,7 @@ export function reducer(state = initialState, action){
                 return{
                     ...state,
                     userInput:{
+                        username: state.userInput.username,
                         password: action.payload
                     }
                 }
@@ -144,6 +159,7 @@ export function reducer(state = initialState, action){
                 return{
                     ...state,
                     userInputBoard:{
+                        username: state.userInputBoard.username,
                         password: action.payload
                     }
                 }
@@ -173,6 +189,45 @@ export function reducer(state = initialState, action){
                     editButtonArea: false,
                     createButtonArea: false
                 }
+        case BOARD_ROLE_ACCESS:
+                return{
+                    ...state,
+                    board: true,
+                    primary_admin: false,
+                    sec_admin: false
+                }
+        case PRIMARY_ROLE_ACCESS:
+                return{
+                    ...state,
+                    board: false,
+                    primary_admin: true,
+                    sec_admin: false
+                }
+        case SEC_ROLE_ACCESS:
+                return{
+                    ...state,
+                    board: false,
+                    primary_admin: false,
+                    sec_admin: true
+                }
+        case SIGNUP_USERNAME:
+                  
+                        return {
+                            ...state,
+                            signupUsername: action.payload
+                        }
+         case SIGNUP_PASSWORD:
+            
+            return {
+                ...state,
+                signupPassword: action.payload
+            }
+         case STATE_MEMBER:
+        
+            return {
+                ...state,
+                province: action.payload
+            }
         default:
             return state
     }
