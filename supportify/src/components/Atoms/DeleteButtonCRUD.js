@@ -8,6 +8,8 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(theme => ({
     button: {
       margin: theme.spacing(1),
+      backgroundColor: "#D03840",
+      color: "white"
     },
     input: {
       display: 'none',
@@ -19,7 +21,7 @@ function DeleteButton(){
       const classes = useStyles();
     return(
 
-        <Button variant="contained" color="secondary" className={classes.button}></Button>
+        <Button variant="contained" color="primary" className={classes.button}>DELETE</Button>
         
     )
 

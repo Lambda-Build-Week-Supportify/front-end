@@ -15,6 +15,11 @@ import GreetingPage from "./components/Pages/GreetingPage"
 ///ORGANISMS/MODULES//////
 import PrivateRoute from './components/Organisms/PrivateRoute'
 
+/////////ATOMS/////////
+import DeleteButton from "./components/Atoms/DeleteButtonCRUD"
+import EditButton from './components/Atoms/EditButtonCRUD'
+
+
 function App(props) {
   return (
     <div className="App">
@@ -55,7 +60,8 @@ function App(props) {
           <Route path="/login" component={GreetingPage}/>
           <Route component={GreetingPage}/>
     </Switch>
-      
+      <DeleteButton/>
+      <EditButton/>
     </div>
   );
 }
