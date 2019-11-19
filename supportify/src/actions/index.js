@@ -18,6 +18,14 @@ export const LAST_NAME_MEMBER = "LAST_NAME_MEMBER"
 
 export const ROLE_MEMBER = "ROLE_MEMBER"
 
+export const USERNAME_MEMBER = "USERNAME_MEMBER"
+
+export const USERBOARD_MEMBER = "USERBOARD_MEMBER"
+
+export const NOT_ADMIN = "NOT_ADMIN"
+
+export const ADMIN = "ADMIN"
+
 //////////////////////////////////////////
 
 export const memberSuccess = (data) => 
@@ -41,6 +49,13 @@ export const memberEmailing = (data) => ({type: EMAIL_MEMBER, payload: data})
 
 export const memberRole = (data) => ({type: ROLE_MEMBER, payload: data})
 
+export const memberUserName = (data) => ({type: USERNAME_MEMBER, payload: data})
+
+export const memberUserBoard = (data) => ({type: USERBOARD_MEMBER, payload: data})
+
+export const memberBoard = () => ({type: NOT_ADMIN})
+
+export const memberAdmin = () => ({type: ADMIN})
 //////////////////////////////////////////////
 
 
@@ -102,4 +117,20 @@ export const updateEmail = (email) =>dispatch =>{
 
 export const updateRole = (role) =>dispatch =>{
     dispatch(memberRole(role))
+}
+
+export const updateUserName = (username) =>dispatch =>{
+    dispatch(memberUserName(username))
+}
+
+export const updateUserBoard= (username) =>dispatch =>{
+    dispatch(memberUserBoard(username))
+}
+
+export const adminToFalse = () => dispatch => {
+    dispatch(memberBoard())
+}
+
+export const adminToTrue = () => dispatch => {
+    dispatch(memberAdmin())
 }

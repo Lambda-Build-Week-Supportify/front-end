@@ -9,7 +9,11 @@ import {
     CITY_MEMBER,
     EMAIL_MEMBER,
     LAST_NAME_MEMBER,
-    ROLE_MEMBER
+    ROLE_MEMBER,
+    USERNAME_MEMBER,
+    USERBOARD_MEMBER,
+    NOT_ADMIN,
+    ADMIN
                 } from "../actions"
 
 
@@ -24,7 +28,16 @@ const initialState = {
     lastname: "bye",
     city: "",
     email: "",
-    role: ""
+    role: "",
+    userInput: {
+        username: "",
+        password: ""
+    },
+    admin: true,
+    userInputBoard: {
+        username: "",
+        password: ""
+    },
 }
 
 
@@ -85,6 +98,30 @@ export function reducer(state = initialState, action){
                 return{
                     ...state,
                     role: action.payload
+                }
+        case USERNAME_MEMBER:
+                return{
+                    ...state,
+                    userInput:{
+                        username: action.payload
+                    }
+                }
+        case USERBOARD_MEMBER:
+                return{
+                    ...state,
+                    userInputBoard:{
+                        username: action.payload
+                    }
+                }
+        case NOT_ADMIN:
+                return{
+                    ...state,
+                    admin: false
+                }
+        case ADMIN:
+                return{
+                    ...state,
+                    admin: true
                 }
         default:
             return state

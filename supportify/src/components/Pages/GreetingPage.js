@@ -1,5 +1,8 @@
 import React, {useState} from 'react'
 
+import {connect} from 'react-redux'
+
+import {adminToFalse} from '../../actions'
 
 ////////////ORGANISMS
 import Login from '../Organisms/Login'
@@ -9,8 +12,8 @@ import SignUp from '../Organisms/SignUp'
 ///////////////MATERIAL UI///////////////
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import { Card } from '@material-ui/core';
+import Paper from '@material-ui/core/Paper'; //not using
+import { Card } from '@material-ui/core'; //fall back plan for better styling
 import Box from '@material-ui/core/Box';
 
 
@@ -36,14 +39,16 @@ const useStyles = makeStyles(theme => ({
     minWidth: 275,
     color: "red",
     marginLeft: "15%",
-    // boxShadow: "3"doesnt work
+    // boxShadow: "3" doesnt work
   }
 }
   ));
 
-export default function GreetingPage(){
+ function GreetingPage(props){
   
       const classes = useStyles();
+
+
 
 
     return (
@@ -58,7 +63,7 @@ export default function GreetingPage(){
                             <Paper className={classes.paper}>
                                 
                                     Ghana Admin
-                                    <Login/>
+                                    <Login status={true} greetName="username"/>
                                
                             </Paper>
                     </Box>  
@@ -67,8 +72,8 @@ export default function GreetingPage(){
                             <Paper className={classes.paper} boxShadow={3}>
                                 
                                     US Boardmember
-                                    <Login/>
-                               
+                                    <Login status={false} greetName="boardname"/>
+                          
                             </Paper>
                      </Box> 
                    
@@ -79,3 +84,9 @@ export default function GreetingPage(){
         </div>
     )
 }
+
+const mapDispatchToProps = {
+    adminToFalse
+}
+
+export default connect(state => state, mapDispatchToProps)(GreetingPage)
