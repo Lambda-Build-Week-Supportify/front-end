@@ -37,7 +37,14 @@ import {
     PHONE_NUM_SCHOOLS,
     GRADE_LEVEL_SCHOOLS,
     DESCRIPTION_SCHOOLS,
-    SUCCESS
+    SUCCESS,
+    ISSUE_PRIORITY,
+    ISSUE_TITLE,
+    DESCRIPTION_ISSUE,
+    EQUIPMENT_ISSUE,
+    GENERAL_ISSUE,
+    EST_COSTS_ISSUE,
+    ISSUE_COMPLETION
                 } from "../actions"
 
 
@@ -90,12 +97,21 @@ const initialState = {
     phoneNumber: " ",
     gradeLevel: " ",
     description: " ",
+    ////////////////MODAL
     success: false,
     editMessageSuccess: "You successfully edited!",
     deleteMessageSuccess: "You successfully deleted!",
     createMessageSuccess: "You successfully created an entry!",
     failMessage: "Attempt Failed!",
-    messageSuccess: "Data Successfully Loaded"
+    messageSuccess: "Data Successfully Loaded",
+    ///////////ISSUE
+    priority: "",
+    title: "",
+    description_issue: "", //should just be description for endpoint
+    equipment: "",
+    general_issues: "",
+    estimated_cost: "",
+    completed: false
 }
 
 
@@ -269,6 +285,9 @@ export function reducer(state = initialState, action){
                 ...state,
                 province: action.payload
             }
+/////////////////////SCHOOLS
+
+
         case SCHOOL_NAME:
             return{
                 ...state,
@@ -323,6 +342,46 @@ export function reducer(state = initialState, action){
                 return{
                     ...state,
                     description: action.payload
+                }
+
+
+        //////////////ISSUES
+
+
+        case ISSUE_PRIORITY:
+                return{
+                    ...state,
+                    priority: action.payload
+                }
+        case ISSUE_TITLE:
+                return{
+                    ...state,
+                    title: action.payload
+                }
+        case DESCRIPTION_ISSUE:
+                return{
+                    ...state,
+                    description_issue: action.payload
+                }
+        case EQUIPMENT_ISSUE:
+                return{
+                    ...state,
+                    equipment: action.payload
+                }
+        case GENERAL_ISSUE:
+                return{
+                    ...state,
+                    general_issues: action.payload
+                }
+        case EST_COSTS_ISSUE:
+                return{
+                    ...state,
+                    estimated_cost: action.payload
+                }
+        case ISSUE_COMPLETION:
+                return{
+                    ...state,
+                    completed: action.payload
                 }
         default:
             return state

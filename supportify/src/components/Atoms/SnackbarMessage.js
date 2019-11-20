@@ -72,3 +72,5 @@ const mapDispatchToProps ={
 }
 
 export default connect(state => state, mapDispatchToProps)(SnackbarMessage)
+
+//BROKE LOGIN AGAIN SOMEHOW ARGHHH!
