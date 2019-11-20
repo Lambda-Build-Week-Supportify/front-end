@@ -26,6 +26,7 @@ import EditIssueForm from './components/Molecules/EditIssueForm';
 import DeleteButton from "./components/Atoms/DeleteButtonCRUD"
 import EditButton from './components/Atoms/EditButtonCRUD'
 import SnackbarOpen from './components/Atoms/SnackbarOpen'; //this should actually be on this file!
+import SingleSchoolPage from './components/Pages/SingleSchoolPage';
 
 
 
@@ -56,38 +57,41 @@ function App(props) {
           <li>
             <Link to='/dashboard'>Dashboard</Link>
           </li>
+          <li>
+            <Link to='/dashboard/school'>School Dashboard</Link>
+          </li>
+          <li>
+          <Link to='/dashboard/user'>Users Dashboard</Link>
+        </li>
         </ul>
        
 
-        <button type="button" onClick={()=> props.fetchSchools()}>Get Schools!</button>
+
 
 
 
     <Switch>
-        <PrivateRoute path="/dashboard">
-          <DashboardGrid />
-               
-        </PrivateRoute>
+
+    
           <PrivateRoute path="/edit/school">
               <EditSchoolForm/>
+              <p>Edit</p>
           </PrivateRoute>
           <PrivateRoute path="/delete/school">
-                <DeleteButton/>    
+                <DeleteButton/> 
+                <p>Delete</p>   
           </PrivateRoute>
+          <Route path="/dashboard/school" component={SchoolGrid}/>
+
+          <Route path="/dashboard/user" component={UserGrid}/>
+
           <Route path="/login" component={GreetingPage}/>
           <Route component={GreetingPage}/>
     </Switch>
 
-      <EditButton/>
-      <CreateSchoolForm/>
+  
 
-      <CreateIssueForm/>
-      <EditIssueForm/>
-      <SnackbarOpen/>
-      {//props.members !== [] ? <UserGrid/> : (props.offices !== [] ? <SchoolGrid/>: null)
-        props.offices !== [] ? <SchoolGrid/> : null 
-      }
-    
+   
     </div>
   );
 }
@@ -103,3 +107,28 @@ export default connect(state=> state, mapDispatchToProps)(App);
 
 // {props.error && <p>{props.error}</p>}
 // {props.isFetching  && <p>This is taking a really long time!</p> }
+
+// {props.members !== [] ? <UserGrid/> : (props.offices !== [] ? <SchoolGrid/>: null)
+//   //props.offices !== [] ? <SchoolGrid/> : null 
+// }
+
+
+// <PrivateRoute path="/dashboard">
+// <DashboardGrid />
+//      <p>Hello</p>
+// </PrivateRoute>
+
+
+// <Route path={`/schools/${props.id}`} component={
+//   SingleSchoolPage 
+
+ 
+// }/>
+
+
+
+// <CreateSchoolForm/>
+
+// <CreateIssueForm/>
+// <EditIssueForm/>
+// <SnackbarOpen/>

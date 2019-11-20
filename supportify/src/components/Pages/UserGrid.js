@@ -60,7 +60,7 @@ function UserGrid(props) {
   return (
 
     <div  >
-    
+    <button type="button" onClick={()=> props.fetchMembers()}>Get Members!</button>
       <Grid container justify="center" spacing="10">
         {props.members.map(user => {
           return (

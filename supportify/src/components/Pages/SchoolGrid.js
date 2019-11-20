@@ -53,12 +53,14 @@ function SchoolGrid(props) {
 
 console.log("this is offices", props.offices)
 
-const handleClick = (data) => props.specifyId(data)
-console.log("this is props.id", props.id)
+const handleClick = ( data) => {
+ 
+    props.specifyId(data)}
+console.log("this is props.id on grid", props.id)
   return (
 
     <div >
-    
+    <button type="button" onClick={()=> props.fetchSchools()}>Get Schools!</button>
       <Grid container justify="center" spacing="10">
         {props.offices.map(office => {
           return (
@@ -82,12 +84,12 @@ console.log("this is props.id", props.id)
                   />
                 </Link>
                 <Route path={`/schools/${office.school_id}`} render={props => 
-                        <SingleSchoolPage 
-                        data={props} 
-                        schoolInfo={office} 
-                        onClick={handleClick(office.school_id)}
-                        superId={handleClick(office.school_id).payload}
-                        />
+                    <SingleSchoolPage 
+                    data={props} 
+                    schoolInfo={office} 
+                    onClick={handleClick(office.school_id)}
+                    superId={handleClick(office.school_id).payload}
+                    />
                 }/>
                
                 </Paper>
@@ -112,3 +114,4 @@ const mapDispatchToProps = {
 
 
 export default connect(state => state, mapDispatchToProps)(SchoolGrid);
+
