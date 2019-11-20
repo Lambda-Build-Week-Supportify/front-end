@@ -15,9 +15,14 @@ import GreetingPage from "./components/Pages/GreetingPage"
 ///ORGANISMS/MODULES//////
 import PrivateRoute from './components/Organisms/PrivateRoute'
 
+///////////MOLECULES/////////////////
+import CreateSchoolForm from './components/Molecules/CreateSchoolForm';
+import EditSchoolForm from './components/Molecules/EditSchoolForm';
+
 /////////ATOMS/////////
 import DeleteButton from "./components/Atoms/DeleteButtonCRUD"
 import EditButton from './components/Atoms/EditButtonCRUD'
+
 
 
 function App(props) {
@@ -62,6 +67,8 @@ function App(props) {
     </Switch>
       <DeleteButton/>
       <EditButton/>
+      <CreateSchoolForm/>
+      <EditSchoolForm/>
     </div>
   );
 }

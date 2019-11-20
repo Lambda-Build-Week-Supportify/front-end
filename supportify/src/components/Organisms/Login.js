@@ -106,8 +106,8 @@ const inputPass = props.admin === false ? "passboard": "password"
       <input
       onClick={adminStatus}
           type="text"
-          name= {props.greetName}
-          value= {usernameStateValue}
+          name={props.greetName}
+          value={usernameStateValue}
           onChange={handleUserChange(inputName)}
           
       />

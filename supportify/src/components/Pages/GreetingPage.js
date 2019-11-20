@@ -7,7 +7,7 @@ import {adminToFalse} from '../../actions'
 ////////////ORGANISMS
 import Login from '../Organisms/Login'
 import SignUp from '../Organisms/SignUp'
-
+import EditUserForm from '../Molecules/EditUserForm'
 
 ///////////////MATERIAL UI///////////////
 import { makeStyles } from '@material-ui/core/styles';
@@ -15,6 +15,7 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper'; //not using
 import { Card } from '@material-ui/core'; //fall back plan for better styling
 import Box from '@material-ui/core/Box';
+
 
 
 const useStyles = makeStyles(theme => ({
@@ -81,7 +82,7 @@ const useStyles = makeStyles(theme => ({
               
             </Grid>
                 <SignUp/>
-            
+                <EditUserForm/>
         </div>
     )
 }

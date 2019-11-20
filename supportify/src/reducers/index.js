@@ -25,7 +25,18 @@ import {
     SEC_ROLE_ACCESS,
     SIGNUP_USERNAME,
     SIGNUP_PASSWORD,
-    STATE_MEMBER
+    STATE_MEMBER,
+    SCHOOL_NAME,
+    NUM_ISSUES_SCHOOLS,
+    NUM_STUDENTS_SCHOOLS,
+    EST_COSTS_SCHOOLS,
+    SCHOOL_STREET,
+    SCHOOL_CITY,
+    SCHOOL_STATE,
+    POST_CODE,
+    PHONE_NUM_SCHOOLS,
+    GRADE_LEVEL_SCHOOLS,
+    DESCRIPTION_SCHOOLS
                 } from "../actions"
 
 
@@ -36,30 +47,48 @@ const initialState = {
     ],
     isFetching: false,
     error: null,
+    ///////////USER
     name: "hi",
     lastname: "bye",
     city: "",
     email: "",
     role: "",
+    ////////////////ADMIN
     userInput: {
         username: "Example username",
         password: "Example password"
     },
+    ////////////////////////
     admin: true,
+    ///////////////BOARD
     userInputBoard: {
         username: "Example username",
         password: "Example password"
     },
+    ////////////////SNACKBAR
     open: false,
     editButtonArea: false,
     deleteButtonArea: false,
     createButtonArea: false,
+    //////////////////USER(cont.)
     board: false,
     primary_admin: false,
     sec_admin: false,
     signupUsername: "",
     signupPassword: "",
-    province: ""
+    province: "",
+    /////////////////SCHOOLS
+    schoolName: " ",
+    numIssues: " ",
+    numStudents: " ",
+    estCosts: " ",
+    schoolStreet: " ",
+    schoolCity: " ",
+    schoolState: " ",
+    postCode: " ",
+    phoneNumber: " ",
+    gradeLevel: " ",
+    description: " "
 }
 
 
@@ -228,6 +257,61 @@ export function reducer(state = initialState, action){
                 ...state,
                 province: action.payload
             }
+        case SCHOOL_NAME:
+            return{
+                ...state,
+                schoolName: action.payload
+            }
+        case NUM_ISSUES_SCHOOLS:
+                return{
+                    ...state,
+                    numIssues: action.payload
+                }
+        case NUM_STUDENTS_SCHOOLS:
+                return{
+                    ...state,
+                    numStudents: action.payload
+                }
+        case EST_COSTS_SCHOOLS:
+                return{
+                    ...state,
+                    estCosts: action.payload
+                }
+        case SCHOOL_STREET:
+                return{
+                    ...state,
+                    schoolStreet: action.payload
+                }
+        case SCHOOL_CITY:
+                return{
+                    ...state,
+                    schoolCity: action.payload
+                }
+        case SCHOOL_STATE:
+                return{
+                    ...state,
+                    schoolState: action.payload
+                }
+        case POST_CODE:
+                return{
+                    ...state,
+                    postCode: action.payload
+                }
+        case PHONE_NUM_SCHOOLS:
+                return{
+                    ...state,
+                    phoneNumber: action.payload
+                }
+        case GRADE_LEVEL_SCHOOLS:
+                return{
+                    ...state,
+                    gradeLevel: action.payload
+                }
+        case DESCRIPTION_SCHOOLS:
+                return{
+                    ...state,
+                    description: action.payload
+                }
         default:
             return state
     }
