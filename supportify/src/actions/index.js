@@ -371,7 +371,7 @@ export const fetchIssues = () => dispatch => {
 
 }
 
-export const postSchool = (
+export const postIssue = (
     priority,
     title,
     description_issue, //should just be description for endpoint obj
