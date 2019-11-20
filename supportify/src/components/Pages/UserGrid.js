@@ -79,8 +79,8 @@ function UserGrid(props) {
                   province={user.state}
                   />
                 </Link>
-                <Route path={`/users/${user.user_id}`} render={user => 
-                        <SingleUserPage {...user}/>
+                <Route path={`/users/${user.user_id}`} render={props => 
+                        <SingleUserPage data={props} userInfo={user}/>
                 }/>
                 </Paper>
             </Grid>
