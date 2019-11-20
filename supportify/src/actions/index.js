@@ -163,7 +163,7 @@ export const fetchMembers = () => dispatch => {
         .get('/users')
         .then(res => {
             console.log("this is response.data", res)
-            //dispatch(memberSuccess(res.data))
+            dispatch(memberSuccess(res.data))
             //successGeneral()
         })
         .catch(error => {
@@ -441,7 +441,37 @@ export const putIssue= (
 
 }
 
+//BOARD SIDE EDITING
 
+//on the Board side we need an edit button that updates the endpoint only for the completed, needs attention, scheduled properties (need these 2 other properties on the endpoint)
+
+export const putIssueBoard= (
+
+    completed,
+    scheduled, //needs creation
+    needs_attention//needs creation
+) => dispatch => {
+    dispatch(memberLoading())
+
+    authAxios
+        .post('/issues/:id', ///DO I NEED TO ENTER THE SPECIFIC ID???????????
+        {           
+            completed: completed,
+            scheduled: scheduled,
+            needs_attention: needs_attention
+        }
+        )
+        .then(res => {
+            console.log("this is putIssueBoard response", res)
+           // dispatch(memberMaking(res.data))
+          // successGeneral()
+        })
+        .catch(error => {
+           console.log("this is putIssueBoard error", error.message)
+           //dispatch(memberFailure(error.message))
+        })
+
+}
 
 
 /////////////////////////////////////
@@ -599,3 +629,8 @@ export const updateIssueCosts = data => dispatch => {
 export const updateIssueCompletion = data => dispatch => {
     dispatch(issueCompleter(data))
 }
+
+
+
+
+
