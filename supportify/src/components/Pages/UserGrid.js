@@ -35,7 +35,8 @@ const useStyles = makeStyles(theme => ({
   },
   card: {
     minWidth: 275,
-    color: "red"
+    color: "red",
+    margin: "10 50 10 0"
   },
   card2: {
     minWidth: 275,
@@ -59,12 +60,11 @@ function UserGrid(props) {
 
     <div onLoad={makeCards} >
     
-      <Grid container justify="center" className={classes.root} spacing={2}>
-
+      <Grid container justify="center" spacing="10">
         {props.members.map(user => {
           return (
-            <Box key={user.user_id} className={classes.card} boxShadow={3}>
-              <Paper className={classes.paper}>
+            <Grid item key={user.user_id} className={classes.card} boxShadow={3}>
+                <Paper>
                 <Link to={`/users/${user.user_id}`}>
                   <UserCard
                   key={user.user_id}
@@ -81,10 +81,11 @@ function UserGrid(props) {
                 <Route path={`/users/${user.user_id}`} render={user => 
                         <SingleUserPage {...user}/>
                 }/>
-              </Paper>
-            </Box>
+                </Paper>
+            </Grid>
           );
         })}
+
       </Grid>
     </div>
   );
