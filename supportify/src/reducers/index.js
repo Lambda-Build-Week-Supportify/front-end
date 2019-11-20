@@ -25,7 +25,30 @@ import {
     SEC_ROLE_ACCESS,
     SIGNUP_USERNAME,
     SIGNUP_PASSWORD,
-    STATE_MEMBER
+    STATE_MEMBER,
+    SCHOOL_NAME,
+    NUM_ISSUES_SCHOOLS,
+    NUM_STUDENTS_SCHOOLS,
+    EST_COSTS_SCHOOLS,
+    SCHOOL_STREET,
+    SCHOOL_CITY,
+    SCHOOL_STATE,
+    POST_CODE,
+    PHONE_NUM_SCHOOLS,
+    GRADE_LEVEL_SCHOOLS,
+    DESCRIPTION_SCHOOLS,
+    SUCCESS,
+    ISSUE_PRIORITY,
+    ISSUE_TITLE,
+    DESCRIPTION_ISSUE,
+    EQUIPMENT_ISSUE,
+    GENERAL_ISSUE,
+    EST_COSTS_ISSUE,
+    ISSUE_COMPLETION,
+    TRIGGER_ID,
+    LOAD_SCHOOL_SUCCESS,
+    LOAD_SCHOOL_FAILURE,
+    LOADING_SCHOOL
                 } from "../actions"
 
 
@@ -36,36 +59,77 @@ const initialState = {
     ],
     isFetching: false,
     error: null,
+    ///////////USER
     name: "hi",
     lastname: "bye",
     city: "",
     email: "",
     role: "",
+    ////////////////ADMIN
     userInput: {
         username: "",
         password: ""
     },
+    ////////////////////////
     admin: true,
+    ///////////////BOARD
     userInputBoard: {
         username: "",
         password: ""
     },
+    ////////////////SNACKBAR
     open: false,
     editButtonArea: false,
     deleteButtonArea: false,
     createButtonArea: false,
+    //////////////////USER(cont.)
     board: false,
     primary_admin: false,
     sec_admin: false,
     signupUsername: "",
     signupPassword: "",
-    province: ""
+    province: "",
+    /////////////////SCHOOLS
+    offices: [],
+    schoolName: " ",
+    numIssues: " ",
+    numStudents: " ",
+    estCosts: " ",
+    schoolStreet: " ",
+    schoolCity: " ",
+    schoolState: " ",
+    postCode: " ",
+    phoneNumber: " ",
+    gradeLevel: " ",
+    description: " ",
+    ////////////////MODAL
+    success: false,
+    editMessageSuccess: "You successfully edited!",
+    deleteMessageSuccess: "You successfully deleted!",
+    createMessageSuccess: "You successfully created an entry!",
+    failMessage: "Attempt Failed!",
+    messageSuccess: "Data Successfully Loaded",
+    ///////////ISSUE
+    priority: "",
+    title: "",
+    description_issue: "", //should just be description for endpoint
+    equipment: "",
+    general_issues: "",
+    estimated_cost: "",
+    completed: false,
+    ///////////
+    id: "5"
 }
 
 
 
 export function reducer(state = initialState, action){
     switch(action.type){
+        case TRIGGER_ID:
+            return{
+                ...state,
+                id: action.payload
+            }
         case LOAD_MEMBER_SUCCESS:
             // let noDoubles = action.payload
             //     console.log("this is noDoubles", noDoubles)
@@ -74,6 +138,11 @@ export function reducer(state = initialState, action){
                 // [...state.members].concat(noDoubles) BIG ISSUE #2
                 isFetching: false,
                 error: null
+            }
+        case SUCCESS:
+            return {
+                ...state,
+                success: true
             }
          case LOAD_MEMBER_FAILURE:
             return {
@@ -228,6 +297,123 @@ export function reducer(state = initialState, action){
                 ...state,
                 province: action.payload
             }
+/////////////////////SCHOOLS
+        case LOAD_SCHOOL_SUCCESS:
+
+            return {
+                offices: action.payload,
+                isFetching: false,
+                error: null
+            }
+
+         case LOAD_SCHOOL_FAILURE:
+            return {
+                offices: [...state.offices],
+                isFetching:false,
+                error: action.payload
+            }
+         case LOADING_SCHOOL:
+            return {
+                offices: [...state.offices],
+                isFetching: true,
+                error: null
+            }
+
+        case SCHOOL_NAME:
+            return{
+                ...state,
+                schoolName: action.payload
+            }
+        case NUM_ISSUES_SCHOOLS:
+                return{
+                    ...state,
+                    numIssues: action.payload
+                }
+        case NUM_STUDENTS_SCHOOLS:
+                return{
+                    ...state,
+                    numStudents: action.payload
+                }
+        case EST_COSTS_SCHOOLS:
+                return{
+                    ...state,
+                    estCosts: action.payload
+                }
+        case SCHOOL_STREET:
+                return{
+                    ...state,
+                    schoolStreet: action.payload
+                }
+        case SCHOOL_CITY:
+                return{
+                    ...state,
+                    schoolCity: action.payload
+                }
+        case SCHOOL_STATE:
+                return{
+                    ...state,
+                    schoolState: action.payload
+                }
+        case POST_CODE:
+                return{
+                    ...state,
+                    postCode: action.payload
+                }
+        case PHONE_NUM_SCHOOLS:
+                return{
+                    ...state,
+                    phoneNumber: action.payload
+                }
+        case GRADE_LEVEL_SCHOOLS:
+                return{
+                    ...state,
+                    gradeLevel: action.payload
+                }
+        case DESCRIPTION_SCHOOLS:
+                return{
+                    ...state,
+                    description: action.payload
+                }
+
+
+        //////////////ISSUES
+
+
+        case ISSUE_PRIORITY:
+                return{
+                    ...state,
+                    priority: action.payload
+                }
+        case ISSUE_TITLE:
+                return{
+                    ...state,
+                    title: action.payload
+                }
+        case DESCRIPTION_ISSUE:
+                return{
+                    ...state,
+                    description_issue: action.payload
+                }
+        case EQUIPMENT_ISSUE:
+                return{
+                    ...state,
+                    equipment: action.payload
+                }
+        case GENERAL_ISSUE:
+                return{
+                    ...state,
+                    general_issues: action.payload
+                }
+        case EST_COSTS_ISSUE:
+                return{
+                    ...state,
+                    estimated_cost: action.payload
+                }
+        case ISSUE_COMPLETION:
+                return{
+                    ...state,
+                    completed: action.payload
+                }
         default:
             return state
     }
