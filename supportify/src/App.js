@@ -10,7 +10,7 @@ import {connect} from 'react-redux'
 //////PAGES////////
 import DashboardGrid from "./components/Pages/DashboardGrid"
 import GreetingPage from "./components/Pages/GreetingPage"
-
+import UserGrid from './components/Pages/UserGrid';
 
 ///ORGANISMS/MODULES//////
 import PrivateRoute from './components/Organisms/PrivateRoute'
@@ -25,6 +25,7 @@ import EditIssueForm from './components/Molecules/EditIssueForm';
 import DeleteButton from "./components/Atoms/DeleteButtonCRUD"
 import EditButton from './components/Atoms/EditButtonCRUD'
 import SnackbarOpen from './components/Atoms/SnackbarOpen'; //this should actually be on this file!
+
 
 
 
@@ -76,6 +77,7 @@ function App(props) {
       <CreateIssueForm/>
       <EditIssueForm/>
       <SnackbarOpen/>
+      <UserGrid/>
     </div>
   );
 }

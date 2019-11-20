@@ -44,7 +44,8 @@ import {
     EQUIPMENT_ISSUE,
     GENERAL_ISSUE,
     EST_COSTS_ISSUE,
-    ISSUE_COMPLETION
+    ISSUE_COMPLETION,
+    TRIGGER_ID
                 } from "../actions"
 
 
@@ -111,13 +112,20 @@ const initialState = {
     equipment: "",
     general_issues: "",
     estimated_cost: "",
-    completed: false
+    completed: false,
+    ///////////
+    id: ""
 }
 
 
 
 export function reducer(state = initialState, action){
     switch(action.type){
+        case TRIGGER_ID:
+            return{
+                ...state,
+                id: action.payload
+            }
         case LOAD_MEMBER_SUCCESS:
             // let noDoubles = action.payload
             //     console.log("this is noDoubles", noDoubles)

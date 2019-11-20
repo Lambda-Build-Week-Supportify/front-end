@@ -1,6 +1,8 @@
 import axios from "axios"
 import axiosWithAuth from '../axios/axiosWithAuth'
 
+export const TRIGGER_ID = "TRIGGER_ID"
+
 export const LOAD_MEMBER_SUCCESS = "LOAD_MEMBER_SUCCESS"
 
 export const LOAD_MEMBER_FAILURE = "LOAD_MEMBER_FAILURE"
@@ -75,6 +77,8 @@ export const ISSUE_COMPLETION = "ISSUE_COMPLETION"
 
 
 //////////////////////////////////////////
+
+export const specifyId = id => ({type: TRIGGER_ID, payload: id})
 
 export const memberSuccess = (data) => ({type: LOAD_MEMBER_SUCCESS, payload: data})
 
@@ -220,11 +224,13 @@ export const putMember = (nameMember,
     secMember, 
     signupUsername, 
     signupPassword, 
-    stateMember) => dispatch => {
+    stateMember,
+    id
+    ) => dispatch => {
     dispatch(memberLoading())
 
     authAxios
-        .post('/users/:id', ///DO I NEED TO ENTER THE SPECIFIC ID?
+        .put(`/users/${id}`, ///DO I NEED TO ENTER THE SPECIFIC ID?
         {   first_name: nameMember,
             last_name: lastnameMember,
             city: cityMember,
@@ -321,12 +327,13 @@ schoolState,
 postCode,
 phoneNumber,
 gradeLevel,
-description
+description,
+id
 ) => dispatch => {
     dispatch(memberLoading())
 
     authAxios
-        .post('/schools/:id', ///DO I NEED TO ENTER THE SPECIFIC ID?
+        .put(`/schools/${id}`, ///DO I NEED TO ENTER THE SPECIFIC ID?
         {           
             school_name: schoolName,
             num_issues: numIssues,
@@ -413,12 +420,13 @@ export const putIssue= (
     equipment,
     general_issues,
     estimated_cost_issues, //should just be estimated_cost for endpoint obj
-    completed
+    completed,
+    id
 ) => dispatch => {
     dispatch(memberLoading())
 
     authAxios
-        .post('/issues/:id', ///DO I NEED TO ENTER THE SPECIFIC ID???????????
+        .put(`/issues/${id}`, ///DO I NEED TO ENTER THE SPECIFIC ID???????????
         {           
             priority: priority,
             title: title,
@@ -449,12 +457,13 @@ export const putIssueBoard= (
 
     completed,
     scheduled, //needs creation
-    needs_attention//needs creation
+    needs_attention,//needs creation
+    id
 ) => dispatch => {
     dispatch(memberLoading())
 
     authAxios
-        .post('/issues/:id', ///DO I NEED TO ENTER THE SPECIFIC ID???????????
+        .post(`/issues/${id}`, ///DO I NEED TO ENTER THE SPECIFIC ID???????????
         {           
             completed: completed,
             scheduled: scheduled,

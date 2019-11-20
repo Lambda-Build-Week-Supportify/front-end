@@ -114,7 +114,8 @@ function CreateSchoolForm(props){
                     props.postCode,
                     props.phoneNumber,
                     props.gradeLevel,
-                    props.description
+                    props.description,
+                    props.id
                 )}>Edit a School!</button>
             </form>
         </div>

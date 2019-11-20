@@ -76,7 +76,8 @@ function EditIssueForm(props){
                     props.equipment,
                     props.general_issues,
                     props.estimated_cost,
-                    props.completed
+                    props.completed,
+                    props.id
                 )}>Edit an Issue</button>
             </form>
         </div>

@@ -100,7 +100,9 @@ function EditUserForm(props){
                     props.sec_admin, 
                     props.signupUsername, 
                     props.signupPassword, 
-                    props.province)}>Edit a User!</button>
+                    props.province,
+                    props.id
+                    )}>Edit a User!</button>
             </form>
         </div>
     )
