@@ -5,21 +5,16 @@
 
 //this will have a Link component that leads to the single page component But the ROUTE will be established on the Dashboard component
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 const IssueCard = props => {
   console.log(props);
+
   return (
-    <div className="Card">
-      {props.member.map((data, index) => {
-        return (
-          <div className="data" key={index}>
-            <h1>{data.name}</h1>
-            <p>{data.email}</p>
-            <p>{data.role}</p>
-          </div>
-        );
-      })}
+    <div className="props">
+      <h1>{props.name}</h1>
+      <p>{props.email}</p>
+      <p>{props.role}</p>
     </div>
   );
 };

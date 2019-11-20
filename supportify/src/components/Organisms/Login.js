@@ -1,22 +1,22 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
-import {connect} from 'react-redux'
+import { connect } from "react-redux";
 
-import { 
+import {
   updateUserName,
-  updateUserBoard, 
-  adminToFalse, 
-  adminToTrue, 
-  updatePassWord, 
-  updatePassBoard} from "../../actions"
+  updateUserBoard,
+  adminToFalse,
+  adminToTrue,
+  updatePassWord,
+  updatePassBoard
+} from "../../actions";
 
-import axios from "axios"
-import axiosWithAuth from '../../axios/axiosWithAuth'
+import axios from "axios";
+import axiosWithAuth from "../../axios/axiosWithAuth";
 
-const Login = (props) => {
+const Login = props => {
   // make a post request to retrieve a token from the api
   // when you have handled the token, navigate to the BubblePage route
-
 
 
   const login = (payload) => {
@@ -96,27 +96,28 @@ const Login = (props) => {
 const inputName = props.admin === false ? "boardname": "username"
 const inputPass = props.admin === false ? "passboard": "password"
 
+
   return (
     <>
       <h1>Welcome to Supportify</h1>
       <form onSubmit={handleLogin}>
-      <input
-      onClick={adminStatus}
+        <input
+          onClick={adminStatus}
           type="text"
-          name= {props.greetName}
-          value= {usernameStateValue}
+          name={props.greetName}
+          value={usernameStateValue}
           onChange={handleUserChange(inputName)}
-          
       />
       <input
       onClick={adminStatus}
+
           type="password"
           name={props.passName}
-          value= {passwordStateValue}
+          value={passwordStateValue}
           onChange={handlePassChange(inputPass)}
-      />
-      <button>Login!</button>
-  </form>
+        />
+        <button>Login!</button>
+      </form>
     </>
   );
 };
@@ -128,6 +129,6 @@ const mapDispatchToProps = {
   adminToTrue,
   updatePassWord,
   updatePassBoard
-}
+};
 
-export default connect(state=> state, mapDispatchToProps)(Login);
+export default connect(state => state, mapDispatchToProps)(Login);
