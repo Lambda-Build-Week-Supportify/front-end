@@ -4,7 +4,7 @@ import React from "react";
 import {connect} from 'react-redux'
 
 ///////////ACTIONS
-import {fetchSchools} from "../../actions"
+import {fetchSchools, specifyId} from "../../actions"
 
 ////////////ORGANISMS
 import SchoolCard from "../Organisms/SchoolCard";
@@ -52,6 +52,9 @@ function SchoolGrid(props) {
   const classes = useStyles();
 
 console.log("this is offices", props.offices)
+
+const handleClick = (data) => props.specifyId(data)
+console.log("this is props.id", props.id)
   return (
 
     <div >
@@ -75,11 +78,18 @@ console.log("this is offices", props.offices)
                     phone={office.phone}
                     grade_level={office.grade_level}
                     about={office.about}
+                    
                   />
                 </Link>
                 <Route path={`/schools/${office.school_id}`} render={props => 
-                        <SingleSchoolPage data={props} schoolInfo={office}/>
+                        <SingleSchoolPage 
+                        data={props} 
+                        schoolInfo={office} 
+                        onClick={handleClick(office.school_id)}
+                        superId={handleClick(office.school_id).payload}
+                        />
                 }/>
+               
                 </Paper>
             </Grid>
           );
@@ -96,7 +106,8 @@ console.log("this is offices", props.offices)
 
 
 const mapDispatchToProps = {
-    fetchSchools
+    fetchSchools,
+    specifyId
 }
 
 

@@ -1,11 +1,16 @@
 import React from 'react'
 
-function SingleUserPage({data, userInfo}){
+import {connect} from 'react-redux'
 
+import {specifyId} from "../../actions"
+
+function SingleUserPage(props, {data, userInfo}){
+
+    console.log("this is the id", props.id)
 
     return(
         <div>
-           
+           {props.specifyId(userInfo.user_id)}
             <p>Name: {userInfo.fname + " " + userInfo.lname}</p>
             <p>City: {userInfo.city}</p>
             <p>State: {userInfo.province}</p>
@@ -19,6 +24,10 @@ function SingleUserPage({data, userInfo}){
     )
 }
 
-export default SingleUserPage
+const mapDispatchToProps ={
+    specifyId
+}
+
+export default connect(state => state, mapDispatchToProps)(SingleUserPage)
 
 //data accesses Route props
