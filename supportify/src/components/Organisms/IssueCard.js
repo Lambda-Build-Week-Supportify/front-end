@@ -12,9 +12,17 @@ const IssueCard = props => {
 
   return (
     <div className="props">
-      <h1>{props.name}</h1>
-      <p>{props.email}</p>
-      <p>{props.role}</p>
+      <h1>{props.user_id} </h1>
+      <h2>{props.title} </h2>
+      <p> {props.completed}</p>
+      <p>{props.description}</p>
+      <p>{props.equipment}</p>
+      <p>{props.estimated_cost}</p>
+      <p> {props.general_issues}</p>
+      <p>{props.issues_id}</p>
+      <p>{props.needs_attention}</p>
+      <p>{props.priority}</p>
+      <p>{props.scheduled}</p>
     </div>
   );
 };
