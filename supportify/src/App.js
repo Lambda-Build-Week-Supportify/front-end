@@ -8,8 +8,10 @@ import { fetchMembers } from "./actions";
 import { connect } from "react-redux";
 
 //////PAGES////////
+
 import DashboardGrid from "./components/Pages/DashboardGrid";
 import GreetingPage from "./components/Pages/GreetingPage";
+
 
 ///ORGANISMS/MODULES//////
 import PrivateRoute from "./components/Organisms/PrivateRoute";
@@ -54,6 +56,9 @@ function App(props) {
       <Switch>
         <PrivateRoute path="/dashboard">
           <DashboardGrid />
+
+               
+
         </PrivateRoute>
         <Route path="/login" component={GreetingPage} />
         <Route component={GreetingPage} />

@@ -63,7 +63,7 @@ const useStyles = makeStyles(theme => ({
                             <Paper className={classes.paper}>
                                 
                                     Ghana Admin
-                                    <Login status={true} greetName="username"
+                                    <Login {...props} status={true} greetName="username"
                                     passName="password"/>
                                
                             </Paper>
@@ -73,7 +73,7 @@ const useStyles = makeStyles(theme => ({
                             <Paper className={classes.paper} boxShadow={3}>
                                 
                                     US Boardmember
-                                    <Login status={false} greetName="boardname" passName="passwordBoard"/>
+                                    <Login {...props} status={false} greetName="boardname" passName="passwordBoard"/>
                           
                             </Paper>
                      </Box> 

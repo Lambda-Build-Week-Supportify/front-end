@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import {
-    postMember, 
+    putMember, 
     updateName, 
     updateCity, 
     updateEmail, 
@@ -20,7 +20,7 @@ import {
 // <input type="text" name='member-role' value={props.role} onChange={handleNewRole}/>
 
 
-function SignUpForm(props){
+function EditUserForm(props){
 
     const handleNewName = e => {
         props.updateName(e.target.value)
@@ -62,7 +62,7 @@ function SignUpForm(props){
 
 
         <div>
-           SignUpForm
+           EditUserForm
            <form  >
                 <label name='member-name' >First Name</label>
                 <input type="text" name='member-name' value={props.name} onChange={handleNewName}/>
@@ -110,7 +110,7 @@ function SignUpForm(props){
 }
 
 const mapDispatchToProps ={
-    postMember,
+    putMember,
     updateName,
     updateLastName,
     updateCity,
@@ -124,7 +124,4 @@ updateSignupPass,
 updateSignupUser
 }
 
-export default connect(state => state, mapDispatchToProps)(SignUpForm)
-
-
-//ISSUE WITH CHECKBOXES!!!!!
+export default connect(state => state, mapDispatchToProps)(EditUserForm)
