@@ -4,14 +4,14 @@ import React from "react";
 import {connect} from 'react-redux'
 
 ///////////ACTIONS
-import {fetchMembers} from "../../actions"
+import {fetchSchools} from "../../actions"
 
 ////////////ORGANISMS
-import UserCard from "../Organisms/UserCard";
+import SchoolCard from "../Organisms/SchoolCard";
 
 
 ////////////PAGES
-import SingleUserPage from "../Pages/SingleUserPage";
+import SingleSchoolPage from "../Pages/SingleSchoolPage";
 import { Route, Link } from "react-router-dom";
 
 //Material UI
@@ -47,40 +47,38 @@ const useStyles = makeStyles(theme => ({
 
 
 
-function UserGrid(props) {
+function SchoolGrid(props) {
 
   const classes = useStyles();
 
-  const makeCards = (e) => {
-      e.preventDefault()
-        props.fetchMembers()//this works on a button
-  }
-  console.log("this is offices", props.offices)
-
+console.log("this is offices", props.offices)
   return (
 
-    <div  >
+    <div >
     
       <Grid container justify="center" spacing="10">
-        {props.members.map(user => {
+        {props.offices.map(office => {
           return (
-            <Grid item key={user.user_id} className={classes.card} boxShadow={3}>
+            <Grid item key={office.school_id} className={classes.card} boxShadow={3}>
                 <Paper>
-                <Link to={`/users/${user.user_id}`}>
-                  <UserCard
-                  key={user.user_id}
-                  fname={user.first_name}
-                  lname={user.last_name}
-                  city={user.city}
-                  email={user.email}
-                  board={user.board}
-                  prime={user.primary_admin}
-                  sec={user.sec_admin}
-                  province={user.state}
+                <Link to={`/schools/${office.school_id}`}>
+                  <SchoolCard
+                    key={office.school_id}
+                    school_name={office.school_name}
+                    num_issues={office.num_issues}
+                    num_students={office.num_students}
+                    est_costs={office.est_costs}
+                    school_street={office.school_street}
+                    school_city={office.school_city}
+                    school_state={office.school_state}
+                    post_code={office.post_code}
+                    phone={office.phone}
+                    grade_level={office.grade_level}
+                    about={office.about}
                   />
                 </Link>
-                <Route path={`/users/${user.user_id}`} render={user => 
-                        <SingleUserPage {...user}/>
+                <Route path={`/schools/${office.school_id}`} render={props => 
+                        <SingleSchoolPage data={props} schoolInfo={office}/>
                 }/>
                 </Paper>
             </Grid>
@@ -98,8 +96,8 @@ function UserGrid(props) {
 
 
 const mapDispatchToProps = {
-    fetchMembers
+    fetchSchools
 }
 
 
-export default connect(state => state, mapDispatchToProps)(UserGrid);
+export default connect(state => state, mapDispatchToProps)(SchoolGrid);

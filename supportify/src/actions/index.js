@@ -53,6 +53,10 @@ export const STATE_MEMBER = "STATE_MEMBER"
 
 ///////////////////////SCHOOLS
 
+export const LOAD_SCHOOL_SUCCESS = "LOAD_SCHOOL_SUCCESS"
+export const LOAD_SCHOOL_FAILURE = "LOAD_SCHOOL_FAILURE"
+export const LOADING_SCHOOL = "LOADING_SCHOOL"
+
 export const SCHOOL_NAME = "SCHOOL_NAME"
 export const NUM_ISSUES_SCHOOLS = "NUM_ISSUES_SCHOOLS"
 export const NUM_STUDENTS_SCHOOLS = "NUM_STUDENTS_SCHOOLS"
@@ -132,6 +136,12 @@ export const signupPass = data => ({type: SIGNUP_PASSWORD, payload: data})
 export const memberState = data => ({type: STATE_MEMBER, payload: data})
 
 ////////////////SCHOOLS
+
+export const schoolSuccess = (data) => ({type: LOAD_SCHOOL_SUCCESS, payload: data})
+export const schoolFailure = (error) => ({type: LOAD_SCHOOL_FAILURE, payload: error})
+export const schoolLoading = () => ({type: LOADING_SCHOOL})
+
+//
 
 export const schoolNaming = data => ({type: SCHOOL_NAME, payload: data})
 export const schoolIssuesNum = data => ({type: NUM_ISSUES_SCHOOLS, payload: data})
@@ -263,12 +273,12 @@ export const fetchSchools = () => dispatch => {
         .get('/schools')
         .then(res => {
             console.log("this is response.data", res)
-            //dispatch(memberSuccess(res.data))
+            dispatch(schoolSuccess(res.data))
            // successGeneral()
         })
         .catch(error => {
            console.log("this is error", error.message)
-           //dispatch(memberFailure(error.message))
+           dispatch(schoolFailure(error.message))
         })
 
 }

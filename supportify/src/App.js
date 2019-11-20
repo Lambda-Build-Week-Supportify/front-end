@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { Route, Switch, Link } from "react-router-dom";
 
-import {fetchMembers} from './actions'
+import {fetchMembers, fetchSchools} from './actions'
 
 import {connect} from 'react-redux'
 
@@ -11,6 +11,7 @@ import {connect} from 'react-redux'
 import DashboardGrid from "./components/Pages/DashboardGrid"
 import GreetingPage from "./components/Pages/GreetingPage"
 import UserGrid from './components/Pages/UserGrid';
+import SchoolGrid from "./components/Pages/SchoolGrid"
 
 ///ORGANISMS/MODULES//////
 import PrivateRoute from './components/Organisms/PrivateRoute'
@@ -57,9 +58,9 @@ function App(props) {
           </li>
         </ul>
        
-        <button type="button" onClick={()=> props.fetchMembers()}>Get Members!</button>
-        {props.error && <p>{props.error}</p>}
-        {props.isFetching  && <p>This is taking a really long time!</p> }
+
+        <button type="button" onClick={()=> props.fetchSchools()}>Get Schools!</button>
+
 
 
     <Switch>
@@ -77,13 +78,22 @@ function App(props) {
       <CreateIssueForm/>
       <EditIssueForm/>
       <SnackbarOpen/>
-      <UserGrid/>
+      {//props.members !== [] ? <UserGrid/> : (props.offices !== [] ? <SchoolGrid/>: null)
+        props.offices !== [] ? <SchoolGrid/> : null 
+      }
+    
     </div>
   );
 }
 
 const mapDispatchToProps ={
-  fetchMembers
+  fetchMembers,
+  fetchSchools
 }
 
 export default connect(state=> state, mapDispatchToProps)(App);
+
+//<button type="button" onClick={()=> props.fetchMembers()}>Get Members!</button>
+
+// {props.error && <p>{props.error}</p>}
+// {props.isFetching  && <p>This is taking a really long time!</p> }

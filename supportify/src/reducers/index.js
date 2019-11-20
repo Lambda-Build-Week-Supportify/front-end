@@ -45,7 +45,10 @@ import {
     GENERAL_ISSUE,
     EST_COSTS_ISSUE,
     ISSUE_COMPLETION,
-    TRIGGER_ID
+    TRIGGER_ID,
+    LOAD_SCHOOL_SUCCESS,
+    LOAD_SCHOOL_FAILURE,
+    LOADING_SCHOOL
                 } from "../actions"
 
 
@@ -87,6 +90,7 @@ const initialState = {
     signupPassword: "",
     province: "",
     /////////////////SCHOOLS
+    offices: [],
     schoolName: " ",
     numIssues: " ",
     numStudents: " ",
@@ -294,7 +298,26 @@ export function reducer(state = initialState, action){
                 province: action.payload
             }
 /////////////////////SCHOOLS
+        case LOAD_SCHOOL_SUCCESS:
 
+            return {
+                offices: action.payload,
+                isFetching: false,
+                error: null
+            }
+
+         case LOAD_SCHOOL_FAILURE:
+            return {
+                offices: [...state.offices],
+                isFetching:false,
+                error: action.payload
+            }
+         case LOADING_SCHOOL:
+            return {
+                offices: [...state.offices],
+                isFetching: true,
+                error: null
+            }
 
         case SCHOOL_NAME:
             return{

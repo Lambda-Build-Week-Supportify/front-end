@@ -92,7 +92,8 @@ const mapDispatchToProps ={
     updateIssueEquip,
     updateIssueGeneral,
     updateIssueCosts,
-    updateIssueCompletion
+    updateIssueCompletion,
+    
 }
 
 export default connect(state => state, mapDispatchToProps)(EditIssueForm)
