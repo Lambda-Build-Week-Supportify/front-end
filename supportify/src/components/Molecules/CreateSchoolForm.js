@@ -16,9 +16,6 @@ import {
     updateSchoolDesc
 } from '../../actions'
 
-//     <label name='member-role'>Role/Position</label>
-// <input type="text" name='member-role' value={props.role} onChange={handleNewRole}/>
-
 
 function CreateSchoolForm(props){
 
@@ -140,3 +137,4 @@ const mapDispatchToProps ={
 
 export default connect(state => state, mapDispatchToProps)(CreateSchoolForm)
 
+//This form is linked to the input fields of the edit form, THEY SHOULD NEVER DISPLAY AT THE SAME TIME!!!

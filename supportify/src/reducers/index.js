@@ -36,7 +36,8 @@ import {
     POST_CODE,
     PHONE_NUM_SCHOOLS,
     GRADE_LEVEL_SCHOOLS,
-    DESCRIPTION_SCHOOLS
+    DESCRIPTION_SCHOOLS,
+    SUCCESS
                 } from "../actions"
 
 
@@ -88,7 +89,13 @@ const initialState = {
     postCode: " ",
     phoneNumber: " ",
     gradeLevel: " ",
-    description: " "
+    description: " ",
+    success: false,
+    editMessageSuccess: "You successfully edited!",
+    deleteMessageSuccess: "You successfully deleted!",
+    createMessageSuccess: "You successfully created an entry!",
+    failMessage: "Attempt Failed!",
+    messageSuccess: "Data Successfully Loaded"
 }
 
 
@@ -103,6 +110,11 @@ export function reducer(state = initialState, action){
                 // [...state.members].concat(noDoubles) BIG ISSUE #2
                 isFetching: false,
                 error: null
+            }
+        case SUCCESS:
+            return {
+                ...state,
+                success: true
             }
          case LOAD_MEMBER_FAILURE:
             return {

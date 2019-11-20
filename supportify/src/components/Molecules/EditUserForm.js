@@ -94,7 +94,7 @@ function EditUserForm(props){
                 <label>Secondary Member</label>
                 <input type="checkbox" name='sec-role' value={props.board} onClick={handleNewRole}/>
 
-                <button type="button" onClick={()=> props.postMember(props.name, 
+                <button type="button" onClick={()=> props.putMember(props.name, 
                     props.city, 
                     props.email, 
                     props.lastname, 

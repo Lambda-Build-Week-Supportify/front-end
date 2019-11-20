@@ -22,6 +22,7 @@ import EditSchoolForm from './components/Molecules/EditSchoolForm';
 /////////ATOMS/////////
 import DeleteButton from "./components/Atoms/DeleteButtonCRUD"
 import EditButton from './components/Atoms/EditButtonCRUD'
+import SnackbarOpen from './components/Atoms/SnackbarOpen'; //this should actually be on this file!
 
 
 
@@ -69,6 +70,7 @@ function App(props) {
       <EditButton/>
       <CreateSchoolForm/>
       <EditSchoolForm/>
+      <SnackbarOpen/>
     </div>
   );
 }

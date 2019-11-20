@@ -7,6 +7,8 @@ export const LOAD_MEMBER_FAILURE = "LOAD_MEMBER_FAILURE"
 
 export const LOADING_MEMBER = "LOADING_MEMBER"
 
+export const SUCCESS = "SUCCESS"
+
 export const MAKE_MEMBER = "MAKE_MEMBER"
 
 export const NAME_MEMBER = "NAME_MEMBER"
@@ -70,6 +72,9 @@ export const memberFailure = (error) => ({type: LOAD_MEMBER_FAILURE, payload: er
 
 
 export const memberLoading = () => ({type: LOADING_MEMBER})
+
+export const successGeneral = () => ({type: SUCCESS})
+
 
 export const memberMaking = (data) => ({type: MAKE_MEMBER, payload: data })
 
@@ -135,6 +140,7 @@ export const fetchMembers = () => dispatch => {
         .then(res => {
             console.log("this is response.data", res)
             //dispatch(memberSuccess(res.data))
+            successGeneral()
         })
         .catch(error => {
            console.log("this is error", error.message)
@@ -172,6 +178,7 @@ export const postMember = (nameMember,
         .then(res => {
             console.log("this is postMember response.data", res)
            // dispatch(memberMaking(res.data))
+           successGeneral()
         })
         .catch(error => {
            console.log("this is error", error.message)
@@ -209,6 +216,7 @@ export const putMember = (nameMember,
         .then(res => {
             console.log("this is putMember response.data", res)
            // dispatch(memberMaking(res.data))
+           successGeneral()
         })
         .catch(error => {
            console.log("this is error", error.message)
@@ -226,6 +234,7 @@ export const fetchSchools = () => dispatch => {
         .then(res => {
             console.log("this is response.data", res)
             //dispatch(memberSuccess(res.data))
+            successGeneral()
         })
         .catch(error => {
            console.log("this is error", error.message)
@@ -268,6 +277,7 @@ description
         .then(res => {
             console.log("this is postSchool response.data", res)
            // dispatch(memberMaking(res.data))
+           successGeneral()
         })
         .catch(error => {
            console.log("this is error", error.message)
@@ -310,6 +320,7 @@ description
         .then(res => {
             console.log("this is putSchool response", res)
            // dispatch(memberMaking(res.data))
+           successGeneral()
         })
         .catch(error => {
            console.log("this is error", error.message)
@@ -368,6 +379,8 @@ export const updatePassBoard= (password) =>dispatch =>{
     dispatch(memberPassBoard(password))
 }
 
+
+/////////////////////SNACKBAR//////////////////////////////
 export const updateSnackbar = (data) => dispatch => {
     dispatch(snackBarStatus(data))
 }
@@ -383,6 +396,9 @@ export const updateCreateArea = (data) => dispatch => {
 export const updateDeleteArea = (data) => dispatch => {
     dispatch(deleteAreaStatus(data))//trigger on delete button mouseenter?
 }
+///////////////////////////////////////////////////////////
+
+
 
 export const updateSignupUser = data => dispatch => {
     dispatch(signupUser(data))
