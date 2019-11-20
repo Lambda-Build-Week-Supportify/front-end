@@ -68,13 +68,19 @@ function App(props) {
           <DashboardGrid />
                
         </PrivateRoute>
+          <PrivateRoute path="/edit/school">
+              <EditSchoolForm/>
+          </PrivateRoute>
+          <PrivateRoute path="/delete/school">
+                <DeleteButton/>    
+          </PrivateRoute>
           <Route path="/login" component={GreetingPage}/>
           <Route component={GreetingPage}/>
     </Switch>
-      <DeleteButton/>
+
       <EditButton/>
       <CreateSchoolForm/>
-      <EditSchoolForm/>
+
       <CreateIssueForm/>
       <EditIssueForm/>
       <SnackbarOpen/>

@@ -182,7 +182,7 @@ export const fetchMembers = () => dispatch => {
         })
         .catch(error => {
            console.log("this is error", error.message)
-           //dispatch(memberFailure(error.message))
+           dispatch(memberFailure(error.message))
         })
 
 }
