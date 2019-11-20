@@ -4,3 +4,19 @@
 //material ui
 
 //this will have a Link component that leads to the single page component But the ROUTE will be established on the Dashboard component
+
+import React from "react";
+
+const IssueCard = props => {
+  console.log(props);
+
+  return (
+    <div className="props">
+      <h1>{props.name}</h1>
+      <p>{props.email}</p>
+      <p>{props.role}</p>
+    </div>
+  );
+};
+
+export default IssueCard;

@@ -1,20 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
 import { Route, Switch, Link } from "react-router-dom";
+
 
 import {fetchMembers, fetchSchools} from './actions'
 
-import {connect} from 'react-redux'
+
+import { connect } from "react-redux";
 
 //////PAGES////////
+
 import DashboardGrid from "./components/Pages/DashboardGrid"
 import GreetingPage from "./components/Pages/GreetingPage"
 import UserGrid from './components/Pages/UserGrid';
 import SchoolGrid from "./components/Pages/SchoolGrid"
 
+
 ///ORGANISMS/MODULES//////
-import PrivateRoute from './components/Organisms/PrivateRoute'
+import PrivateRoute from "./components/Organisms/PrivateRoute";
 
 ///////////MOLECULES/////////////////
 import CreateSchoolForm from './components/Molecules/CreateSchoolForm';
@@ -23,9 +27,11 @@ import CreateIssueForm from "./components/Molecules/CreateIssueForm"
 import EditIssueForm from './components/Molecules/EditIssueForm';
 
 /////////ATOMS/////////
+
 import DeleteButton from "./components/Atoms/DeleteButtonCRUD"
 import EditButton from './components/Atoms/EditButtonCRUD'
 import SnackbarOpen from './components/Atoms/SnackbarOpen'; //this should actually be on this file!
+
 
 
 
@@ -49,9 +55,10 @@ function App(props) {
         </a>
       </header>
       <ul>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
+        <li>
+          <Link to="/login">Login</Link>
+        </li>
+
 
           <li>
             <Link to='/dashboard'>Dashboard</Link>
@@ -63,11 +70,20 @@ function App(props) {
 
 
 
-    <Switch>
+      <button type="button" onClick={() => props.fetchMembers()}>
+        Get Members!
+      </button>
+      {props.error && <p>{props.error}</p>}
+      {props.isFetching && <p>This is taking a really long time!</p>}
+
+      <Switch>
         <PrivateRoute path="/dashboard">
           <DashboardGrid />
+
                
+
         </PrivateRoute>
+
           <Route path="/login" component={GreetingPage}/>
           <Route component={GreetingPage}/>
     </Switch>
@@ -82,9 +98,11 @@ function App(props) {
         props.offices !== [] ? <SchoolGrid/> : null 
       }
     
+
     </div>
   );
 }
+
 
 const mapDispatchToProps ={
   fetchMembers,
@@ -97,3 +115,4 @@ export default connect(state=> state, mapDispatchToProps)(App);
 
 // {props.error && <p>{props.error}</p>}
 // {props.isFetching  && <p>This is taking a really long time!</p> }
+
