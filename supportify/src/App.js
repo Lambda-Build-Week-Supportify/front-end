@@ -57,12 +57,7 @@ function App(props) {
           <li>
             <Link to='/dashboard'>Dashboard</Link>
           </li>
-          <li>
-            <Link to='/dashboard/school'>School Dashboard</Link>
-          </li>
-          <li>
-          <Link to='/dashboard/user'>Users Dashboard</Link>
-        </li>
+
         </ul>
        
 
@@ -71,7 +66,11 @@ function App(props) {
 
 
     <Switch>
-
+    <PrivateRoute path="/dashboard">
+    <DashboardGrid />
+         <p>Hello</p>
+    </PrivateRoute>
+    
     
           <PrivateRoute path="/edit/school">
               <EditSchoolForm/>
@@ -81,9 +80,7 @@ function App(props) {
                 <DeleteButton/> 
                 <p>Delete</p>   
           </PrivateRoute>
-          <Route path="/dashboard/school" component={SchoolGrid}/>
 
-          <Route path="/dashboard/user" component={UserGrid}/>
 
           <Route path="/login" component={GreetingPage}/>
           <Route component={GreetingPage}/>
@@ -113,10 +110,6 @@ export default connect(state=> state, mapDispatchToProps)(App);
 // }
 
 
-// <PrivateRoute path="/dashboard">
-// <DashboardGrid />
-//      <p>Hello</p>
-// </PrivateRoute>
 
 
 // <Route path={`/schools/${props.id}`} component={

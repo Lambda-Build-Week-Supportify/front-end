@@ -55,7 +55,7 @@ import {
 
 const initialState = {
     members: [
-       //{"name":"Brainey","city":200,"email":"5cm","id":0} BIG ISSUE #1
+      1,2,3 //{"name":"Brainey","city":200,"email":"5cm","id":0} BIG ISSUE #1
     ],
     isFetching: false,
     error: null,
@@ -90,7 +90,7 @@ const initialState = {
     signupPassword: "",
     province: "",
     /////////////////SCHOOLS
-    offices: [],
+    offices: [1,2,3],
     schoolName: " ",
     numIssues: " ",
     numStudents: " ",
