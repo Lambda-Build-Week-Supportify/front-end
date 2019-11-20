@@ -16,6 +16,53 @@ import axiosWithAuth from '../../axios/axiosWithAuth'
 const Login = (props) => {
   // make a post request to retrieve a token from the api
   // when you have handled the token, navigate to the BubblePage route
+  const login = (payload) => {
+    const authAxios = axiosWithAuth()
+      authAxios
+          .post(`/auth/login`, payload)
+          .then(res => {
+              console.log("this is res.data", res);
+             localStorage.setItem('token', res.data.token)
+              
+               return props.history.push("/dashboard")
+          })
+          .catch(err => {
+              console.log("this is login error", err)
+          })
+  }
+
+  const handleLogin = (e) => {
+    e.preventDefault()
+    let captureEntries ={}
+    if(props.admin === false){
+      captureEntries = {
+        username: props.userInputBoard['username'],
+        password: props.userInputBoard['password']
+    }
+    }else{
+        captureEntries = {
+          username: props.userInput['username'],
+          password: props.userInput['password']
+      }
+    }
+   console.log(captureEntries)
+    login(captureEntries)
+
+
+}
+
+
+let adminStatus = () => {if(props.status== false){
+  props.adminToFalse()
+}else{
+  props.adminToTrue()
+}
+}
+
+
+const usernameStateValue = (props) => (props.greetName === "boardname" ? props.userInputBoard['username'] : props.userInput['username'])
+const passwordStateValue = (props) => (props.greetName === "boardname" ? props.userInputBoard['password'] : props.userInput['password'])
+  
   const handleUserChange = () => e => {
     e.preventDefault()
    props.status === false ? props.updateUserBoard(e.target.value) : props.updateUserName(e.target.value) 
@@ -30,53 +77,11 @@ const Login = (props) => {
 }
 
 
-  const login = (payload) => {
-  const authAxios = axiosWithAuth()
-    authAxios
-        .post(`/auth/login`, payload)
-        .then(res => {
-            console.log("this is res.data", res);
-           localStorage.setItem('token', res.data.token)
-            
-             return props.history.push("/dashboard")
-        })
-        .catch(err => {
-            console.log("this is login error", err)
-        })
-}
-
-  const handleLogin = (e) => {
-      e.preventDefault()
-      let captureEntries ={}
-      if(props.admin === false){
-        captureEntries = {
-          username: props.userInputBoard['username'],
-          password: props.userInputBoard['password']
-      }
-      }else{
-          captureEntries = {
-            username: props.userInput['username'],
-            password: props.userInput['password']
-        }
-      }
-     console.log(captureEntries)
-      login(captureEntries)
-  
- 
-  }
 
 
-  let adminStatus = () => {if(props.status== false){
-    props.adminToFalse()
-  }else{
-    props.adminToTrue()
-  }
-}
-// console.log("WTF1", props.userInput['username'])
-// console.log("WTF2", props.userInputBoard['username'])
 
-  const usernameStateValue = (props) => (props.greetName === "boardname" ? props.userInputBoard.username : props.userInput.username)
-  const passwordStateValue = (props) => (props.greetName === "boardname" ? props.userInputBoard['password'] : props.userInput['password'])
+
+
 
 
 
@@ -88,9 +93,9 @@ const Login = (props) => {
 
 // console.log("this is usernameStateValue", usernameStateValue)
 
-//  console.log("this is props.userInputBoard",props.userInputBoard)
+ console.log("this is props.userInputBoard",props.userInputBoard)
 
-//  console.log("this is props.userInput",props.userInput)
+ console.log("this is props.userInput",props.userInput)
 
 // oh man, I had my true and false on ternaries backwards for forever, jeez
 
@@ -107,7 +112,7 @@ const inputPass = props.admin === false ? "passboard": "password"
       onClick={adminStatus}
           type="text"
           name={props.greetName}
-          value={usernameStateValue}
+          value={JSON.stringify(usernameStateValue)}
           onChange={handleUserChange(inputName)}
           
       />
@@ -115,7 +120,7 @@ const inputPass = props.admin === false ? "passboard": "password"
       onClick={adminStatus}
           type="password"
           name={props.passName}
-          value= {passwordStateValue}
+          value= {JSON.stringify(passwordStateValue)}
           onChange={handlePassChange(inputPass)}
       />
       <button type="button" >Login!</button>

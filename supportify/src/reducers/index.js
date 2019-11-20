@@ -63,15 +63,15 @@ const initialState = {
     role: "",
     ////////////////ADMIN
     userInput: {
-        username: "Example username",
-        password: "Example password"
+        username: "",
+        password: ""
     },
     ////////////////////////
     admin: true,
     ///////////////BOARD
     userInputBoard: {
-        username: "Example username",
-        password: "Example password"
+        username: "",
+        password: ""
     },
     ////////////////SNACKBAR
     open: false,

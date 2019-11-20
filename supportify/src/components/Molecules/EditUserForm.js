@@ -16,9 +16,6 @@ import {
     updateSignupUser
 } from '../../actions'
 
-//     <label name='member-role'>Role/Position</label>
-// <input type="text" name='member-role' value={props.role} onChange={handleNewRole}/>
-
 
 function EditUserForm(props){
 

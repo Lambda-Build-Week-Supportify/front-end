@@ -164,7 +164,7 @@ export const fetchMembers = () => dispatch => {
         .then(res => {
             console.log("this is response.data", res)
             //dispatch(memberSuccess(res.data))
-            successGeneral()
+            //successGeneral()
         })
         .catch(error => {
            console.log("this is error", error.message)
@@ -202,11 +202,11 @@ export const postMember = (nameMember,
         .then(res => {
             console.log("this is postMember response.data", res)
            // dispatch(memberMaking(res.data))
-           successGeneral()
+           //successGeneral()
         })
         .catch(error => {
            console.log("this is error", error.message)
-           dispatch(memberFailure(error.message))
+           //dispatch(memberFailure(error.message))
         })
 
 }
@@ -240,7 +240,7 @@ export const putMember = (nameMember,
         .then(res => {
             console.log("this is putMember response.data", res)
            // dispatch(memberMaking(res.data))
-           successGeneral()
+           //successGeneral()
         })
         .catch(error => {
            console.log("this is error", error.message)
@@ -258,7 +258,7 @@ export const fetchSchools = () => dispatch => {
         .then(res => {
             console.log("this is response.data", res)
             //dispatch(memberSuccess(res.data))
-            successGeneral()
+           // successGeneral()
         })
         .catch(error => {
            console.log("this is error", error.message)
@@ -301,11 +301,11 @@ description
         .then(res => {
             console.log("this is postSchool response.data", res)
            // dispatch(memberMaking(res.data))
-           successGeneral()
+           //successGeneral()
         })
         .catch(error => {
            console.log("this is error", error.message)
-           dispatch(memberFailure(error.message))
+           //dispatch(memberFailure(error.message))
         })
 
 }
@@ -344,11 +344,11 @@ description
         .then(res => {
             console.log("this is putSchool response", res)
            // dispatch(memberMaking(res.data))
-           successGeneral()
+           //successGeneral()
         })
         .catch(error => {
            console.log("this is error", error.message)
-           dispatch(memberFailure(error.message))
+          // dispatch(memberFailure(error.message))
         })
 
 }
@@ -362,7 +362,7 @@ export const fetchIssues = () => dispatch => {
         .then(res => {
             console.log("this is all issues response", res)
             //dispatch(memberSuccess(res.data))
-            successGeneral()
+            //successGeneral()
         })
         .catch(error => {
            console.log("this i issues error", error.message)
@@ -397,11 +397,11 @@ export const postIssue = (
         .then(res => {
             console.log("this is postIssue response.data", res)
            // dispatch(memberMaking(res.data))
-           successGeneral()
+           //successGeneral()
         })
         .catch(error => {
            console.log("this is postIssue error", error.message)
-           dispatch(memberFailure(error.message))
+           //dispatch(memberFailure(error.message))
         })
 
 }
@@ -432,7 +432,7 @@ export const putIssue= (
         .then(res => {
             console.log("this is putIssue response", res)
            // dispatch(memberMaking(res.data))
-           successGeneral()
+          // successGeneral()
         })
         .catch(error => {
            console.log("this is putIssue error", error.message)
