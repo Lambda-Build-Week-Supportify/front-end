@@ -16,9 +16,6 @@ import {
     updateSignupUser
 } from '../../actions'
 
-//     <label name='member-role'>Role/Position</label>
-// <input type="text" name='member-role' value={props.role} onChange={handleNewRole}/>
-
 
 function EditUserForm(props){
 
@@ -94,7 +91,7 @@ function EditUserForm(props){
                 <label>Secondary Member</label>
                 <input type="checkbox" name='sec-role' value={props.board} onClick={handleNewRole}/>
 
-                <button type="button" onClick={()=> props.postMember(props.name, 
+                <button type="button" onClick={()=> props.putMember(props.name, 
                     props.city, 
                     props.email, 
                     props.lastname, 
@@ -103,7 +100,9 @@ function EditUserForm(props){
                     props.sec_admin, 
                     props.signupUsername, 
                     props.signupPassword, 
-                    props.province)}>Make a Member!</button>
+                    props.province,
+                    props.id
+                    )}>Edit a User!</button>
             </form>
         </div>
     )
@@ -117,11 +116,13 @@ const mapDispatchToProps ={
     updateEmail,
     updateRole,
     setBoardMemberTrue,
-setPrimMemberTrue,
-setSecMemberTrue,
-updateProvince,
-updateSignupPass,
-updateSignupUser
+    setPrimMemberTrue,
+    setSecMemberTrue,
+    updateProvince,
+    updateSignupPass,
+    updateSignupUser
 }
 
 export default connect(state => state, mapDispatchToProps)(EditUserForm)
+
+///IS THIS PUT SUPPOSED TO BE ID SPECIFIC?

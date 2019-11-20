@@ -3,20 +3,31 @@ import logo from "./logo.svg";
 import "./App.css";
 import { Route, Switch, Link } from "react-router-dom";
 
-import { fetchMembers } from "./actions";
+import { fetchMembers, fetchSchools } from "./actions";
 
 import { connect } from "react-redux";
 
 //////PAGES////////
+
 import DashboardGrid from "./components/Pages/DashboardGrid";
 import GreetingPage from "./components/Pages/GreetingPage";
+import UserGrid from "./components/Pages/UserGrid";
+import SchoolGrid from "./components/Pages/SchoolGrid";
 
 ///ORGANISMS/MODULES//////
 import PrivateRoute from "./components/Organisms/PrivateRoute";
 
+///////////MOLECULES/////////////////
+import CreateSchoolForm from "./components/Molecules/CreateSchoolForm";
+import EditSchoolForm from "./components/Molecules/EditSchoolForm";
+import CreateIssueForm from "./components/Molecules/CreateIssueForm";
+import EditIssueForm from "./components/Molecules/EditIssueForm";
+
 /////////ATOMS/////////
+
 import DeleteButton from "./components/Atoms/DeleteButtonCRUD";
 import EditButton from "./components/Atoms/EditButtonCRUD";
+import SnackbarOpen from "./components/Atoms/SnackbarOpen"; //this should actually be on this file!
 
 function App(props) {
   return (
@@ -45,6 +56,10 @@ function App(props) {
         </li>
       </ul>
 
+      <button type="button" onClick={() => props.fetchSchools()}>
+        Get Schools!
+      </button>
+
       <button type="button" onClick={() => props.fetchMembers()}>
         Get Members!
       </button>
@@ -52,21 +67,34 @@ function App(props) {
       {props.isFetching && <p>This is taking a really long time!</p>}
 
       <Switch>
-        <PrivateRoute path="/dashboard">
-          <DashboardGrid />
-        </PrivateRoute>
+        <Route path="/dashboard">
+          <DashboardGrid></DashboardGrid>
+        </Route>
+
         <Route path="/login" component={GreetingPage} />
         <Route component={GreetingPage} />
       </Switch>
       <DeleteButton />
       <EditButton />
-      <DashboardGrid />
+      <CreateSchoolForm />
+      <EditSchoolForm />
+      <CreateIssueForm />
+      <EditIssueForm />
+      <SnackbarOpen />
+      {//props.members !== [] ? <UserGrid/> : (props.offices !== [] ? <SchoolGrid/>: null)
+      props.offices !== [] ? <SchoolGrid /> : null}
     </div>
   );
 }
 
 const mapDispatchToProps = {
-  fetchMembers
+  fetchMembers,
+  fetchSchools
 };
 
 export default connect(state => state, mapDispatchToProps)(App);
+
+//<button type="button" onClick={()=> props.fetchMembers()}>Get Members!</button>
+
+// {props.error && <p>{props.error}</p>}
+// {props.isFetching  && <p>This is taking a really long time!</p> }

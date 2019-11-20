@@ -4,7 +4,6 @@ import axios from "axios";
 import IssueCard from "../Organisms/IssueCard";
 import SingleIssuePage from "../Pages/SingleIssuePage";
 import { Route, Link } from "react-router-dom";
-import { Container, Row } from "reactstrap";
 
 //Material UI
 import { makeStyles } from "@material-ui/core/styles";
@@ -53,31 +52,42 @@ const temporaryState = [
 
 function DashboardGrid() {
   const [gridState, setGridState] = useState([]);
-  const [user, setUser] = useState([]);
+  const [issue, setIssue] = useState([]);
   const classes = useStyles();
   useEffect(() => {
     axios
-      .get(`https://supportifyafrica.herokuapp.com/api/users/10`)
-      .then(response => console.log("response", response)) //setGridState(response.data)
+      .get(`https://supportifyafrica.herokuapp.com/api/issues`)
+      .then(response =>
+        // console.log("response", response.data)
+        setGridState(response.data)
+      )
       .catch(error => console.log("error", error));
   }, []);
-
+  console.log(gridState);
   return (
     <div>
       <Grid container className={classes.root} spacing={1}>
         {
           ///mapping over the array to create boxes///
         }
-
+        <h1>Hello From DashboardGrid</h1>
         {gridState.map((prop, index) => {
           return (
             <Box className={classes.card} boxShadow={3}>
               <Paper className={classes.paper}>
                 <Link>
                   <IssueCard
-                    name={prop.name}
-                    email={prop.email}
-                    role={prop.role}
+                    complete={prop.completed}
+                    discription={prop.description}
+                    equitment={prop.equipment}
+                    cost={prop.estimated_cost}
+                    issues={prop.general_issues}
+                    idIssues={prop.issues_id}
+                    needsAttention={prop.needs_attention}
+                    priority={prop.priority}
+                    scheduled={prop.scheduled}
+                    title={prop.title}
+                    id={prop.user_id}
                   />
                 </Link>
                 <Route />

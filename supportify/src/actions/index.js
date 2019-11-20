@@ -1,11 +1,15 @@
 import axios from "axios"
 import axiosWithAuth from '../axios/axiosWithAuth'
 
+export const TRIGGER_ID = "TRIGGER_ID"
+
 export const LOAD_MEMBER_SUCCESS = "LOAD_MEMBER_SUCCESS"
 
 export const LOAD_MEMBER_FAILURE = "LOAD_MEMBER_FAILURE"
 
 export const LOADING_MEMBER = "LOADING_MEMBER"
+
+export const SUCCESS = "SUCCESS"
 
 export const MAKE_MEMBER = "MAKE_MEMBER"
 
@@ -47,7 +51,38 @@ export const SIGNUP_USERNAME = "SIGNUP_USERNAME"
 export const SIGNUP_PASSWORD = "SIGNUP_PASSWORD"
 export const STATE_MEMBER = "STATE_MEMBER"
 
+///////////////////////SCHOOLS
+
+export const LOAD_SCHOOL_SUCCESS = "LOAD_SCHOOL_SUCCESS"
+export const LOAD_SCHOOL_FAILURE = "LOAD_SCHOOL_FAILURE"
+export const LOADING_SCHOOL = "LOADING_SCHOOL"
+
+export const SCHOOL_NAME = "SCHOOL_NAME"
+export const NUM_ISSUES_SCHOOLS = "NUM_ISSUES_SCHOOLS"
+export const NUM_STUDENTS_SCHOOLS = "NUM_STUDENTS_SCHOOLS"
+export const EST_COSTS_SCHOOLS = "EST_COSTS_SCHOOLS"
+export const SCHOOL_STREET = "SCHOOL_STREET"
+export const SCHOOL_CITY = "SCHOOL_CITY"
+export const SCHOOL_STATE = "SCHOOL_STATE"
+export const POST_CODE = "POST_CODE"
+export const PHONE_NUM_SCHOOLS = "PHONE_NUM_SCHOOLS"
+export const GRADE_LEVEL_SCHOOLS = "GRADE_LEVEL_SCHOOLS"
+export const DESCRIPTION_SCHOOLS = "DESCRIPTION_SCHOOLS"
+
+////////////////////////ISSUES
+
+export const ISSUE_PRIORITY = "ISSUE_PRIORITY"
+export const ISSUE_TITLE = "ISSUE_TITLE"
+export const DESCRIPTION_ISSUE = "DESCRIPTION_ISSUE"
+export const EQUIPMENT_ISSUE = "EQUIPMENT_ISSUE"
+export const GENERAL_ISSUE = "GENERAL_ISSUE"
+export const EST_COSTS_ISSUE = "EST_COSTS_ISSUE"
+export const ISSUE_COMPLETION = "ISSUE_COMPLETION"
+
+
 //////////////////////////////////////////
+
+export const specifyId = id => ({type: TRIGGER_ID, payload: id})
 
 export const memberSuccess = (data) => ({type: LOAD_MEMBER_SUCCESS, payload: data})
 
@@ -56,6 +91,9 @@ export const memberFailure = (error) => ({type: LOAD_MEMBER_FAILURE, payload: er
 
 
 export const memberLoading = () => ({type: LOADING_MEMBER})
+
+export const successGeneral = () => ({type: SUCCESS})
+
 
 export const memberMaking = (data) => ({type: MAKE_MEMBER, payload: data })
 
@@ -96,21 +134,55 @@ export const setSecMemberTrue = () => ({type: SEC_ROLE_ACCESS})
 export const signupUser = data => ({type: SIGNUP_USERNAME, payload: data})
 export const signupPass = data => ({type: SIGNUP_PASSWORD, payload: data})
 export const memberState = data => ({type: STATE_MEMBER, payload: data})
-//////////////////////////////////////////////
+
+////////////////SCHOOLS
+
+export const schoolSuccess = (data) => ({type: LOAD_SCHOOL_SUCCESS, payload: data})
+export const schoolFailure = (error) => ({type: LOAD_SCHOOL_FAILURE, payload: error})
+export const schoolLoading = () => ({type: LOADING_SCHOOL})
+
+//
+
+export const schoolNaming = data => ({type: SCHOOL_NAME, payload: data})
+export const schoolIssuesNum = data => ({type: NUM_ISSUES_SCHOOLS, payload: data})
+export const schoolStudentsNum = data => ({type: NUM_STUDENTS_SCHOOLS, payload: data})
+export const schoolEstCosting = data => ({type: EST_COSTS_SCHOOLS, payload: data})
+export const schoolStreeting = data => ({type: SCHOOL_STREET, payload: data})
+export const schoolCitying = data => ({type: SCHOOL_CITY, payload: data})
+export const schoolStateing = data => ({type: SCHOOL_STATE, payload: data})
+export const schoolPostCoding = data => ({type: POST_CODE, payload: data})
+export const schoolPhoning = data => ({type: PHONE_NUM_SCHOOLS, payload: data})
+export const gradeLeveling = data => ({type: GRADE_LEVEL_SCHOOLS, payload: data})
+export const schoolDescribing = data => ({type: DESCRIPTION_SCHOOLS, payload: data})
+
+///////////////////////////ISSUES
+export const issuePrioritizing = data => ({type: ISSUE_PRIORITY, payload: data})
+export const issueTitling = data => ({type: ISSUE_TITLE, payload: data})
+export const issueDescribing = data => ({type: DESCRIPTION_ISSUE, payload: data})
+export const issueEquipmenter = data => ({type: EQUIPMENT_ISSUE, payload: data})
+export const issueGeneralizing = data => ({type: GENERAL_ISSUE, payload: data})
+export const issueCostEstimater = data => ({type: EST_COSTS_ISSUE, payload: data})
+export const issueCompleter = data => ({type: ISSUE_COMPLETION, payload: data})
+
+
+
+
+//////////////////////////////////////////////USER ENDPOINT
 
 const authAxios = axiosWithAuth()
 
 export const fetchMembers = () => dispatch => {
     dispatch(memberLoading())
-    axios
-        .get('http://localhost:3333/members')
+    authAxios
+        .get('/users')
         .then(res => {
-            console.log("this is response.data", res.data)
+            console.log("this is response.data", res)
             dispatch(memberSuccess(res.data))
+            //successGeneral()
         })
         .catch(error => {
-           //console.log("this is error", error.message)
-           dispatch(memberFailure(error.message))
+           console.log("this is error", error.message)
+           //dispatch(memberFailure(error.message))
         })
 
 }
@@ -144,10 +216,11 @@ export const postMember = (nameMember,
         .then(res => {
             console.log("this is postMember response.data", res)
            // dispatch(memberMaking(res.data))
+           //successGeneral()
         })
         .catch(error => {
            console.log("this is error", error.message)
-           dispatch(memberFailure(error.message))
+           //dispatch(memberFailure(error.message))
         })
 
 }
@@ -161,11 +234,13 @@ export const putMember = (nameMember,
     secMember, 
     signupUsername, 
     signupPassword, 
-    stateMember) => dispatch => {
+    stateMember,
+    id
+    ) => dispatch => {
     dispatch(memberLoading())
 
     authAxios
-        .post('/users/:id', ///DO I NEED TO ENTER THE SPECIFIC ID?
+        .put(`/users/${id}`, ///DO I NEED TO ENTER THE SPECIFIC ID?
         {   first_name: nameMember,
             last_name: lastnameMember,
             city: cityMember,
@@ -179,8 +254,9 @@ export const putMember = (nameMember,
         }
         )
         .then(res => {
-            console.log("this is postMember response.data", res)
+            console.log("this is putMember response.data", res)
            // dispatch(memberMaking(res.data))
+           //successGeneral()
         })
         .catch(error => {
            console.log("this is error", error.message)
@@ -189,7 +265,236 @@ export const putMember = (nameMember,
 
 }
 
-///////////////////////////////////
+///////////////////////////////////SCHOOL INFO
+
+export const fetchSchools = () => dispatch => {
+    //dispatch(memberLoading()) //change to schools
+    authAxios
+        .get('/schools')
+        .then(res => {
+            console.log("this is response.data", res)
+            dispatch(schoolSuccess(res.data))
+           // successGeneral()
+        })
+        .catch(error => {
+           console.log("this is error", error.message)
+           dispatch(schoolFailure(error.message))
+        })
+
+}
+
+export const postSchool = (
+schoolName,
+numIssues,
+numStudents,
+estCosts,
+schoolStreet,
+schoolCity,
+schoolState,
+postCode,
+phoneNumber,
+gradeLevel,
+description
+) => dispatch => {
+    dispatch(memberLoading())
+
+    authAxios
+        .post('/schools', 
+        {          
+        school_name: schoolName,
+        num_issues: numIssues,
+        num_students: numStudents,
+        est_costs: estCosts,
+        school_street: schoolStreet,
+        school_city: schoolCity,
+        school_state: schoolState,
+        post_code: postCode,
+        phone: phoneNumber,
+        grade_level: gradeLevel,
+        about: description
+        }
+        )
+        .then(res => {
+            console.log("this is postSchool response.data", res)
+           // dispatch(memberMaking(res.data))
+           //successGeneral()
+        })
+        .catch(error => {
+           console.log("this is error", error.message)
+           //dispatch(memberFailure(error.message))
+        })
+
+}
+
+export const putSchool= (
+    schoolName,
+numIssues,
+numStudents,
+estCosts,
+schoolStreet,
+schoolCity,
+schoolState,
+postCode,
+phoneNumber,
+gradeLevel,
+description,
+id
+) => dispatch => {
+    dispatch(memberLoading())
+
+    authAxios
+        .put(`/schools/${id}`, ///DO I NEED TO ENTER THE SPECIFIC ID?
+        {           
+            school_name: schoolName,
+            num_issues: numIssues,
+            num_students: numStudents,
+            est_costs: estCosts,
+            school_street: schoolStreet,
+            school_city: schoolCity,
+            school_state: schoolState,
+            post_code: postCode,
+            phone: phoneNumber,
+            grade_level: gradeLevel,
+            about: description
+        }
+        )
+        .then(res => {
+            console.log("this is putSchool response", res)
+           // dispatch(memberMaking(res.data))
+           //successGeneral()
+        })
+        .catch(error => {
+           console.log("this is error", error.message)
+          // dispatch(memberFailure(error.message))
+        })
+
+}
+
+
+///////////////////////////////////ISSUE ENDPOINT
+export const fetchIssues = () => dispatch => {
+    //dispatch(memberLoading()) //change to schools
+    authAxios
+        .get('/issues')
+        .then(res => {
+            console.log("this is all issues response", res)
+            //dispatch(memberSuccess(res.data))
+            //successGeneral()
+        })
+        .catch(error => {
+           console.log("this i issues error", error.message)
+           //dispatch(memberFailure(error.message))
+        })
+
+}
+
+export const postIssue = (
+    priority,
+    title,
+    description_issue, //should just be description for endpoint obj
+    equipment,
+    general_issues,
+    estimated_cost_issues, //should just be estimated_cost for endpoint obj
+    completed
+) => dispatch => {
+    dispatch(memberLoading())
+
+    authAxios
+        .post('/schools', 
+        {          
+            priority: priority,
+            title: title,
+            description: description_issue,
+            equipment: equipment,
+            general_issues: general_issues,
+            estimated_cost: estimated_cost_issues, 
+            completed: completed
+        }
+        )
+        .then(res => {
+            console.log("this is postIssue response.data", res)
+           // dispatch(memberMaking(res.data))
+           //successGeneral()
+        })
+        .catch(error => {
+           console.log("this is postIssue error", error.message)
+           //dispatch(memberFailure(error.message))
+        })
+
+}
+
+export const putIssue= (
+    priority,
+    title,
+    description_issue, //should just be description for endpoint obj
+    equipment,
+    general_issues,
+    estimated_cost_issues, //should just be estimated_cost for endpoint obj
+    completed,
+    id
+) => dispatch => {
+    dispatch(memberLoading())
+
+    authAxios
+        .put(`/issues/${id}`, ///DO I NEED TO ENTER THE SPECIFIC ID???????????
+        {           
+            priority: priority,
+            title: title,
+            description: description_issue,
+            equipment: equipment,
+            general_issues: general_issues,
+            estimated_cost: estimated_cost_issues, 
+            completed: completed
+        }
+        )
+        .then(res => {
+            console.log("this is putIssue response", res)
+           // dispatch(memberMaking(res.data))
+          // successGeneral()
+        })
+        .catch(error => {
+           console.log("this is putIssue error", error.message)
+           //dispatch(memberFailure(error.message))
+        })
+
+}
+
+//BOARD SIDE EDITING
+
+//on the Board side we need an edit button that updates the endpoint only for the completed, needs attention, scheduled properties (need these 2 other properties on the endpoint)
+
+export const putIssueBoard= (
+
+    completed,
+    scheduled, //needs creation
+    needs_attention,//needs creation
+    id
+) => dispatch => {
+    dispatch(memberLoading())
+
+    authAxios
+        .post(`/issues/${id}`, ///DO I NEED TO ENTER THE SPECIFIC ID???????????
+        {           
+            completed: completed,
+            scheduled: scheduled,
+            needs_attention: needs_attention
+        }
+        )
+        .then(res => {
+            console.log("this is putIssueBoard response", res)
+           // dispatch(memberMaking(res.data))
+          // successGeneral()
+        })
+        .catch(error => {
+           console.log("this is putIssueBoard error", error.message)
+           //dispatch(memberFailure(error.message))
+        })
+
+}
+
+
+/////////////////////////////////////
+
 
 export const updateName = (name) =>dispatch =>{
     dispatch(memberNaming(name))
@@ -237,6 +542,8 @@ export const updatePassBoard= (password) =>dispatch =>{
     dispatch(memberPassBoard(password))
 }
 
+
+/////////////////////SNACKBAR//////////////////////////////
 export const updateSnackbar = (data) => dispatch => {
     dispatch(snackBarStatus(data))
 }
@@ -252,6 +559,9 @@ export const updateCreateArea = (data) => dispatch => {
 export const updateDeleteArea = (data) => dispatch => {
     dispatch(deleteAreaStatus(data))//trigger on delete button mouseenter?
 }
+///////////////////////////////////////////////////////////
+
+
 
 export const updateSignupUser = data => dispatch => {
     dispatch(signupUser(data))
@@ -263,3 +573,83 @@ export const updateSignupPass = data => dispatch => {
 export const updateProvince = data => dispatch => {
     dispatch(memberState(data))
 }
+
+
+
+///////////////////SCHOOLS
+
+export const updateSchoolName = data => dispatch => {
+    dispatch(schoolNaming(data))
+}
+
+export const updateSchoolIssuesNum = data => dispatch => {
+    dispatch(schoolIssuesNum(data))
+}
+
+export const updateSchoolStudentsNum = data => dispatch => {
+    dispatch(schoolStudentsNum(data))
+}
+
+export const updateSchoolEstCosts = data => dispatch => {
+    dispatch(schoolEstCosting(data))
+
+}
+
+export const updateSchoolStreet = data => dispatch => {
+    dispatch(schoolStreeting(data))
+}
+
+export const updateSchoolCity = data => dispatch => {
+    dispatch(schoolCitying(data))
+}
+
+export const updateSchoolState = data => dispatch => {
+    dispatch(schoolStateing(data))
+}
+
+export const updateSchoolPostalCode = data => dispatch => {
+    dispatch(schoolPostCoding(data))
+}
+
+export const updateSchoolPhoneNum = data => dispatch => {
+    dispatch(schoolPhoning(data))
+}
+export const updateSchoolGradeLevel = data => dispatch => {
+    dispatch(gradeLeveling(data))
+}
+
+export const updateSchoolDesc = data => dispatch => {
+    dispatch(schoolDescribing(data))
+}
+
+/////////////////////ISSUES
+
+export const updateIssuePriority = data => dispatch => {
+    dispatch(issuePrioritizing(data))
+}
+
+export const updateIssueTitle= data => dispatch => {
+    dispatch(issueTitling(data))
+}
+export const updateIssueDesc = data => dispatch => {
+    dispatch(issueDescribing(data))
+}
+export const updateIssueEquip = data => dispatch => {
+    dispatch(issueEquipmenter(data))
+}
+
+export const updateIssueGeneral = data => dispatch => {
+    dispatch(issueGeneralizing(data))
+}
+
+export const updateIssueCosts = data => dispatch => {
+    dispatch(issueCostEstimater(data))
+}
+export const updateIssueCompletion = data => dispatch => {
+    dispatch(issueCompleter(data))
+}
+
+
+
+
+

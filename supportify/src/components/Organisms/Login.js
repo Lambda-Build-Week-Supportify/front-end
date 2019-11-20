@@ -8,7 +8,8 @@ import {
   adminToFalse,
   adminToTrue,
   updatePassWord,
-  updatePassBoard
+  updatePassBoard,
+  successGeneral
 } from "../../actions";
 
 import axios from "axios";
@@ -17,7 +18,6 @@ import axiosWithAuth from "../../axios/axiosWithAuth";
 const Login = props => {
   // make a post request to retrieve a token from the api
   // when you have handled the token, navigate to the BubblePage route
-
   const login = payload => {
     const authAxios = axiosWithAuth();
     authAxios
@@ -25,7 +25,7 @@ const Login = props => {
       .then(res => {
         console.log("this is res.data", res);
         localStorage.setItem("token", res.data.token);
-
+        successGeneral();
         return props.history.push("/dashboard");
       })
       .catch(err => {
@@ -47,7 +47,7 @@ const Login = props => {
         password: props.userInput["password"]
       };
     }
-    console.log(captureEntries);
+    console.log("this is capture", captureEntries);
     login(captureEntries);
   };
 
@@ -58,11 +58,12 @@ const Login = props => {
       props.adminToTrue();
     }
   };
-  const usernameStateValue =
+
+  const usernameStateValue = props =>
     props.greetName === "boardname"
       ? props.userInputBoard["username"]
       : props.userInput["username"];
-  const passwordStateValue =
+  const passwordStateValue = props =>
     props.greetName === "boardname"
       ? props.userInputBoard["password"]
       : props.userInput["password"];
@@ -108,14 +109,14 @@ const Login = props => {
           onClick={adminStatus}
           type="text"
           name={props.greetName}
-          value={usernameStateValue}
+          value={JSON.stringify(usernameStateValue)}
           onChange={handleUserChange(inputName)}
         />
         <input
           onClick={adminStatus}
           type="password"
           name={props.passName}
-          value={passwordStateValue}
+          value={JSON.stringify(passwordStateValue)}
           onChange={handlePassChange(inputPass)}
         />
         <button>Login!</button>
@@ -130,7 +131,8 @@ const mapDispatchToProps = {
   adminToFalse,
   adminToTrue,
   updatePassWord,
-  updatePassBoard
+  updatePassBoard,
+  successGeneral
 };
 
 export default connect(state => state, mapDispatchToProps)(Login);
