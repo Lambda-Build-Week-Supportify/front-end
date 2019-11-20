@@ -46,7 +46,7 @@ function EditIssueForm(props){
 
 
         <div>
-           New School Form
+           Edit Issue Form
            <form  >
                 <label name='issue-priority' >Priority</label>
                 <input type="text" name='issue-priority' value={props.priority} onChange={handleNewIssuePriority}/>
