@@ -18,27 +18,13 @@ const Login = props => {
   // make a post request to retrieve a token from the api
   // when you have handled the token, navigate to the BubblePage route
 
-  const handleUserChange = () => e => {
-    e.preventDefault();
-    props.status === false
-      ? props.updateUserBoard(e.target.value)
-      : props.updateUserName(e.target.value);
-  };
-
-  const handlePassChange = () => e => {
-    e.preventDefault();
-    props.status === false
-      ? props.updatePassBoard(e.target.value)
-      : props.updatePassWord(e.target.value);
-  };
-
   const login = payload => {
     const authAxios = axiosWithAuth();
     authAxios
-      .post(`http://localhost:5000/api/login/`, payload)
+      .post(`/auth/login`, payload)
       .then(res => {
-        console.log("this is res.data", res.data);
-        localStorage.setItem("token", res.data.payload);
+        console.log("this is res.data", res);
+        localStorage.setItem("token", res.data.token);
 
         return props.history.push("/dashboard");
       })
@@ -61,7 +47,7 @@ const Login = props => {
         password: props.userInput["password"]
       };
     }
-
+    console.log(captureEntries);
     login(captureEntries);
   };
 
@@ -80,6 +66,22 @@ const Login = props => {
     props.greetName === "boardname"
       ? props.userInputBoard["password"]
       : props.userInput["password"];
+
+  const handleUserChange = () => e => {
+    e.preventDefault();
+    props.status === false
+      ? props.updateUserBoard(e.target.value)
+      : props.updateUserName(e.target.value);
+  };
+
+  const handlePassChange = () => e => {
+    e.preventDefault();
+    //props.updateUserBoard(usernameStateValue)
+    props.status === false
+      ? props.updatePassBoard(e.target.value)
+      : props.updatePassWord(e.target.value);
+  };
+
   // props.userInput['username']
   // because it has to check if props.admin equals true it breaks the simultaneous updating of each login form. Still, the values should be different for whether this is true or not so I will make another userInput-like value to accept Board member login credentials. This will require changing the null in the falsey to the new userInput-like value
 
@@ -87,9 +89,9 @@ const Login = props => {
 
   // console.log("this is usernameStateValue", usernameStateValue)
 
-  // console.log("this is props.userInputBoard",props.userInputBoard)
+  console.log("this is props.userInputBoard", props.userInputBoard);
 
-  // console.log("this is props.userInput",props.userInput)
+  console.log("this is props.userInput", props.userInput);
 
   // oh man, I had my true and false on ternaries backwards for forever, jeez
 
