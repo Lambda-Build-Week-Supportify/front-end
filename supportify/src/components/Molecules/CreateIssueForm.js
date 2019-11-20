@@ -94,6 +94,6 @@ const mapDispatchToProps ={
     updateIssueCompletion
 }
 
-export default connect(state => state, mapDispatchToProps)(CreateSchoolForm)
+export default connect(state => state, mapDispatchToProps)(CreateIssueForm)
 
 //This form is linked to the input fields of the edit form, THEY SHOULD NEVER DISPLAY AT THE SAME TIME!!!

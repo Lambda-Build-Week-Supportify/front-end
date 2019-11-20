@@ -18,11 +18,14 @@ import PrivateRoute from './components/Organisms/PrivateRoute'
 ///////////MOLECULES/////////////////
 import CreateSchoolForm from './components/Molecules/CreateSchoolForm';
 import EditSchoolForm from './components/Molecules/EditSchoolForm';
+import CreateIssueForm from "./components/Molecules/CreateIssueForm"
+import EditIssueForm from './components/Molecules/EditIssueForm';
 
 /////////ATOMS/////////
 import DeleteButton from "./components/Atoms/DeleteButtonCRUD"
 import EditButton from './components/Atoms/EditButtonCRUD'
 import SnackbarOpen from './components/Atoms/SnackbarOpen'; //this should actually be on this file!
+
 
 
 
@@ -70,7 +73,9 @@ function App(props) {
       <EditButton/>
       <CreateSchoolForm/>
       <EditSchoolForm/>
-      
+      <CreateIssueForm/>
+      <EditIssueForm/>
+      <SnackbarOpen/>
     </div>
   );
 }

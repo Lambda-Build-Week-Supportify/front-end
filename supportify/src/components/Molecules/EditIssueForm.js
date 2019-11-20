@@ -13,7 +13,7 @@ import {
 } from '../../actions'
 
 
-function CreateIssueForm(props){
+function EditIssueForm(props){
 
     const handleNewIssuePriority = e => {
         props.updateIssuePriority(e.target.value)
@@ -94,6 +94,6 @@ const mapDispatchToProps ={
     updateIssueCompletion
 }
 
-export default connect(state => state, mapDispatchToProps)(CreateSchoolForm)
+export default connect(state => state, mapDispatchToProps)(EditIssueForm)
 
 //This form is linked to the input fields of the edit form, THEY SHOULD NEVER DISPLAY AT THE SAME TIME!!!

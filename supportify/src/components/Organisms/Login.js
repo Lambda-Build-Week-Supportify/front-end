@@ -8,7 +8,9 @@ import {
   adminToFalse, 
   adminToTrue, 
   updatePassWord, 
-  updatePassBoard} from "../../actions"
+  updatePassBoard,
+  successGeneral
+} from "../../actions"
 
 import axios from "axios"
 import axiosWithAuth from '../../axios/axiosWithAuth'
@@ -23,7 +25,7 @@ const Login = (props) => {
           .then(res => {
               console.log("this is res.data", res);
              localStorage.setItem('token', res.data.token)
-              
+              successGeneral()
                return props.history.push("/dashboard")
           })
           .catch(err => {
@@ -45,7 +47,7 @@ const Login = (props) => {
           password: props.userInput['password']
       }
     }
-   console.log(captureEntries)
+   console.log("this is capture", captureEntries)
     login(captureEntries)
 
 
@@ -123,7 +125,7 @@ const inputPass = props.admin === false ? "passboard": "password"
           value= {JSON.stringify(passwordStateValue)}
           onChange={handlePassChange(inputPass)}
       />
-      <button type="button" >Login!</button>
+      <button  >Login!</button>
   </form>
     </>
   );
@@ -135,7 +137,8 @@ const mapDispatchToProps = {
   adminToFalse,
   adminToTrue,
   updatePassWord,
-  updatePassBoard
+  updatePassBoard,
+  successGeneral
 }
 
 export default connect(state=> state, mapDispatchToProps)(Login);
