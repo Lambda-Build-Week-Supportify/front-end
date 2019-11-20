@@ -70,7 +70,7 @@ function App(props) {
       <EditButton/>
       <CreateSchoolForm/>
       <EditSchoolForm/>
-      <SnackbarOpen/>
+      
     </div>
   );
 }
