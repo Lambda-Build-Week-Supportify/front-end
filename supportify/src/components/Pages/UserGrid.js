@@ -31,17 +31,15 @@ const useStyles = makeStyles(theme => ({
   },
 
   control: {
-    padding: theme.spacing(2)
+    padding: theme.spacing(3)
   },
   card: {
     minWidth: 275,
-    color: "red",
-    marginLeft: "25%"
+    color: "red"
   },
   card2: {
     minWidth: 275,
-    color: "red",
-    marginLeft: "15%"
+    color: "red"
     // boxShadow: "3" doesnt work
   }
 }));
@@ -61,7 +59,7 @@ function UserGrid(props) {
 
     <div onLoad={makeCards} >
     
-      <Grid container className={classes.root} spacing={1}>
+      <Grid container justify="center" className={classes.root} spacing={2}>
 
         {props.members.map(user => {
           return (

@@ -6,14 +6,14 @@ function SingleUserPage(props){
     return(
         <div>
            
-            <p>{props.fname}</p>
-            <p>{props.lname}</p>
-            <p>{props.city}</p>
-            <p>{props.email}</p>
-            <p>{props.board}</p>
-            <p>{props.prime}</p>
-            <p>{props.sec}</p>
-            <p>{props.province}</p>
+            <p>Name: {props.fname + " " + props.lname}</p>
+            <p>City: {props.city}</p>
+            <p>State: {props.province}</p>
+            <p>Email: {props.email}</p>
+            <p>{props.board == true ? "Board Member" : null}</p>
+            <p>{props.prime == true ? "Primary Admin" : null}</p>
+            <p>{props.sec == true ? "Secondary Admin" : null}</p>
+            
            
         </div>
     )
