@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import { Link } from "react-router-dom";
+
 import {
     putIssue, 
     updateIssuePriority,
@@ -69,6 +71,8 @@ function EditIssueForm(props){
                 <label name='issue-completion'>Completion status</label>
                 <input type="text" name='issue-completion' value={props.completed} onChange={handleCompletedIssue}/>
 
+
+                <Link to="/dashboard">
                 <button type="button" onClick={()=> props.putIssue(
                     props.priority,
                     props.title,
@@ -79,6 +83,7 @@ function EditIssueForm(props){
                     props.completed,
                     props.id
                 )}>Edit an Issue</button>
+                </Link>
             </form>
         </div>
     )

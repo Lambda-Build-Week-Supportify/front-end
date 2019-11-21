@@ -87,6 +87,9 @@ function App(props) {
           <PrivateRoute path="/edit/user">
               <EditUserForm/>
           </PrivateRoute>
+          <PrivateRoute path="/create/issue">
+            <CreateIssueForm/>
+          </PrivateRoute>
           <PrivateRoute path="/delete/school">
                 <DeleteButton/> 
                 <p>Delete</p>   

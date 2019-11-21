@@ -47,15 +47,15 @@ const useStyles = makeStyles(theme => ({
 
 
 
-function SchoolGrid(props) {
+function SchoolGrid(props) { ///////////////COMPONENT/////////////////////
 
   const classes = useStyles();
 
 console.log("this is offices", props.offices)
 
-const handleClick = (data) => {
+// const handleClick = (data) => {
  
-    props.specifyId(data)}
+//     props.specifyId(data)}
 
   
 console.log("this is props.id on grid", props.id)
@@ -111,8 +111,7 @@ useEffect(()=>{
                     id={office.school_id}
                     
                   />
-                  {console.log("this is school city in map", office.school_city)
-}}
+                  {console.log("this is school city in map", office.school_city)}
                 </Link>
                 
      
