@@ -4,7 +4,7 @@ import React from "react";
 import {connect} from 'react-redux'
 
 ///////////ACTIONS
-import {fetchSchools, specifyId, fetchMembers} from "../../actions"
+import {fetchSchools, specifyId, fetchMembers, singleSchoolStateMaker} from "../../actions"
 
 ////////////ORGANISMS
 import SchoolCard from "../Organisms/SchoolCard";
@@ -53,12 +53,31 @@ function SchoolGrid(props) {
 
 console.log("this is offices", props.offices)
 
-const handleClick = ( data) => {
+const handleClick = (data) => {
  
     props.specifyId(data)}
 
-    
+  
 console.log("this is props.id on grid", props.id)
+
+const storeClick = (office) => {
+    props.singleSchoolStateMaker(      
+        office.school_name,
+        office.num_issues,
+        office.num_students,
+        office.est_costs,
+        office.school_street,
+        office.school_city,
+        office.school_state,
+        office.post_code,
+        office.phone,
+        office.grade_level,
+        office.about,
+        office.id)
+        console.log("this is school city out map", office.school_city)
+}
+
+
   return (
 
     <div >
@@ -69,7 +88,7 @@ console.log("this is props.id on grid", props.id)
           return (
             <Grid item key={office.school_id} className={classes.card} boxShadow={3}>
                 <Paper>
-                <Link to={`/schools/${office.school_id}`}>
+                <Link to={`/schools/${office.school_id}`} onClick={() =>storeClick(office)}>
                   <SchoolCard
                     key={office.school_id}
                     school_name={office.school_name}
@@ -83,17 +102,15 @@ console.log("this is props.id on grid", props.id)
                     phone={office.phone}
                     grade_level={office.grade_level}
                     about={office.about}
+                    id={office.school_id}
                     
                   />
+                  {console.log("this is school city in map", office.school_city)
+}}
                 </Link>
-                <Route path={`/schools/${office.school_id}`} render={props => 
-                    <SingleSchoolPage 
-                    data={props} 
-                    schoolInfo={office} 
-                    onClick={handleClick(office.school_id)}
-                    superId={handleClick(office.school_id).payload}
-                    />
-                }/>
+                
+     
+                
                
                 </Paper>
             </Grid>
@@ -113,7 +130,8 @@ console.log("this is props.id on grid", props.id)
 const mapDispatchToProps = {
     fetchSchools,
     specifyId,
-    fetchMembers
+    fetchMembers,
+    singleSchoolStateMaker
 }
 
 

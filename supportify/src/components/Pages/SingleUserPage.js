@@ -3,6 +3,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 import {specifyId} from "../../actions"
+import EditButton from '../Atoms/EditButtonCRUD'
 
 function SingleUserPage(props, {data, userInfo}){
 
@@ -11,6 +12,7 @@ function SingleUserPage(props, {data, userInfo}){
     return(
         <div>
            {props.specifyId(userInfo.user_id)}
+           <EditButton forPage={'user'}/>
             <p>Name: {userInfo.fname + " " + userInfo.lname}</p>
             <p>City: {userInfo.city}</p>
             <p>State: {userInfo.province}</p>

@@ -84,7 +84,10 @@ function App(props) {
                 <DeleteButton/> 
                 <p>Delete</p>   
           </PrivateRoute>
-
+          <PrivateRoute path={`/schools/:id`}>
+              <SingleSchoolPage/> 
+               
+          </PrivateRoute>
 
           <Route path="/login" component={GreetingPage}/>
           <Route component={GreetingPage}/>

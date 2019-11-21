@@ -79,6 +79,9 @@ export const GENERAL_ISSUE = "GENERAL_ISSUE"
 export const EST_COSTS_ISSUE = "EST_COSTS_ISSUE"
 export const ISSUE_COMPLETION = "ISSUE_COMPLETION"
 
+//////////////////////////
+
+export const CRAZY_DAISY = "CRAZY_DAISY"
 
 //////////////////////////////////////////
 
@@ -653,3 +656,28 @@ export const updateIssueCompletion = data => dispatch => {
 
 
 
+export const singleSchoolStateMaker = (school_name,
+    num_issues,
+    num_students,
+    est_costs,
+   school_street,
+    school_city,
+    school_state,
+    post_code,
+    phone,
+    grade_level,
+    about,
+    id) => ({type: CRAZY_DAISY, payload: {
+   school_name: school_name,
+   num_issues: num_issues,
+   num_students: num_students,
+   est_costs: est_costs,
+   school_street: school_street,
+   school_city: school_city,
+   school_state: school_state,
+   post_code: post_code,
+   phone: phone,
+   grade_level: grade_level,
+   about: about,
+   id: id
+}})
