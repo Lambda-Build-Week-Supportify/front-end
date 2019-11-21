@@ -110,7 +110,7 @@ const inputName = props.admin === false ? "boardname": "username"
 const inputPass = props.admin === false ? "passboard": "password"
 
   return (
-    <>
+    <div >
 
       <h1>Welcome to Supportify</h1>
       <form onSubmit={handleLogin}>
@@ -131,7 +131,7 @@ const inputPass = props.admin === false ? "passboard": "password"
       />
       <button  >Login!</button>
   </form>
-    </>
+    </div>
   );
 };
 

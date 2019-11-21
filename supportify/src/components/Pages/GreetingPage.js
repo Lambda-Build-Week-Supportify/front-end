@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
     },
      paper: {
         color: "blue",
-        
+        backgroundColor: "#FDC543"
      },
     
     control: {
@@ -52,9 +52,6 @@ const useStyles = makeStyles(theme => ({
  function GreetingPage(props){
   
       const classes = useStyles();
-
-
-
 
     return (
 

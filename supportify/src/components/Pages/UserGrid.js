@@ -40,7 +40,8 @@ const useStyles = makeStyles(theme => ({
   },
   card2: {
     minWidth: 275,
-    color: "red"
+    color: "red",
+    padding: "15%"
     // boxShadow: "3" doesnt work
   }
 }));
@@ -88,7 +89,7 @@ useEffect(()=>{
       <Grid container justify="center" spacing="10">
         {props.members.map(user => {
           return (
-            <Grid item key={user.user_id} className={classes.card} boxShadow={3}>
+            <Grid item key={user.user_id} className={classes.card2} boxShadow={3}>
                 <Paper>
                 <Link to={`/users/${user.user_id}`} onClick={()=> storeClick(user)}>
                   <UserCard

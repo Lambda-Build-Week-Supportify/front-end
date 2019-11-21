@@ -42,13 +42,20 @@ function Dashtest() {
 
   return (
     <div>
+
     <li>
         <Link to='/dashboard/school'>School Dashboard</Link>
     </li>
+
     <li>
         <Link to='/dashboard/user'>Users Dashboard</Link>
     </li>
      
+    
+    <li>
+    <Link to='/dashboard' >Dashboard</Link>
+  </li>
+  
     </div>
   );
 }
