@@ -51,8 +51,8 @@ const Login = (props) => {
     }
    console.log("this is capture", captureEntries)
     login(captureEntries)
-    fetchSchools()
-    
+    props.fetchSchools()
+    props.fetchMembers()
 
 }
 
