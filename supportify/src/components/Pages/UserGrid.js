@@ -82,7 +82,7 @@ useEffect(()=>{
   
   return (
 
-    <div  >
+    <div  style={{backgroundColor:"#25408F"}}>
      
     
       <Grid container justify="center" spacing="10">

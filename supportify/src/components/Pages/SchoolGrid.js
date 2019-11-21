@@ -36,11 +36,12 @@ const useStyles = makeStyles(theme => ({
   card: {
     minWidth: 275,
     color: "red",
-    margin: "10 50 10 0"
+    margin: "10 50 10 0",
+    
   },
   card2: {
-    minWidth: 275,
-    color: "red"
+    color: "red",
+    padding: "15%"
     // boxShadow: "3" doesnt work
   }
 }));
@@ -87,13 +88,13 @@ useEffect(()=>{
 
   return (
 
-    <div >
+    <div style={{backgroundColor:"#FDC543"}}>
 
       <Grid container justify="center" spacing="10">
         {props.offices.map(office => {
           return (
             <Grid item key={office.school_id} className={classes.card} boxShadow={3}>
-                <Paper>
+                <Paper className={classes.card2}>
                 <Link to={`/schools/${office.school_id}`} onClick={() =>storeClick(office)}>
                   <SchoolCard
                     key={office.school_id}
