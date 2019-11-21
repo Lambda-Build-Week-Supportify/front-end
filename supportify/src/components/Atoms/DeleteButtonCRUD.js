@@ -4,7 +4,12 @@ import axiosWithAuth from '../../axios/axiosWithAuth'
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 
-import { Link } from "react-router-dom";
+
+import {connect} from "react-redux"
+
+import {  deleteMember,
+  deleteSchool,
+  deleteIssue} from '../../actions'
 
 const useStyles = makeStyles(theme => ({
     button: {
@@ -19,18 +24,23 @@ const useStyles = makeStyles(theme => ({
 
 function DeleteButton(props){
 
-  let linkPath =  props.forPage == 'school'? "/delete/school" :
-  (props.forPage == 'user'? "/delete/user" :(props.forPage == "issue" ? "/delete/issue" : ""))
+  let handleClick =  props.forPage == 'school'? props.deleteSchool(props.id) :
+  (props.forPage == 'user'? props.deleteMember(props.id)  :(props.forPage == "issue" ? props.deleteIssue(props.id) : ""))
      
-
+console.log("THIS IS THE ID YOU ARE USING TO DELETE", props.id)
       const classes = useStyles();
     return(
-      <Link to={linkPath}>
-        <Button variant="contained" color="primary" className={classes.button}>DELETE</Button>
-        </Link>
+     
+        <Button variant="contained" color="primary" className={classes.button} onClick={() => handleClick}>DELETE</Button>
+  
     )
 
 }
 
+const mapDispatchToProps ={
+  deleteMember,
+  deleteSchool,
+  deleteIssue
+}
 
-export default DeleteButton
+export default connect(state=> state, mapDispatchToProps)(DeleteButton)

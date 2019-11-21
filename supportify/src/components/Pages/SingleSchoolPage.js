@@ -29,7 +29,7 @@ function SingleSchoolPage(props){
             <p>State: {props.singleSchool.school_state}</p>
             <p>Postal Code: {props.singleSchool.post_code}</p>
             <p>Phone: {props.singleSchool.phone}</p>
-            <DeleteButton/>
+            <DeleteButton forPage={'school'}/>
         </div>
     )
 }

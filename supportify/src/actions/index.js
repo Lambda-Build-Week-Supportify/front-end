@@ -272,6 +272,13 @@ export const putMember = (nameMember,
 
 }
 
+export const deleteMember = (id) => dispatch =>{
+    authAxios
+        .delete(`users/${id}`)
+        .then(res => console.log("this is delete user res", res)
+        .catch(err => console.log("this is delete user error", err))
+        )
+}
 ///////////////////////////////////SCHOOL INFO
 
 export const fetchSchools = () => dispatch => {
@@ -377,7 +384,13 @@ id
 
 }
 
-
+export const deleteSchool = (id) => dispatch =>{
+    authAxios
+        .delete(`/schools/${id}`)
+        .then(res => console.log("this is delete school res", res)
+       // .catch(err => console.log("this is delete school error", err))
+        )
+}
 ///////////////////////////////////ISSUE ENDPOINT
 export const fetchIssues = () => dispatch => {
     //dispatch(memberLoading()) //change to schools
@@ -389,7 +402,7 @@ export const fetchIssues = () => dispatch => {
             //successGeneral()
         })
         .catch(error => {
-           console.log("this i issues error", error.message)
+           console.log("this is issues error", error.message)
            //dispatch(memberFailure(error.message))
         })
 
@@ -499,6 +512,13 @@ export const putIssueBoard= (
 
 }
 
+export const deleteIssue = (id) => dispatch => {
+    authAxios
+        .delete(`issues/${id}`)
+        .then(res => console.log("this is delete user res", res)
+        .catch(err => console.log("this is delete user error", err))
+        )
+}
 
 /////////////////////////////////////
 

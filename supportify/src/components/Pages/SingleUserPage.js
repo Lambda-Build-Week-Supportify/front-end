@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 
 import {specifyId} from "../../actions"
 import EditButton from '../Atoms/EditButtonCRUD'
+import DeleteButton from "../Atoms/DeleteButtonCRUD"
 
 function SingleUserPage(props){
 
@@ -20,7 +21,7 @@ function SingleUserPage(props){
             <p>{props.singleUser.board == true ? "Board Member" : null}</p>
             <p>{props.singleUser.prime == true ? "Primary Admin" : null}</p>
             <p>{props.singleUser.sec == true ? "Secondary Admin" : null}</p>
-            
+            <DeleteButton forPage={'user'} />
            
         </div>
     )
