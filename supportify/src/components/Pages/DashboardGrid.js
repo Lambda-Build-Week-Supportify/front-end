@@ -5,6 +5,9 @@ import IssueCard from "../Organisms/IssueCard";
 import SingleIssuePage from "../Pages/SingleIssuePage";
 import { Route, Link } from "react-router-dom";
 
+import UserGrid from "./UserGrid"
+import SchoolGrid from "./SchoolGrid"
+
 //Material UI
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -66,6 +69,15 @@ function DashboardGrid() {
   console.log(gridState);
   return (
     <div>
+    <li>
+    <Link to='/dashboard/school'>School Dashboard</Link>
+  </li>
+  <li>
+  <Link to='/dashboard/user'>Users Dashboard</Link>
+</li>
+<Route path="/dashboard/school" component={SchoolGrid}/>
+
+<Route path="/dashboard/user" component={UserGrid}/>
       <Grid container className={classes.root} spacing={1}>
         {
           ///mapping over the array to create boxes///

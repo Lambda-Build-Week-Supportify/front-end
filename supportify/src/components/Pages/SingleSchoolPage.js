@@ -26,7 +26,7 @@ console.log("this is school page props", schoolInfo)
 console.log("this is super id", superId) // synced with card click!! now I can use this to edit or delete the proper pages
     return(
         <div>
-            <EditButton/>
+            <EditButton forPage={"school"}/>
             <p>School: {schoolInfo.school_name}</p>
             <p>Description: {schoolInfo.about}</p>
             <p>Student Count: {schoolInfo.num_students}</p>
