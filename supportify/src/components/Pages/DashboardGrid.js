@@ -4,7 +4,7 @@ import axios from "axios";
 import IssueCard from "../Organisms/IssueCard";
 import SingleIssuePage from "../Pages/SingleIssuePage";
 import { Route, Link } from "react-router-dom";
-
+import IssuesForm from "../Organisms/IssuesForm";
 //Material UI
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -53,6 +53,7 @@ const temporaryState = [
 function DashboardGrid() {
   const [gridState, setGridState] = useState([]);
   const [issue, setIssue] = useState([]);
+
   const classes = useStyles();
   useEffect(() => {
     axios
@@ -73,26 +74,31 @@ function DashboardGrid() {
         <h1>Hello From DashboardGrid</h1>
         {gridState.map((prop, index) => {
           return (
-            <Box className={classes.card} boxShadow={3}>
-              <Paper className={classes.paper}>
-                <Link>
-                  <IssueCard
-                    complete={prop.completed}
-                    discription={prop.description}
-                    equitment={prop.equipment}
-                    cost={prop.estimated_cost}
-                    issues={prop.general_issues}
-                    idIssues={prop.issues_id}
-                    needsAttention={prop.needs_attention}
-                    priority={prop.priority}
-                    scheduled={prop.scheduled}
-                    title={prop.title}
-                    id={prop.user_id}
-                  />
-                </Link>
-                <Route />
-              </Paper>
-            </Box>
+            <div>
+              <div>
+                <IssuesForm />
+              </div>
+              <Box className={classes.card} boxShadow={3}>
+                <Paper className={classes.paper}>
+                  <Link>
+                    <IssueCard
+                      complete={prop.completed}
+                      discription={prop.description}
+                      equitment={prop.equipment}
+                      cost={prop.estimated_cost}
+                      issues={prop.general_issues}
+                      idIssues={prop.issues_id}
+                      needsAttention={prop.needs_attention}
+                      priority={prop.priority}
+                      scheduled={prop.scheduled}
+                      title={prop.title}
+                      id={prop.user_id}
+                    />
+                  </Link>
+                  <Route />
+                </Paper>
+              </Box>
+            </div>
           );
         })}
       </Grid>
