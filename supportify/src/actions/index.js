@@ -245,16 +245,19 @@ export const putMember = (nameMember,
 
     authAxios
         .put(`/users/${id}`, ///DO I NEED TO ENTER THE SPECIFIC ID?
-        {   first_name: nameMember,
-            last_name: lastnameMember,
-            city: cityMember,
-            email: emailMember,
-            board: boardMember, 
-            primary_admin: primMember,
-            sec_admin: secMember,
+        {
             username: signupUsername,
             password: signupPassword,
-            state: stateMember
+            first_name: nameMember,
+            last_name: lastnameMember,
+            email: emailMember,
+            city: cityMember,
+            state: stateMember,
+            board: boardMember, 
+            primary_admin: primMember,
+            sec_admin: secMember
+
+
         }
         )
         .then(res => {
@@ -264,7 +267,7 @@ export const putMember = (nameMember,
         })
         .catch(error => {
            console.log("this is error", error.message)
-           dispatch(memberFailure(error.message))
+           //dispatch(memberFailure(error.message))
         })
 
 }
