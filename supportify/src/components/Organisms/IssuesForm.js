@@ -49,7 +49,7 @@ const IssuesForm = props => {
         value={issue.name}
       />
 
-      <label html="title">Issue</label>
+      <label html="title">Email</label>
       <input
         id="title"
         name="email"
@@ -59,14 +59,14 @@ const IssuesForm = props => {
         value={issue.email}
       />
 
-      <label html="title">Role</label>
+      <label html="title">Status</label>
       <input
         id="title"
-        name="role"
+        name="status"
         type="text"
         placeholder="title"
         onChange={changeHandler}
-        value={issue.role}
+        value={issue.status}
       />
       <button type="submit">Submit</button>
       <div>
