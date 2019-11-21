@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
 
 function DeleteButton(props){
 
-  let handleClick =  props.forPage == 'school'? props.deleteSchool(props.id) :
+  let handleClick = () => props.forPage == 'school'? props.deleteSchool(props.id) :
   (props.forPage == 'user'? props.deleteMember(props.id) : (props.forPage == "issue" ? props.deleteIssue(props.id) : ""))
      
 
@@ -45,7 +45,7 @@ console.log("THIS IS THE ID YOU ARE USING TO DELETE", props.id)
       const classes = useStyles();
     return(
       <Link to={linkPath} >
-        <Button variant="contained" color="primary" className={classes.button} onClick={() => handleClick}>DELETE</Button>
+        <Button variant="contained" color="primary" className={classes.button} onClick={() => handleClick()}>DELETE</Button>
       </Link>
     )
 

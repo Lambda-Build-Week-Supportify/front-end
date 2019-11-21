@@ -79,7 +79,6 @@ const storeClick = (office) => {
 }
 
 
-
 useEffect(()=>{
   props.fetchSchools()
 

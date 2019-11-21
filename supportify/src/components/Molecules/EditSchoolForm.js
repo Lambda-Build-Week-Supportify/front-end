@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import { Link } from "react-router-dom";
+
 import {
     putSchool, 
     updateSchoolName,
@@ -101,7 +103,6 @@ function CreateSchoolForm(props){
 
                 <label name='description'>Description</label>
                 <input type="type" name='description' value={props.description} onChange={handleSchoolDescription}/>
-           
 
                 <button type="button" onClick={()=> props.putSchool(
                     props.schoolName,
@@ -116,7 +117,10 @@ function CreateSchoolForm(props){
                     props.gradeLevel,
                     props.description,
                     props.id
-                )}>Edit a School!</button>
+                )}>
+                Edit
+                </button>
+
             </form>
         </div>
     )
@@ -139,3 +143,19 @@ const mapDispatchToProps ={
 
 export default connect(state => state, mapDispatchToProps)(CreateSchoolForm)
 
+// <Link to='/dashboard/school' onClick={()=> props.putSchool(
+//     props.schoolName,
+//     props.numIssues,
+//     props.numStudents,
+//     props.estCosts,
+//     props.schoolStreet,
+//     props.schoolCity,
+//     props.schoolState,
+//     props.postCode,
+//     props.phoneNumber,
+//     props.gradeLevel,
+//     props.description,
+//     props.id
+// )}>
+// Edit a School!
+// </Link>
