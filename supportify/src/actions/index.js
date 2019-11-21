@@ -176,7 +176,7 @@ export const fetchMembers = () => dispatch => {
     authAxios
         .get('/users')
         .then(res => {
-            console.log("this is response.data", res)
+            console.log("this is members response.data", res)
             dispatch(memberSuccess(res.data))
             //successGeneral()
         })
