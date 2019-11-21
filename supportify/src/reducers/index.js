@@ -48,14 +48,16 @@ import {
     TRIGGER_ID,
     LOAD_SCHOOL_SUCCESS,
     LOAD_SCHOOL_FAILURE,
-    LOADING_SCHOOL
+    LOADING_SCHOOL,
+    CRAZY_DAISY,
+    CRAZY_DAZEY
                 } from "../actions"
 
 
 
 const initialState = {
     members: [
-       //{"name":"Brainey","city":200,"email":"5cm","id":0} BIG ISSUE #1
+     //{"name":"Brainey","city":200,"email":"5cm","id":0} BIG ISSUE #1
     ],
     isFetching: false,
     error: null,
@@ -118,7 +120,9 @@ const initialState = {
     estimated_cost: "",
     completed: false,
     ///////////
-    id: "5"
+    id: "",
+    singleSchool: {},
+    singleUser: {}
 }
 
 
@@ -134,6 +138,7 @@ export function reducer(state = initialState, action){
             // let noDoubles = action.payload
             //     console.log("this is noDoubles", noDoubles)
             return {
+                ...state,
                 members: action.payload,
                 // [...state.members].concat(noDoubles) BIG ISSUE #2
                 isFetching: false,
@@ -146,18 +151,21 @@ export function reducer(state = initialState, action){
             }
          case LOAD_MEMBER_FAILURE:
             return {
+                ...state,
                 members: [...state.members],
                 isFetching:false,
                 error: action.payload
             }
          case LOADING_MEMBER:
             return {
+                ...state,
                 members: [...state.members],
                 isFetching: true,
                 error: null
             }
         case MAKE_MEMBER:
             return {
+                ...state,
                 members: [...state.members].concat(action.payload),
                 isFetching: false,
                 error: null,
@@ -297,10 +305,16 @@ export function reducer(state = initialState, action){
                 ...state,
                 province: action.payload
             }
+         case CRAZY_DAZEY:
+            return{
+                ...state,
+                singleUser: action.payload
+            }
 /////////////////////SCHOOLS
         case LOAD_SCHOOL_SUCCESS:
 
             return {
+                ...state,
                 offices: action.payload,
                 isFetching: false,
                 error: null
@@ -308,12 +322,14 @@ export function reducer(state = initialState, action){
 
          case LOAD_SCHOOL_FAILURE:
             return {
+                ...state,
                 offices: [...state.offices],
                 isFetching:false,
                 error: action.payload
             }
          case LOADING_SCHOOL:
             return {
+                ...state,
                 offices: [...state.offices],
                 isFetching: true,
                 error: null
@@ -375,7 +391,11 @@ export function reducer(state = initialState, action){
                     description: action.payload
                 }
 
-
+        case CRAZY_DAISY:
+            return{
+                ...state,
+                singleSchool: action.payload
+            }
         //////////////ISSUES
 
 

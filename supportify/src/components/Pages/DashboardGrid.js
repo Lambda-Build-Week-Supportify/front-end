@@ -4,8 +4,15 @@ import axios from "axios";
 import IssueCard from "../Organisms/IssueCard";
 import SingleIssuePage from "../Pages/SingleIssuePage";
 import { Route, Link } from "react-router-dom";
+<<<<<<< HEAD
 import IssuesForm from "../Organisms/IssuesForm";
 import CreateButton from "../Atoms/CreateButtonCRUD";
+=======
+
+import UserGrid from "./UserGrid"
+import SchoolGrid from "./SchoolGrid"
+
+>>>>>>> c172d8fba2229ed39dd1cc3e7cd423b80d195740
 //Material UI
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -68,6 +75,8 @@ function DashboardGrid() {
   console.log(gridState);
   return (
     <div>
+
+
       <Grid container className={classes.root} spacing={1}>
         {
           ///mapping over the array to create boxes///

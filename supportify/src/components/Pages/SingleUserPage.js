@@ -3,22 +3,25 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 import {specifyId} from "../../actions"
+import EditButton from '../Atoms/EditButtonCRUD'
+import DeleteButton from "../Atoms/DeleteButtonCRUD"
 
-function SingleUserPage(props, {data, userInfo}){
+function SingleUserPage(props){
 
-    console.log("this is the id", props.id)
+    //console.log("this is the id", props.id)
 
     return(
         <div>
-           {props.specifyId(userInfo.user_id)}
-            <p>Name: {userInfo.fname + " " + userInfo.lname}</p>
-            <p>City: {userInfo.city}</p>
-            <p>State: {userInfo.province}</p>
-            <p>Email: {userInfo.email}</p>
-            <p>{userInfo.board == true ? "Board Member" : null}</p>
-            <p>{userInfo.prime == true ? "Primary Admin" : null}</p>
-            <p>{userInfo.sec == true ? "Secondary Admin" : null}</p>
-            
+          
+           <EditButton forPage={'user'} formId={props.singleUser.id}/>
+            <p>Name: {props.singleUser.first_name + " " + props.singleUser.last_name}</p>
+            <p>City: {props.singleUser.city}</p>
+            <p>State: {props.singleUser.state}</p>
+            <p>Email: {props.singleUser.email}</p>
+            <p>{props.singleUser.board == true ? "Board Member" : null}</p>
+            <p>{props.singleUser.prime == true ? "Primary Admin" : null}</p>
+            <p>{props.singleUser.sec == true ? "Secondary Admin" : null}</p>
+            <DeleteButton forPage={'user'} />
            
         </div>
     )

@@ -8,7 +8,10 @@ import { fetchMembers, fetchSchools } from "./actions";
 import { connect } from "react-redux";
 
 //////PAGES////////
+import SingleSchoolPage from './components/Pages/SingleSchoolPage';
+import SingleUserPage from './components/Pages/SingleUserPage'
 
+import DashTest from './components/Pages/DashTest'
 import DashboardGrid from "./components/Pages/DashboardGrid";
 import GreetingPage from "./components/Pages/GreetingPage";
 import UserGrid from "./components/Pages/UserGrid";
@@ -16,14 +19,18 @@ import SchoolGrid from "./components/Pages/SchoolGrid";
 
 ///ORGANISMS/MODULES//////
 import PrivateRoute from "./components/Organisms/PrivateRoute";
-
+import SignUp from './components/Organisms/SignUp'
 ///////////MOLECULES/////////////////
 import CreateSchoolForm from "./components/Molecules/CreateSchoolForm";
 import EditSchoolForm from "./components/Molecules/EditSchoolForm";
 import CreateIssueForm from "./components/Molecules/CreateIssueForm";
 import EditIssueForm from "./components/Molecules/EditIssueForm";
+import EditUserForm from './components/Molecules/EditUserForm'
 
 /////////ATOMS/////////
+import SignUpButton from './components/Atoms/SignUpButton'
+
+
 
 import DeleteButton from "./components/Atoms/DeleteButtonCRUD";
 import EditButton from "./components/Atoms/EditButtonCRUD";
@@ -32,6 +39,7 @@ import SnackbarOpen from "./components/Atoms/SnackbarOpen"; //this should actual
 function App(props) {
   return (
     <div className="App">
+    
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -47,42 +55,66 @@ function App(props) {
         </a>
       </header>
       <ul>
-        <li>
-          <Link to="/login">Login</Link>
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+
+          <li>
+            <Link to='/dashboard' >Dashboard</Link>
+          </li>
+
+          <li>
+          <Link to='/dashtest' >DashTest</Link>
         </li>
+        </ul>
+       
 
-        <li>
-          <Link to="/dashboard">Dashboard</Link>
-        </li>
-      </ul>
 
-      <button type="button" onClick={() => props.fetchSchools()}>
-        Get Schools!
-      </button>
 
-      <button type="button" onClick={() => props.fetchMembers()}>
-        Get Members!
-      </button>
-      {props.error && <p>{props.error}</p>}
-      {props.isFetching && <p>This is taking a really long time!</p>}
 
-      <Switch>
-        <Route path="/dashboard">
-          <DashboardGrid></DashboardGrid>
-        </Route>
 
-        <Route path="/login" component={GreetingPage} />
-        <Route component={GreetingPage} />
-      </Switch>
-      <DeleteButton />
-      <EditButton />
-      <CreateSchoolForm />
-      <EditSchoolForm />
-      <CreateIssueForm />
-      <EditIssueForm />
-      <SnackbarOpen />
-      {//props.members !== [] ? <UserGrid/> : (props.offices !== [] ? <SchoolGrid/>: null)
-      props.offices !== [] ? <SchoolGrid /> : null}
+    <Switch>
+
+    
+          <PrivateRoute path='/dashtest'>
+            <DashTest/>
+          </PrivateRoute>
+    
+          <PrivateRoute path="/edit/school">
+              <EditSchoolForm/>
+              <p>Edit</p>
+          </PrivateRoute>
+          <PrivateRoute path="/edit/user">
+              <EditUserForm/>
+          </PrivateRoute>
+          <PrivateRoute path="/delete/school">
+                <DeleteButton/> 
+                <p>Delete</p>   
+          </PrivateRoute>
+          <PrivateRoute path={`/schools/:id`}>
+              <SingleSchoolPage/> 
+          </PrivateRoute>
+          <PrivateRoute path={`/users/:id`}>
+              <SingleUserPage/>     
+          </PrivateRoute>
+    
+          <Route path="/dashboard/school" component={SchoolGrid}/>
+
+          <Route path="/dashboard/user" component={UserGrid}/>
+
+
+          <Route path="/dashboard/user" component={UserGrid}/>
+
+          <Route path={`/signup`} component={SignUp}/>
+              
+         
+          <Route path="/login" component={GreetingPage}/>
+          <Route component={GreetingPage}/>
+    </Switch>
+
+  
+
+   
     </div>
   );
 }
@@ -98,3 +130,30 @@ export default connect(state => state, mapDispatchToProps)(App);
 
 // {props.error && <p>{props.error}</p>}
 // {props.isFetching  && <p>This is taking a really long time!</p> }
+
+// {props.members !== [] ? <UserGrid/> : (props.offices !== [] ? <SchoolGrid/>: null)
+//   //props.offices !== [] ? <SchoolGrid/> : null 
+// }
+
+
+
+
+// <Route path={`/schools/${props.id}`} component={
+//   SingleSchoolPage 
+
+ 
+// }/>
+
+
+
+// <CreateSchoolForm/>
+
+// <CreateIssueForm/>
+// <EditIssueForm/>
+// <SnackbarOpen/>
+
+
+// <PrivateRoute path="/dashboard">
+// <DashboardGrid />
+//      <p>Hello</p>
+// </PrivateRoute>
