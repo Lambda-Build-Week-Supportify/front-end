@@ -362,7 +362,8 @@ id
 
     authAxios
         .put(`/schools/${id}`, ///DO I NEED TO ENTER THE SPECIFIC ID?
-        {           
+        {       
+            school_id: id,    
             school_name: schoolName,
             num_issues: numIssues,
             num_students: numStudents,

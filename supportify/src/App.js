@@ -97,6 +97,11 @@ function App(props) {
           <PrivateRoute path={`/users/:id`}>
               <SingleUserPage/>     
           </PrivateRoute>
+    
+          <Route path="/dashboard/school" component={SchoolGrid}/>
+
+          <Route path="/dashboard/user" component={UserGrid}/>
+
 
           <Route path="/dashboard/user" component={UserGrid}/>
 

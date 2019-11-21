@@ -104,6 +104,7 @@ function CreateSchoolForm(props){
                 <label name='description'>Description</label>
                 <input type="type" name='description' value={props.description} onChange={handleSchoolDescription}/>
 
+                <Link to="/dashboard/school">
                 <button type="button" onClick={()=> props.putSchool(
                     props.schoolName,
                     props.numIssues,
@@ -120,6 +121,7 @@ function CreateSchoolForm(props){
                 )}>
                 Edit
                 </button>
+                </Link>
 
             </form>
         </div>

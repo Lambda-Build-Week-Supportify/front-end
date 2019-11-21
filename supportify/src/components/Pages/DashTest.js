@@ -1,7 +1,7 @@
 //PARENT
 import React from "react";
 
-import { Route, Link } from "react-router-dom";
+import { Route, Link, Switch } from "react-router-dom";
 
 import UserGrid from "./UserGrid"
 import SchoolGrid from "./SchoolGrid"
@@ -48,11 +48,6 @@ function Dashtest() {
     <li>
         <Link to='/dashboard/user'>Users Dashboard</Link>
     </li>
-<Route path="/dashboard/school" component={SchoolGrid}/>
-
-<Route path="/dashboard/user" component={UserGrid}/>
-
-      
      
     </div>
   );

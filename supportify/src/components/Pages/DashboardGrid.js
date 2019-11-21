@@ -69,15 +69,7 @@ function DashboardGrid() {
   console.log(gridState);
   return (
     <div>
-    <li>
-        <Link to='/dashboard/school'>School Dashboard</Link>
-    </li>
-    <li>
-        <Link to='/dashboard/user'>Users Dashboard</Link>
-    </li>
-<Route path="/dashboard/school" component={SchoolGrid}/>
 
-<Route path="/dashboard/user" component={UserGrid}/>
 
       <Grid container className={classes.root} spacing={1}>
         {

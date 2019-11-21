@@ -47,7 +47,7 @@ const useStyles = makeStyles(theme => ({
 
 
 
-function UserGrid(props) {
+function UserGrid(props) { //////////////////COMPONENT/////////////////////
 
   const classes = useStyles();
 
@@ -56,7 +56,7 @@ function UserGrid(props) {
         props.fetchMembers()//this works on a button
         
   }
-  console.log("this is offices", props.offices)
+  //console.log("this is offices", props.offices)
 
   const storeClick = (user) => {
     props.singleUserStateMaker(      
