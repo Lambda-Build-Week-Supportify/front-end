@@ -1,0 +1,4 @@
+[build]
+base= 'supportify/'
+publish = 'supportify/build/'
+command = 'npm build'
