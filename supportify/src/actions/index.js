@@ -275,9 +275,13 @@ export const putMember = (nameMember,
 export const deleteMember = (id) => dispatch =>{
     authAxios
         .delete(`users/${id}`)
-        .then(res => console.log("this is delete user res", res)
-        .catch(err => console.log("this is delete user error", err))
+        .then(res => {
+            console.log("this is delete user res", res)
+            //fetchMembers()
+        }
         )
+        .catch(err => console.log("this is delete user error", err))
+        
 }
 ///////////////////////////////////SCHOOL INFO
 

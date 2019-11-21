@@ -36,6 +36,7 @@ function DeleteButton(props){
 
   // let handleClick2nd =  props.forPage == 'school'? props.fetchSchools(props.id) :
   // (props.forPage == 'user'? props.fetchMembers(props.id) : (props.forPage == "issue" ? props.fetchIssues(props.id) : ""))
+  //onClick={()=> handleClick}
   
   let linkPath =  props.forPage == 'school'? '/dashboard/school' :
   (props.forPage == 'user'? '/dashboard/user' :(props.forPage == "issue" ? '/dashboard' : ""))
