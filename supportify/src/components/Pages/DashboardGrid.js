@@ -5,6 +5,7 @@ import IssueCard from "../Organisms/IssueCard";
 import SingleIssuePage from "../Pages/SingleIssuePage";
 import { Route, Link } from "react-router-dom";
 import IssuesForm from "../Organisms/IssuesForm";
+import CreateButton from "../Atoms/CreateButtonCRUD";
 //Material UI
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -71,6 +72,7 @@ function DashboardGrid() {
         {
           ///mapping over the array to create boxes///
         }
+        <CreateButton />
         <h1>Hello From DashboardGrid</h1>
         {gridState.map((prop, index) => {
           return (
