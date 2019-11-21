@@ -4,7 +4,7 @@ import React from "react";
 import {connect} from 'react-redux'
 
 ///////////ACTIONS
-import {fetchMembers} from "../../actions"
+import {fetchMembers, fetchSchools} from "../../actions"
 
 ////////////ORGANISMS
 import UserCard from "../Organisms/UserCard";
@@ -54,12 +54,14 @@ function UserGrid(props) {
   const makeCards = (e) => {
       e.preventDefault()
         props.fetchMembers()//this works on a button
+        
   }
   console.log("this is offices", props.offices)
 
   return (
 
     <div  >
+    
     <button type="button" onClick={()=> props.fetchMembers()}>Get Members!</button>
       <Grid container justify="center" spacing="10">
         {props.members.map(user => {
@@ -98,7 +100,8 @@ function UserGrid(props) {
 
 
 const mapDispatchToProps = {
-    fetchMembers
+    fetchMembers,
+    fetchSchools
 }
 
 

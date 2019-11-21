@@ -55,7 +55,7 @@ import {
 
 const initialState = {
     members: [
-      1,2,3 //{"name":"Brainey","city":200,"email":"5cm","id":0} BIG ISSUE #1
+     //{"name":"Brainey","city":200,"email":"5cm","id":0} BIG ISSUE #1
     ],
     isFetching: false,
     error: null,
@@ -90,7 +90,7 @@ const initialState = {
     signupPassword: "",
     province: "",
     /////////////////SCHOOLS
-    offices: [1,2,3],
+    offices: [],
     schoolName: " ",
     numIssues: " ",
     numStudents: " ",
@@ -134,6 +134,7 @@ export function reducer(state = initialState, action){
             // let noDoubles = action.payload
             //     console.log("this is noDoubles", noDoubles)
             return {
+                ...state,
                 members: action.payload,
                 // [...state.members].concat(noDoubles) BIG ISSUE #2
                 isFetching: false,
@@ -146,18 +147,21 @@ export function reducer(state = initialState, action){
             }
          case LOAD_MEMBER_FAILURE:
             return {
+                ...state,
                 members: [...state.members],
                 isFetching:false,
                 error: action.payload
             }
          case LOADING_MEMBER:
             return {
+                ...state,
                 members: [...state.members],
                 isFetching: true,
                 error: null
             }
         case MAKE_MEMBER:
             return {
+                ...state,
                 members: [...state.members].concat(action.payload),
                 isFetching: false,
                 error: null,
@@ -301,6 +305,7 @@ export function reducer(state = initialState, action){
         case LOAD_SCHOOL_SUCCESS:
 
             return {
+                ...state,
                 offices: action.payload,
                 isFetching: false,
                 error: null
@@ -308,12 +313,14 @@ export function reducer(state = initialState, action){
 
          case LOAD_SCHOOL_FAILURE:
             return {
+                ...state,
                 offices: [...state.offices],
                 isFetching:false,
                 error: action.payload
             }
          case LOADING_SCHOOL:
             return {
+                ...state,
                 offices: [...state.offices],
                 isFetching: true,
                 error: null

@@ -9,7 +9,9 @@ import {
   adminToTrue, 
   updatePassWord, 
   updatePassBoard,
-  successGeneral
+  successGeneral,
+  fetchSchools,
+  fetchMembers
 } from "../../actions"
 
 import axios from "axios"
@@ -49,7 +51,8 @@ const Login = (props) => {
     }
    console.log("this is capture", captureEntries)
     login(captureEntries)
-
+    fetchSchools()
+    
 
 }
 
@@ -108,6 +111,7 @@ const inputPass = props.admin === false ? "passboard": "password"
 
   return (
     <>
+
       <h1>Welcome to Supportify</h1>
       <form onSubmit={handleLogin}>
       <input
@@ -138,7 +142,9 @@ const mapDispatchToProps = {
   adminToTrue,
   updatePassWord,
   updatePassBoard,
-  successGeneral
+  successGeneral,
+  fetchSchools,
+  fetchMembers
 }
 
 export default connect(state=> state, mapDispatchToProps)(Login);

@@ -4,7 +4,7 @@ import React from "react";
 import {connect} from 'react-redux'
 
 ///////////ACTIONS
-import {fetchSchools, specifyId} from "../../actions"
+import {fetchSchools, specifyId, fetchMembers} from "../../actions"
 
 ////////////ORGANISMS
 import SchoolCard from "../Organisms/SchoolCard";
@@ -56,10 +56,13 @@ console.log("this is offices", props.offices)
 const handleClick = ( data) => {
  
     props.specifyId(data)}
+
+    
 console.log("this is props.id on grid", props.id)
   return (
 
     <div >
+
     <button type="button" onClick={()=> props.fetchSchools()}>Get Schools!</button>
       <Grid container justify="center" spacing="10">
         {props.offices.map(office => {
@@ -109,7 +112,8 @@ console.log("this is props.id on grid", props.id)
 
 const mapDispatchToProps = {
     fetchSchools,
-    specifyId
+    specifyId,
+    fetchMembers
 }
 
 
