@@ -119,7 +119,7 @@ const initialState = {
     estimated_cost: "",
     completed: false,
     ///////////
-    id: "5",
+    id: "",
     singleSchool: {}
 }
 

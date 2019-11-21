@@ -75,6 +75,7 @@ const storeClick = (office) => {
         office.about,
         office.id)
         console.log("this is school city out map", office.school_city)
+    props.specifyId(office.school_id)
 }
 
 
