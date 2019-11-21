@@ -94,9 +94,9 @@ function App(props) {
           <PrivateRoute path={`/users/:id`}>
               <SingleUserPage/>     
           </PrivateRoute>
-          <PrivateRoute path={`/signup`}>
-              <SignUp/>     
-          </PrivateRoute>
+          <Route path={`/signup`} component={SignUp}/>
+              
+         
           <Route path="/login" component={GreetingPage}/>
           <Route component={GreetingPage}/>
     </Switch>
