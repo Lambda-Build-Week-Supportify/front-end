@@ -79,6 +79,10 @@ export const GENERAL_ISSUE = "GENERAL_ISSUE"
 export const EST_COSTS_ISSUE = "EST_COSTS_ISSUE"
 export const ISSUE_COMPLETION = "ISSUE_COMPLETION"
 
+//////////////////////////
+
+export const CRAZY_DAISY = "CRAZY_DAISY"
+export const CRAZY_DAZEY = "CRAZY_DAZEY"
 
 //////////////////////////////////////////
 
@@ -241,16 +245,19 @@ export const putMember = (nameMember,
 
     authAxios
         .put(`/users/${id}`, ///DO I NEED TO ENTER THE SPECIFIC ID?
-        {   first_name: nameMember,
-            last_name: lastnameMember,
-            city: cityMember,
-            email: emailMember,
-            board: boardMember, 
-            primary_admin: primMember,
-            sec_admin: secMember,
+        {
             username: signupUsername,
             password: signupPassword,
-            state: stateMember
+            first_name: nameMember,
+            last_name: lastnameMember,
+            email: emailMember,
+            city: cityMember,
+            state: stateMember,
+            board: boardMember, 
+            primary_admin: primMember,
+            sec_admin: secMember
+
+
         }
         )
         .then(res => {
@@ -260,11 +267,18 @@ export const putMember = (nameMember,
         })
         .catch(error => {
            console.log("this is error", error.message)
-           dispatch(memberFailure(error.message))
+           //dispatch(memberFailure(error.message))
         })
 
 }
 
+export const deleteMember = (id) => dispatch =>{
+    authAxios
+        .delete(`users/${id}`)
+        .then(res => console.log("this is delete user res", res)
+        .catch(err => console.log("this is delete user error", err))
+        )
+}
 ///////////////////////////////////SCHOOL INFO
 
 export const fetchSchools = () => dispatch => {
@@ -370,7 +384,13 @@ id
 
 }
 
-
+export const deleteSchool = (id) => dispatch =>{
+    authAxios
+        .delete(`/schools/${id}`)
+        .then(res => console.log("this is delete school res", res)
+       //.catch(err => console.log("this is delete school error", err))
+        )
+}
 ///////////////////////////////////ISSUE ENDPOINT
 export const fetchIssues = () => dispatch => {
     //dispatch(memberLoading()) //change to schools
@@ -382,7 +402,7 @@ export const fetchIssues = () => dispatch => {
             //successGeneral()
         })
         .catch(error => {
-           console.log("this i issues error", error.message)
+           console.log("this is issues error", error.message)
            //dispatch(memberFailure(error.message))
         })
 
@@ -492,6 +512,13 @@ export const putIssueBoard= (
 
 }
 
+export const deleteIssue = (id) => dispatch => {
+    authAxios
+        .delete(`issues/${id}`)
+        .then(res => console.log("this is delete user res", res)
+        .catch(err => console.log("this is delete user error", err))
+        )
+}
 
 /////////////////////////////////////
 
@@ -653,3 +680,49 @@ export const updateIssueCompletion = data => dispatch => {
 
 
 
+export const singleSchoolStateMaker = (school_name,
+    num_issues,
+    num_students,
+    est_costs,
+   school_street,
+    school_city,
+    school_state,
+    post_code,
+    phone,
+    grade_level,
+    about,
+    id) => ({type: CRAZY_DAISY, payload: {
+   school_name: school_name,
+   num_issues: num_issues,
+   num_students: num_students,
+   est_costs: est_costs,
+   school_street: school_street,
+   school_city: school_city,
+   school_state: school_state,
+   post_code: post_code,
+   phone: phone,
+   grade_level: grade_level,
+   about: about,
+   id: id
+}})
+
+export const singleUserStateMaker = (
+    first_name,
+    last_name,
+    city,
+    email,
+    board,
+    primary_admin,
+    sec_admin,
+    state,
+    id) => ({type: CRAZY_DAZEY, payload: {
+        first_name: first_name,
+        last_name: last_name,
+        city: city,
+        email: email,
+        board: board,
+        primary_admin: primary_admin,
+        sec_admin: sec_admin,
+        state: state,
+        id: id
+}})

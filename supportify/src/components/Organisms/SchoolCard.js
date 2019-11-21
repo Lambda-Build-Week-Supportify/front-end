@@ -3,6 +3,8 @@ import React from 'react'
 function SchoolCard(props){
 
 
+ 
+
     return(
         <div>
             <p>School: {props.school_name}</p>

@@ -48,7 +48,9 @@ import {
     TRIGGER_ID,
     LOAD_SCHOOL_SUCCESS,
     LOAD_SCHOOL_FAILURE,
-    LOADING_SCHOOL
+    LOADING_SCHOOL,
+    CRAZY_DAISY,
+    CRAZY_DAZEY
                 } from "../actions"
 
 
@@ -118,7 +120,9 @@ const initialState = {
     estimated_cost: "",
     completed: false,
     ///////////
-    id: "5"
+    id: "",
+    singleSchool: {},
+    singleUser: {}
 }
 
 
@@ -301,6 +305,11 @@ export function reducer(state = initialState, action){
                 ...state,
                 province: action.payload
             }
+         case CRAZY_DAZEY:
+            return{
+                ...state,
+                singleUser: action.payload
+            }
 /////////////////////SCHOOLS
         case LOAD_SCHOOL_SUCCESS:
 
@@ -382,7 +391,11 @@ export function reducer(state = initialState, action){
                     description: action.payload
                 }
 
-
+        case CRAZY_DAISY:
+            return{
+                ...state,
+                singleSchool: action.payload
+            }
         //////////////ISSUES
 
 

@@ -55,11 +55,12 @@ function EditUserForm(props){
         console.log("this is roles", props.board, props.primary_admin, props.sec_admin)
     }
 
+    console.log("this is user id in edit user form", props.id)
     return (
 
 
         <div>
-           EditUserForm
+           Edit User Form
            <form  >
                 <label name='member-name' >First Name</label>
                 <input type="text" name='member-name' value={props.name} onChange={handleNewName}/>
