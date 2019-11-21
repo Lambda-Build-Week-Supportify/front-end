@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 
 import {connect} from 'react-redux'
@@ -47,7 +47,7 @@ const useStyles = makeStyles(theme => ({
 
 
 
-function UserGrid(props) {
+function UserGrid(props) { //////////////////COMPONENT/////////////////////
 
   const classes = useStyles();
 
@@ -56,7 +56,7 @@ function UserGrid(props) {
         props.fetchMembers()//this works on a button
         
   }
-  console.log("this is offices", props.offices)
+  //console.log("this is offices", props.offices)
 
   const storeClick = (user) => {
     props.singleUserStateMaker(      
@@ -72,12 +72,19 @@ function UserGrid(props) {
         console.log("this is school city out map", user.school_city)
     props.specifyId(user.user_id)
 }
+
+
+useEffect(()=>{
+  props.fetchMembers()
+
+
+},[])
   
   return (
 
     <div  >
+     
     
-    <button type="button" onClick={()=> props.fetchMembers()}>Get Members!</button>
       <Grid container justify="center" spacing="10">
         {props.members.map(user => {
           return (
@@ -122,3 +129,6 @@ const mapDispatchToProps = {
 
 
 export default connect(state => state, mapDispatchToProps)(UserGrid);
+
+
+//<button type="button" onClick={()=> props.fetchMembers()}>Get Members!</button>

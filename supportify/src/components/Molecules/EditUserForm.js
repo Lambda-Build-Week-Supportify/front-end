@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import { Link } from "react-router-dom";
+
 import {
     putMember, 
     updateName, 
@@ -92,6 +94,8 @@ function EditUserForm(props){
                 <label>Secondary Member</label>
                 <input type="checkbox" name='sec-role' value={props.board} onClick={handleNewRole}/>
 
+
+                <Link to='/dashboard/user'>
                 <button type="button" onClick={()=> props.putMember(props.name, 
                     props.city, 
                     props.email, 
@@ -104,6 +108,8 @@ function EditUserForm(props){
                     props.province,
                     props.id
                     )}>Edit a User!</button>
+
+                    </Link>
             </form>
         </div>
     )

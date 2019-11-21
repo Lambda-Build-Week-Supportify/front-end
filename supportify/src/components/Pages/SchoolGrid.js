@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 
 import {connect} from 'react-redux'
@@ -79,11 +79,16 @@ const storeClick = (office) => {
 }
 
 
+useEffect(()=>{
+  props.fetchSchools()
+
+
+},[])
+
   return (
 
     <div >
 
-    <button type="button" onClick={()=> props.fetchSchools()}>Get Schools!</button>
       <Grid container justify="center" spacing="10">
         {props.offices.map(office => {
           return (
@@ -138,3 +143,4 @@ const mapDispatchToProps = {
 
 export default connect(state => state, mapDispatchToProps)(SchoolGrid);
 
+//<button type="button" onClick={()=> props.fetchSchools()}>Get Schools!</button>
