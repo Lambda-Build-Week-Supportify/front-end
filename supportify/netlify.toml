@@ -1,4 +1,4 @@
 [build]
-base= 'supportify/'
-publish = 'supportify/'
+base= 'front-end/'
+publish = 'front-end/supportify/'
 command = 'npm run-scripts build'
