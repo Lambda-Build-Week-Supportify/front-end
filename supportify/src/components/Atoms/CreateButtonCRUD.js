@@ -22,7 +22,7 @@ function CreateButton(){
       const classes = useStyles();
     return(
       <Link to="/create/issue">
-        <Button variant="contained" color="secondary" className={classes.button}>DELETE</Button>
+        <Button variant="contained" color="secondary" className={classes.button}>CREATE ISSUE</Button>
         </Link>
     )
 
@@ -30,3 +30,4 @@ function CreateButton(){
 
 
 export default CreateButton
+
