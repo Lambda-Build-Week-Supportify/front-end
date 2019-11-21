@@ -8,6 +8,9 @@ import { fetchMembers, fetchSchools } from "./actions";
 import { connect } from "react-redux";
 
 //////PAGES////////
+import SingleSchoolPage from './components/Pages/SingleSchoolPage';
+import SingleUserPage from './components/Pages/SingleUserPage'
+
 
 import DashboardGrid from "./components/Pages/DashboardGrid";
 import GreetingPage from "./components/Pages/GreetingPage";
@@ -16,7 +19,7 @@ import SchoolGrid from "./components/Pages/SchoolGrid";
 
 ///ORGANISMS/MODULES//////
 import PrivateRoute from "./components/Organisms/PrivateRoute";
-
+import SignUp from './components/Organisms/SignUp'
 ///////////MOLECULES/////////////////
 import CreateSchoolForm from "./components/Molecules/CreateSchoolForm";
 import EditSchoolForm from "./components/Molecules/EditSchoolForm";
@@ -25,10 +28,7 @@ import EditIssueForm from "./components/Molecules/EditIssueForm";
 import EditUserForm from './components/Molecules/EditUserForm'
 
 /////////ATOMS/////////
-
-
-import SingleSchoolPage from './components/Pages/SingleSchoolPage';
-import SingleUserPage from './components/Pages/SingleUserPage'
+import SignUpButton from './components/Atoms/SignUpButton'
 
 
 
@@ -93,6 +93,9 @@ function App(props) {
           </PrivateRoute>
           <PrivateRoute path={`/users/:id`}>
               <SingleUserPage/>     
+          </PrivateRoute>
+          <PrivateRoute path={`/signup`}>
+              <SignUp/>     
           </PrivateRoute>
           <Route path="/login" component={GreetingPage}/>
           <Route component={GreetingPage}/>
