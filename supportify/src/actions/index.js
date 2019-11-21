@@ -388,7 +388,7 @@ export const deleteSchool = (id) => dispatch =>{
     authAxios
         .delete(`/schools/${id}`)
         .then(res => console.log("this is delete school res", res)
-       // .catch(err => console.log("this is delete school error", err))
+       //.catch(err => console.log("this is delete school error", err))
         )
 }
 ///////////////////////////////////ISSUE ENDPOINT
