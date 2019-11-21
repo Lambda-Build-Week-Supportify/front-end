@@ -82,6 +82,7 @@ export const ISSUE_COMPLETION = "ISSUE_COMPLETION"
 //////////////////////////
 
 export const CRAZY_DAISY = "CRAZY_DAISY"
+export const CRAZY_DAZEY = "CRAZY_DAZEY"
 
 //////////////////////////////////////////
 
@@ -680,4 +681,25 @@ export const singleSchoolStateMaker = (school_name,
    grade_level: grade_level,
    about: about,
    id: id
+}})
+
+export const singleUserStateMaker = (
+    first_name,
+    last_name,
+    city,
+    email,
+    board,
+    primary_admin,
+    sec_admin,
+    state,
+    id) => ({type: CRAZY_DAZEY, payload: {
+        first_name: first_name,
+        last_name: last_name,
+        city: city,
+        email: email,
+        board: board,
+        primary_admin: primary_admin,
+        sec_admin: sec_admin,
+        state: state,
+        id: id
 }})

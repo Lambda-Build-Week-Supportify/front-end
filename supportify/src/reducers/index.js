@@ -49,7 +49,8 @@ import {
     LOAD_SCHOOL_SUCCESS,
     LOAD_SCHOOL_FAILURE,
     LOADING_SCHOOL,
-    CRAZY_DAISY
+    CRAZY_DAISY,
+    CRAZY_DAZEY
                 } from "../actions"
 
 
@@ -120,7 +121,8 @@ const initialState = {
     completed: false,
     ///////////
     id: "",
-    singleSchool: {}
+    singleSchool: {},
+    singleUser: {}
 }
 
 
@@ -302,6 +304,11 @@ export function reducer(state = initialState, action){
             return {
                 ...state,
                 province: action.payload
+            }
+         case CRAZY_DAZEY:
+            return{
+                ...state,
+                singleUser: action.payload
             }
 /////////////////////SCHOOLS
         case LOAD_SCHOOL_SUCCESS:

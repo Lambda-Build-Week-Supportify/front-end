@@ -4,7 +4,7 @@ import React from "react";
 import {connect} from 'react-redux'
 
 ///////////ACTIONS
-import {fetchMembers, fetchSchools} from "../../actions"
+import {fetchMembers, fetchSchools, singleUserStateMaker, specifyId} from "../../actions"
 
 ////////////ORGANISMS
 import UserCard from "../Organisms/UserCard";
@@ -58,7 +58,20 @@ function UserGrid(props) {
   }
   console.log("this is offices", props.offices)
 
-
+  const storeClick = (user) => {
+    props.singleUserStateMaker(      
+        user.first_name,
+        user.last_name,
+        user.city,
+        user.email,
+        user.board,
+        user.primary_admin,
+        user.sec_admin,
+        user.state,
+        user.user_id)
+        console.log("this is school city out map", user.school_city)
+    props.specifyId(user.user_id)
+}
   
   return (
 
@@ -70,7 +83,7 @@ function UserGrid(props) {
           return (
             <Grid item key={user.user_id} className={classes.card} boxShadow={3}>
                 <Paper>
-                <Link to={`/users/${user.user_id}`}>
+                <Link to={`/users/${user.user_id}`} onClick={()=> storeClick(user)}>
                   <UserCard
                   key={user.user_id}
                   fname={user.first_name}
@@ -83,9 +96,8 @@ function UserGrid(props) {
                   province={user.state}
                   />
                 </Link>
-                <Route path={`/users/${user.user_id}`} render={props => 
-                        <SingleUserPage data={props} userInfo={user}/>
-                }/>
+                
+
                 </Paper>
             </Grid>
           );
@@ -103,7 +115,9 @@ function UserGrid(props) {
 
 const mapDispatchToProps = {
     fetchMembers,
-    fetchSchools
+    fetchSchools,
+    singleUserStateMaker,
+    specifyId
 }
 
 
