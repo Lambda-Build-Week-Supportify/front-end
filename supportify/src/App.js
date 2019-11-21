@@ -11,7 +11,7 @@ import { connect } from "react-redux";
 import SingleSchoolPage from './components/Pages/SingleSchoolPage';
 import SingleUserPage from './components/Pages/SingleUserPage'
 
-
+import DashTest from './components/Pages/DashTest'
 import DashboardGrid from "./components/Pages/DashboardGrid";
 import GreetingPage from "./components/Pages/GreetingPage";
 import UserGrid from "./components/Pages/UserGrid";
@@ -63,6 +63,9 @@ function App(props) {
             <Link to='/dashboard' >Dashboard</Link>
           </li>
 
+          <li>
+          <Link to='/dashtest' >DashTest</Link>
+        </li>
         </ul>
        
 
@@ -71,11 +74,11 @@ function App(props) {
 
 
     <Switch>
-    <PrivateRoute path="/dashboard">
-    <DashboardGrid />
-         <p>Hello</p>
-    </PrivateRoute>
+
     
+          <PrivateRoute path='/dashtest'>
+            <DashTest/>
+          </PrivateRoute>
     
           <PrivateRoute path="/edit/school">
               <EditSchoolForm/>
@@ -143,3 +146,9 @@ export default connect(state => state, mapDispatchToProps)(App);
 // <CreateIssueForm/>
 // <EditIssueForm/>
 // <SnackbarOpen/>
+
+
+// <PrivateRoute path="/dashboard">
+// <DashboardGrid />
+//      <p>Hello</p>
+// </PrivateRoute>

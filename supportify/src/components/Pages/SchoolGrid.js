@@ -83,7 +83,7 @@ useEffect(()=>{
   props.fetchSchools()
 
 
-},[props.offices])
+},[])
 
   return (
 

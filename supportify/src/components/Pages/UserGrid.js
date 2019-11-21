@@ -78,7 +78,7 @@ useEffect(()=>{
   props.fetchMembers()
 
 
-},[props.members])
+},[])
   
   return (
 
