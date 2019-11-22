@@ -125,4 +125,7 @@ const mapDispatchToProps ={
 export default connect(state => state, mapDispatchToProps)(SignUpForm)
 
 
-//ISSUE WITH CHECKBOXES!!!!!
+
+
+
+//for UX redirect to login or set token to local storage and redirect to grid

@@ -1,5 +1,6 @@
 import axios from "axios"
 import axiosWithAuth from '../axios/axiosWithAuth'
+import { BottomNavigationAction } from "@material-ui/core"
 
 export const TRIGGER_ID = "TRIGGER_ID"
 
@@ -51,6 +52,9 @@ export const SIGNUP_USERNAME = "SIGNUP_USERNAME"
 export const SIGNUP_PASSWORD = "SIGNUP_PASSWORD"
 export const STATE_MEMBER = "STATE_MEMBER"
 
+
+export const SET_USER_ID = "SET_USER_ID"
+
 ///////////////////////SCHOOLS
 
 export const LOAD_SCHOOL_SUCCESS = "LOAD_SCHOOL_SUCCESS"
@@ -97,6 +101,8 @@ export const memberFailure = (error) => ({type: LOAD_MEMBER_FAILURE, payload: er
 export const memberLoading = () => ({type: LOADING_MEMBER})
 
 export const successGeneral = () => ({type: SUCCESS})
+
+export const setUserId = (data) => ({type: SET_USER_ID, payload: data})
 
 
 export const memberMaking = (data) => ({type: MAKE_MEMBER, payload: data })
@@ -205,20 +211,24 @@ export const postMember = (nameMember,
 
     authAxios
         .post('/auth/register', 
-        {   first_name: nameMember,
+        {   
+            username: signupUsername,
+            password: signupPassword,
+            first_name: nameMember,
             last_name: lastnameMember,
-            city: cityMember,
             email: emailMember,
+            city: cityMember,
+            state: stateMember,
             board: boardMember, 
             primary_admin: primMember,
             sec_admin: secMember,
-            username: signupUsername,
-            password: signupPassword,
-            state: stateMember
+
+
         }
         )
         .then(res => {
             console.log("this is postMember response.data", res)
+            localStorage.setItem('token', res.data.token)
            // dispatch(memberMaking(res.data))
            //successGeneral()
         })
@@ -365,7 +375,7 @@ id
         {       
             school_id: Number(id),    
             school_name: schoolName,
-            num_issues: numIssues,
+            num_issues: numIssues, //requires numbers (should have form validation on forms)
             num_students: numStudents,
             est_costs: estCosts,
             school_street: schoolStreet,
@@ -383,7 +393,7 @@ id
            //successGeneral()
         })
         .catch(error => {
-           console.log("this is error", error.message)
+           console.log("this is school put error", error.message)
           // dispatch(memberFailure(error.message))
         })
 

@@ -11,7 +11,8 @@ import {
   updatePassBoard,
   successGeneral,
   fetchSchools,
-  fetchMembers
+  fetchMembers,
+  setUserId
 } from "../../actions"
 
 import axios from "axios"
@@ -20,6 +21,7 @@ import axiosWithAuth from '../../axios/axiosWithAuth'
 const Login = (props) => {
   // make a post request to retrieve a token from the api
   // when you have handled the token, navigate to the BubblePage route
+
   const login = (payload) => {
     const authAxios = axiosWithAuth()
       authAxios
@@ -27,7 +29,9 @@ const Login = (props) => {
           .then(res => {
               console.log("this is res.data", res);
              localStorage.setItem('token', res.data.token)
-              successGeneral()
+              //successGeneral()
+              props.setUserId(res.data.user_id)
+              //console.log("This is the userID", props.userID)
                return props.history.push("/dashboard")
           })
           .catch(err => {
@@ -147,7 +151,8 @@ const mapDispatchToProps = {
   updatePassBoard,
   successGeneral,
   fetchSchools,
-  fetchMembers
+  fetchMembers,
+  setUserId
 }
 
 export default connect(state=> state, mapDispatchToProps)(Login);
