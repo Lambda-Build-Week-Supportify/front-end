@@ -3,6 +3,8 @@ import axios from "axios";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 
+import { Link } from "react-router-dom";
+
 const useStyles = makeStyles(theme => ({
   button: {
     margin: theme.spacing(1),
@@ -17,9 +19,11 @@ const useStyles = makeStyles(theme => ({
 function CreateButton() {
   const classes = useStyles();
   return (
-    <Button variant="contained" color="secondary" className={classes.button}>
-      DELETE
-    </Button>
+    <Link to="/create/issue">
+      <Button variant="contained" color="secondary" className={classes.button}>
+        CREATE ISSUE
+      </Button>
+    </Link>
   );
 }
 
