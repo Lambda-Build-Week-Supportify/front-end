@@ -110,10 +110,11 @@ const inputName = props.admin === false ? "boardname": "username"
 const inputPass = props.admin === false ? "passboard": "password"
 
   return (
-    <>
+    <div >
 
       <h1>Welcome to Supportify</h1>
-      <form onSubmit={handleLogin}>
+      <form onSubmit={handleLogin} style={{display:"flex", flexDirection: "column"}}>
+      <label name={props.greetName}>Username</label>
       <input
       onClick={adminStatus}
           type="text"
@@ -122,6 +123,8 @@ const inputPass = props.admin === false ? "passboard": "password"
           onChange={handleUserChange(inputName)}
           
       />
+
+      <label name={props.greetName}>Password</label>
       <input
       onClick={adminStatus}
           type="password"
@@ -131,7 +134,7 @@ const inputPass = props.admin === false ? "passboard": "password"
       />
       <button  >Login!</button>
   </form>
-    </>
+    </div>
   );
 };
 

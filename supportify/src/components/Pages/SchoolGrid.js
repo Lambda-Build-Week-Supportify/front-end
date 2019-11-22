@@ -36,26 +36,27 @@ const useStyles = makeStyles(theme => ({
   card: {
     minWidth: 275,
     color: "red",
-    margin: "10 50 10 0"
+    margin: "10 50 10 0",
+    
   },
   card2: {
-    minWidth: 275,
-    color: "red"
+    color: "red",
+    padding: "15%"
     // boxShadow: "3" doesnt work
   }
 }));
 
 
 
-function SchoolGrid(props) {
+function SchoolGrid(props) { ///////////////COMPONENT/////////////////////
 
   const classes = useStyles();
 
 console.log("this is offices", props.offices)
 
-const handleClick = (data) => {
+// const handleClick = (data) => {
  
-    props.specifyId(data)}
+//     props.specifyId(data)}
 
   
 console.log("this is props.id on grid", props.id)
@@ -87,13 +88,13 @@ useEffect(()=>{
 
   return (
 
-    <div >
+    <div style={{backgroundColor:"#FDC543"}}>
 
       <Grid container justify="center" spacing="10">
         {props.offices.map(office => {
           return (
             <Grid item key={office.school_id} className={classes.card} boxShadow={3}>
-                <Paper>
+                <Paper className={classes.card2}>
                 <Link to={`/schools/${office.school_id}`} onClick={() =>storeClick(office)}>
                   <SchoolCard
                     key={office.school_id}
@@ -111,8 +112,7 @@ useEffect(()=>{
                     id={office.school_id}
                     
                   />
-                  {console.log("this is school city in map", office.school_city)
-}}
+                  {console.log("this is school city in map", office.school_city)}
                 </Link>
                 
      

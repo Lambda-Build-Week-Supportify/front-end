@@ -38,54 +38,31 @@ import SnackbarOpen from "./components/Atoms/SnackbarOpen"; //this should actual
 
 function App(props) {
   return (
-    <div className="App">
-    
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <ul>
+    <div className="App" style={{backgroundColor:"#D03840", height: "100vh"}}>
+
+      <ul style={{height: "20%"}}>
           <li>
             <Link to="/login">Login</Link>
           </li>
 
           <li>
-            <Link to='/dashboard' >Dashboard</Link>
+            <Link to='/dashtest' >DashTest</Link>
           </li>
-
-          <li>
-          <Link to='/dashtest' >DashTest</Link>
-        </li>
         </ul>
-       
 
-
-
-
-
-    <Switch>
-
-    
+    <Switch style={{backgroundColor:"#D03840"}}>
           <PrivateRoute path='/dashtest'>
             <DashTest/>
           </PrivateRoute>
-    
           <PrivateRoute path="/edit/school">
               <EditSchoolForm/>
               <p>Edit</p>
           </PrivateRoute>
           <PrivateRoute path="/edit/user">
               <EditUserForm/>
+          </PrivateRoute>
+          <PrivateRoute path="/create/issue">
+            <CreateIssueForm/>
           </PrivateRoute>
           <PrivateRoute path="/delete/school">
                 <DeleteButton/> 

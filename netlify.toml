@@ -1,0 +1,3 @@
+[build]
+publish= 'supportify/'
+command = 'npm build'
