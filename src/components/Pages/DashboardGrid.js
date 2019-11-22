@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import IssueCard from "../Organisms/IssueCard";
-import SingleIssuePage from "../Pages/SingleIssuePage";
+import SingleIssuePage from "./SingleIssuePage";
 import { Route, Link } from "react-router-dom";
 
 import UserGrid from "./UserGrid"

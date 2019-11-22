@@ -1,3 +1,4 @@
 [build]
-publish= 'supportify/'
+base="front-end/"
+publish= 'front-end/'
 command = 'npm build'

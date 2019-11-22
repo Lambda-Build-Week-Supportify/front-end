@@ -11,7 +11,7 @@ import SchoolCard from "../Organisms/SchoolCard";
 
 
 ////////////PAGES
-import SingleSchoolPage from "../Pages/SingleSchoolPage";
+import SingleSchoolPage from "./SingleSchoolPage";
 import { Route, Link } from "react-router-dom";
 
 //Material UI
