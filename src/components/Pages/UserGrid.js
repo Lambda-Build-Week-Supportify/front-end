@@ -11,7 +11,7 @@ import UserCard from "../Organisms/UserCard";
 
 
 ////////////PAGES
-import SingleUserPage from "../Pages/SingleUserPage";
+import SingleUserPage from "./SingleUserPage";
 import { Route, Link } from "react-router-dom";
 
 //Material UI
