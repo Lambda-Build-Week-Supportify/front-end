@@ -1,4 +1,0 @@
-[build]
-base="front-end/"
-publish= 'front-end/'
-command = 'npm build'
