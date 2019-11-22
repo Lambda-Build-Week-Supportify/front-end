@@ -80,7 +80,7 @@ function App(props) {
           <Route path="/dashboard/user" component={UserGrid}/>
 
 
-          <Route path="/dashboard/user" component={UserGrid}/>
+          <Route path="/dashboard" component={DashboardGrid}/>
 
           <Route path={`/signup`} component={SignUp}/>
               

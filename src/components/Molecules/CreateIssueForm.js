@@ -13,6 +13,8 @@ import {
 } from '../../actions'
 
 
+import {Link} from 'react-router-dom'
+
 function CreateIssueForm(props){
 
     const handleNewIssuePriority = e => {
@@ -69,6 +71,7 @@ function CreateIssueForm(props){
                 <label name='issue-completion'>Completion status</label>
                 <input type="text" name='issue-completion' value={props.completed} onChange={handleCompletedIssue}/>
 
+                <Link to='/dashboard' >
                 <button type="button" onClick={()=> props.postIssue(
                     props.priority,
                     props.title,
@@ -78,6 +81,7 @@ function CreateIssueForm(props){
                     props.estimated_cost,
                     props.completed
                 )}>Report an Issue</button>
+                </Link>
             </form>
         </div>
     )
