@@ -26,6 +26,7 @@ import EditSchoolForm from "./components/Molecules/EditSchoolForm";
 import CreateIssueForm from "./components/Molecules/CreateIssueForm";
 import EditIssueForm from "./components/Molecules/EditIssueForm";
 import EditUserForm from './components/Molecules/EditUserForm'
+import UserSchoolList from "./components/Molecules/UserSchoolList";
 
 /////////ATOMS/////////
 import SignUpButton from './components/Atoms/SignUpButton'
@@ -35,6 +36,7 @@ import SignUpButton from './components/Atoms/SignUpButton'
 import DeleteButton from "./components/Atoms/DeleteButtonCRUD";
 import EditButton from "./components/Atoms/EditButtonCRUD";
 import SnackbarOpen from "./components/Atoms/SnackbarOpen"; //this should actually be on this file!
+
 
 function App(props) {
   return (
@@ -74,7 +76,11 @@ function App(props) {
           <PrivateRoute path={`/users/:id`}>
               <SingleUserPage/>     
           </PrivateRoute>
-    
+          <PrivateRoute path={`/users-schools`}>
+               <UserSchoolList schoolList={props.userOwned}/>     
+          </PrivateRoute>
+
+
           <Route path="/dashboard/school" component={SchoolGrid}/>
 
           <Route path="/dashboard/user" component={UserGrid}/>

@@ -51,7 +51,8 @@ import {
     LOADING_SCHOOL,
     CRAZY_DAISY,
     CRAZY_DAZEY,
-    SET_USER_ID
+    SET_USER_ID,
+    SET_USER_SCHOOLS
                 } from "../actions"
 
 
@@ -124,7 +125,8 @@ const initialState = {
     id: "",
     singleSchool: {},
     singleUser: {},
-    userID: ""
+    userID: "",
+    userOwned: []
 }
 
 
@@ -135,6 +137,11 @@ export function reducer(state = initialState, action){
             return {
                 ...state,
                 userID: action.payload
+            }
+        case SET_USER_SCHOOLS:
+            return{
+                ...state,
+                userOwned: action.payload
             }
         case TRIGGER_ID: ///this tells PUTS what to edit
             return{

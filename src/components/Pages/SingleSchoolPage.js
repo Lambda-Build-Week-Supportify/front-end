@@ -7,6 +7,7 @@ import {specifyId} from "../../actions"
 
 import EditButton from '../Atoms/EditButtonCRUD'
 import DeleteButton from '../Atoms/DeleteButtonCRUD'
+import AddButton from '../Atoms/AddSchoolButtonCRUD'
 
 
 
@@ -18,6 +19,7 @@ function SingleSchoolPage(props){
     return(
         <div>
             <EditButton forPage={"school"} formId={props.singleSchool.id}/>
+            <AddButton/>
             <p>School: {props.singleSchool.school_name}</p>
             <p>Description: {props.singleSchool.about}</p>
             <p>Student Count: {props.singleSchool.num_students}</p>

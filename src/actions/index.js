@@ -52,8 +52,9 @@ export const SIGNUP_USERNAME = "SIGNUP_USERNAME"
 export const SIGNUP_PASSWORD = "SIGNUP_PASSWORD"
 export const STATE_MEMBER = "STATE_MEMBER"
 
-
+//////////////////FOR USER's SCHOOLS
 export const SET_USER_ID = "SET_USER_ID"
+export const SET_USER_SCHOOLS = "SET_USER_SCHOOLS"
 
 ///////////////////////SCHOOLS
 
@@ -144,6 +145,9 @@ export const setSecMemberTrue = () => ({type: SEC_ROLE_ACCESS})
 export const signupUser = data => ({type: SIGNUP_USERNAME, payload: data})
 export const signupPass = data => ({type: SIGNUP_PASSWORD, payload: data})
 export const memberState = data => ({type: STATE_MEMBER, payload: data})
+
+export const setMemberSchools = data => ({type: SET_USER_SCHOOLS, payload: data})
+
 
 ////////////////SCHOOLS
 
@@ -406,6 +410,46 @@ export const deleteSchool = (id) => dispatch =>{
        //.catch(err => console.log("this is delete school error", err))
         )
 }
+///////////////////////////////////USER SCHOOLS
+
+export const fetchMemberSchools =(id) => dispatch => {
+
+    authAxios
+        .get(`/users-schools/user/${id}`)
+        .then(res => {
+            console.log('This is user-schools fetch', res.data)
+            //need to set member schools here
+            dispatch(setMemberSchools(res.data))
+        })
+        .catch(err => console.log("this is user-schools err", err))
+}
+
+export const postMemberSchool = (
+    userID,
+    schoolID
+    ) => dispatch => {
+        dispatch(memberLoading())
+    
+        authAxios
+            .post('/schools', 
+            {          
+           user_id: userID,
+           school_id: schoolID
+            }
+            )
+            .then(res => {
+                console.log("this is postUserSchool response.data", res)
+               // dispatch(memberMaking(res.data))
+               //successGeneral()
+            })
+            .catch(error => {
+               console.log("this is error", error.message)
+               //dispatch(memberFailure(error.message))
+            })
+    
+    }
+
+
 ///////////////////////////////////ISSUE ENDPOINT
 export const fetchIssues = () => dispatch => {
     //dispatch(memberLoading()) //change to schools
