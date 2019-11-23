@@ -52,7 +52,9 @@ import {
     CRAZY_DAISY,
     CRAZY_DAZEY,
     SET_USER_ID,
-    SET_USER_SCHOOLS
+    SET_USER_SCHOOLS,
+    ISSUE_ATTENTION,
+    ISSUE_SCHEDULE
                 } from "../actions"
 
 
@@ -121,6 +123,8 @@ const initialState = {
     general_issues: "",
     estimated_cost: "",
     completed: false,
+    needs_attention: false,
+    scheduled: false,
     ///////////
     id: "",
     singleSchool: {},
@@ -446,7 +450,23 @@ export function reducer(state = initialState, action){
         case ISSUE_COMPLETION:
                 return{
                     ...state,
-                    completed: action.payload
+                    completed: true,
+                    scheduled: false,
+                    needs_attention: false
+                }
+        case ISSUE_SCHEDULE:
+                return{
+                    ...state,
+                    completed: false,
+                    needs_attention: false,
+                    scheduled: true
+                }
+        case ISSUE_ATTENTION:
+                return{
+                    ...state,
+                    completed: false,
+                    scheduled: false,
+                    needs_attention: true
                 }
         default:
             return state

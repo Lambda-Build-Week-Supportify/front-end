@@ -82,7 +82,10 @@ export const DESCRIPTION_ISSUE = "DESCRIPTION_ISSUE"
 export const EQUIPMENT_ISSUE = "EQUIPMENT_ISSUE"
 export const GENERAL_ISSUE = "GENERAL_ISSUE"
 export const EST_COSTS_ISSUE = "EST_COSTS_ISSUE"
+
 export const ISSUE_COMPLETION = "ISSUE_COMPLETION"
+export const ISSUE_ATTENTION = "ISSUE_ATTENTION"
+export const ISSUE_SCHEDULE = "ISSUE_SCHEDULE"
 
 //////////////////////////
 
@@ -176,9 +179,11 @@ export const issueDescribing = data => ({type: DESCRIPTION_ISSUE, payload: data}
 export const issueEquipmenter = data => ({type: EQUIPMENT_ISSUE, payload: data})
 export const issueGeneralizing = data => ({type: GENERAL_ISSUE, payload: data})
 export const issueCostEstimater = data => ({type: EST_COSTS_ISSUE, payload: data})
-export const issueCompleter = data => ({type: ISSUE_COMPLETION, payload: data})
 
-
+///CREATE ISSUE
+export const issueCompleter = () => ({type: ISSUE_COMPLETION})
+export const issueScheduler = () => ({type: ISSUE_SCHEDULE})
+export const issueAttention = () => ({type: ISSUE_ATTENTION})
 
 
 //////////////////////////////////////////////USER ENDPOINT
@@ -474,7 +479,9 @@ export const postIssue = (
     equipment,
     general_issues,
     estimated_cost_issues, //should just be estimated_cost for endpoint obj
-    completed
+    completed,
+    needs_attention,
+    scheduled
 ) => dispatch => {
     dispatch(memberLoading())
 
@@ -487,7 +494,9 @@ export const postIssue = (
             equipment: equipment,
             general_issues: general_issues,
             estimated_cost: estimated_cost_issues, 
-            completed: completed
+            completed: completed,
+            needs_attention: needs_attention,
+            scheduled: scheduled
         }
         )
         .then(res => {
@@ -731,11 +740,18 @@ export const updateIssueGeneral = data => dispatch => {
 export const updateIssueCosts = data => dispatch => {
     dispatch(issueCostEstimater(data))
 }
-export const updateIssueCompletion = data => dispatch => {
-    dispatch(issueCompleter(data))
+export const updateIssueCompletion = () => dispatch => {
+    dispatch(issueCompleter())
 }
 
 
+export const updateIssueAttention = () => dispatch => {
+    dispatch(issueAttention())
+}
+
+export const updateIssueSchedule = () => dispatch => {
+    dispatch(issueScheduler())
+}
 
 
 
