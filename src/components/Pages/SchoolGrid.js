@@ -53,6 +53,7 @@ function SchoolGrid(props) { ///////////////COMPONENT/////////////////////
   const classes = useStyles();
 
 console.log("this is offices", props.offices)
+console.log("This is userID", props.userID)
 
 // const handleClick = (data) => {
  

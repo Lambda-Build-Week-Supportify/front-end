@@ -4,7 +4,13 @@ import React, {useEffect} from "react";
 import {connect} from 'react-redux'
 
 ///////////ACTIONS
-import {fetchMembers, fetchSchools, singleUserStateMaker, specifyId} from "../../actions"
+import {fetchMembers, 
+  fetchSchools, 
+  singleUserStateMaker, 
+  specifyId,
+  setMemberSchools,
+  fetchMemberSchools
+} from "../../actions"
 
 ////////////ORGANISMS
 import UserCard from "../Organisms/UserCard";
@@ -72,6 +78,9 @@ function UserGrid(props) { //////////////////COMPONENT/////////////////////
         user.user_id)
         console.log("this is school city out map", user.school_city)
     props.specifyId(user.user_id)
+    let userSchools = props.fetchMemberSchools(user.user_id)
+    props.setMemberSchools(userSchools)
+      
 }
 
 
@@ -80,6 +89,9 @@ useEffect(()=>{
 
 
 },[])
+
+
+
   
   return (
 
@@ -125,7 +137,9 @@ const mapDispatchToProps = {
     fetchMembers,
     fetchSchools,
     singleUserStateMaker,
-    specifyId
+    specifyId,
+    setMemberSchools,
+    fetchMemberSchools
 }
 
 

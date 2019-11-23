@@ -50,7 +50,9 @@ import {
     LOAD_SCHOOL_FAILURE,
     LOADING_SCHOOL,
     CRAZY_DAISY,
-    CRAZY_DAZEY
+    CRAZY_DAZEY,
+    SET_USER_ID,
+    SET_USER_SCHOOLS
                 } from "../actions"
 
 
@@ -122,14 +124,26 @@ const initialState = {
     ///////////
     id: "",
     singleSchool: {},
-    singleUser: {}
+    singleUser: {},
+    userID: "",
+    userOwned: []
 }
 
 
 
 export function reducer(state = initialState, action){
     switch(action.type){
-        case TRIGGER_ID:
+        case SET_USER_ID: //this is used to tell backend to connect items to user with this id
+            return {
+                ...state,
+                userID: action.payload
+            }
+        case SET_USER_SCHOOLS:
+            return{
+                ...state,
+                userOwned: action.payload
+            }
+        case TRIGGER_ID: ///this tells PUTS what to edit
             return{
                 ...state,
                 id: action.payload
