@@ -77,7 +77,7 @@ function App(props) {
               <SingleUserPage/>     
           </PrivateRoute>
           <PrivateRoute path={`/users-schools`}>
-               <UserSchoolList schoolList={props.userOwned}/>     
+               <UserSchoolList name={props.singleUser.first_name} schoolList={props.userOwned}/>     
           </PrivateRoute>
 
 
