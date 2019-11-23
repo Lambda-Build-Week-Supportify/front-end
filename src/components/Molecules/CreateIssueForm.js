@@ -9,7 +9,9 @@ import {
     updateIssueEquip,
     updateIssueGeneral,
     updateIssueCosts,
-    updateIssueCompletion
+    updateIssueCompletion,
+    updateIssueAttention,
+    updateIssueSchedule
 } from '../../actions'
 
 
@@ -40,9 +42,14 @@ function CreateIssueForm(props){
     const handleNewIssueCosts = e => {
         props.updateIssueCosts(e.target.value)
     }
-    const handleCompletedIssue = e => {
-        props.updateIssueCompletion(e.target.value)
+    const handleIssueCompletion = e => {
+        
+        let statusChange = e.target.name === 'issue-attention' ? props.updateIssueAttention : ((e.target.name === 'issue-scheduled') ? props.updateIssueSchedule : props.updateIssueCompletion)
+
+       return statusChange()
     }
+
+
 
     return (
 
@@ -68,8 +75,14 @@ function CreateIssueForm(props){
                 <label name='issue-costs'>Issue Costs</label>
                 <input type="text" name='issue-costs' value={props.estimated_cost} onChange={handleNewIssueCosts}/>
 
-                <label name='issue-completion'>Completion status</label>
-                <input type="text" name='issue-completion' value={props.completed} onChange={handleCompletedIssue}/>
+                <label name='issue-attention'>Needs Attention</label>
+                <input type="checkbox" name='issue-attention' value={props.completed} onChange={handleIssueCompletion}/>
+
+                <label name='issue-scheduled'>Scheduled</label>
+                <input type="checkbox" name='issue-scheduled' value={props.completed} onChange={handleIssueCompletion}/>
+
+                <label name='issue-completion'>Complete</label>
+                <input type="checkbox" name='issue-completion' value={props.completed} onChange={handleIssueCompletion}/>
 
                 <Link to='/dashboard' >
                 <button type="button" onClick={()=> props.postIssue(
@@ -79,7 +92,9 @@ function CreateIssueForm(props){
                     props.equipment,
                     props.general_issues,
                     props.estimated_cost,
-                    props.completed
+                    props.completed,
+                    props.needs_attention,
+                    props.scheduled
                 )}>Report an Issue</button>
                 </Link>
             </form>
@@ -95,7 +110,9 @@ const mapDispatchToProps ={
     updateIssueEquip,
     updateIssueGeneral,
     updateIssueCosts,
-    updateIssueCompletion
+    updateIssueCompletion,
+    updateIssueAttention,
+    updateIssueSchedule
 }
 
 export default connect(state => state, mapDispatchToProps)(CreateIssueForm)
