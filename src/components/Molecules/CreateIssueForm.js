@@ -94,7 +94,8 @@ function CreateIssueForm(props){
                     props.estimated_cost,
                     props.completed,
                     props.needs_attention,
-                    props.scheduled
+                    props.scheduled,
+                    props.userID
                 )}>Report an Issue</button>
                 </Link>
             </form>

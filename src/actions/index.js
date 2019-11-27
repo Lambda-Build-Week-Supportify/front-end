@@ -481,12 +481,13 @@ export const postIssue = (
     estimated_cost_issues, //should just be estimated_cost for endpoint obj
     completed,
     needs_attention,
-    scheduled
+    scheduled,
+    id
 ) => dispatch => {
     dispatch(memberLoading())
 
     authAxios
-        .post('/schools', 
+        .post('/issues', 
         {          
             priority: priority,
             title: title,
@@ -496,7 +497,8 @@ export const postIssue = (
             estimated_cost: estimated_cost_issues, 
             completed: completed,
             needs_attention: needs_attention,
-            scheduled: scheduled
+            scheduled: scheduled,
+            user_id: id
         }
         )
         .then(res => {
