@@ -6,6 +6,9 @@ import {connect} from 'react-redux'
 ///////////ACTIONS
 import {fetchIssues, specifyId, singleIssueStateMaker} from "../../actions"
 
+//////////ATOMS
+import CreateButton from "../Atoms/CreateButtonCRUD";
+
 ////////////ORGANISMS
 import SingleIssueCard from "../Organisms/SingleIssueCard";
 
@@ -80,14 +83,12 @@ const storeClick = (issue) => {
 
 useEffect(()=>{
   props.fetchIssues()
-
-
 },[])
 
   return (
 
     <div style={{backgroundColor:"#FDC543"}}>
-
+        <CreateButton/>
       <Grid container justify="center" spacing="10">
         {props.issues.map(issue => {
           return (
