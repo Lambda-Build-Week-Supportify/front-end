@@ -99,6 +99,8 @@ export const ISSUE_SCHEDULE = "ISSUE_SCHEDULE"
 export const CRAZY_DAISY = "CRAZY_DAISY"
 export const CRAZY_DAZEY = "CRAZY_DAZEY"
 
+export const RESET = "RESET"
+
 //////////////////////////////////////////
 
 export const specifyId = id => ({type: TRIGGER_ID, payload: id})
@@ -839,3 +841,12 @@ export const singleUserStateMaker = (
         state: state,
         id: id
 }})
+
+
+/////////////////////////////MOST IMPORTANT UNIVERSAL
+
+export const resetState = () => ({type: RESET}) //resets issue school and user info (not client user id) to initial state so that when cient hits the back button they can't edit the wrong school, issue, or user (they have to click it before they have access, otehrwise they may have the id number of another page or table)
+
+export const updateResetState = () => dispatch => {
+    dispatch(resetState())
+}

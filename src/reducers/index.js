@@ -60,7 +60,8 @@ import {
     LOADING_ISSUE,
     ISSUE_ATTENTION_STATUS,
     ISSUE_COMPLETION_STATUS,
-    ISSUE_SCHEDULE_STATUS
+    ISSUE_SCHEDULE_STATUS,
+    RESET
                 } from "../actions"
 
 
@@ -144,6 +145,47 @@ const initialState = {
 
 export function reducer(state = initialState, action){
     switch(action.type){
+        case RESET:
+            return{
+                ...state,
+                ////////////
+                id: "",
+                //////////////
+                priority: "",
+                title: "",
+                description_issue: "", //should just be description for endpoint
+                equipment: "",
+                general_issues: "",
+                estimated_cost: "",
+                completed: false,
+                needs_attention: false,
+                scheduled: false,
+                issues: [],
+                ////////
+                schoolName: " ",
+                numIssues: " ",
+                numStudents: " ",
+                estCosts: " ",
+                schoolStreet: " ",
+                schoolCity: " ",
+                schoolState: " ",
+                postCode: " ",
+                phoneNumber: " ",
+                gradeLevel: " ",
+                description: " ",
+                /////////
+                name: "",
+                lastname: "",
+                city: "",
+                email: "",
+                role: "",
+                board: false,
+                primary_admin: false,
+                sec_admin: false,
+                signupUsername: "",
+                signupPassword: "",
+                province: "",
+            }
         case SET_USER_ID: //this is used to tell backend to connect items to user with this id
             return {
                 ...state,

@@ -4,7 +4,7 @@ import React, {useEffect} from "react";
 import {connect} from 'react-redux'
 
 ///////////ACTIONS
-import {fetchIssues, specifyId, singleIssueStateMaker} from "../../actions"
+import {fetchIssues, specifyId, singleIssueStateMaker, updateResetState} from "../../actions"
 
 //////////ATOMS
 import CreateButton from "../Atoms/CreateButtonCRUD";
@@ -83,6 +83,7 @@ const storeClick = (issue) => {
 
 useEffect(()=>{
   props.fetchIssues()
+  props.updateResetState()
 },[])
 
   return (
@@ -132,7 +133,8 @@ useEffect(()=>{
 const mapDispatchToProps = {
     fetchIssues,
     specifyId,
-    singleIssueStateMaker
+    singleIssueStateMaker,
+    updateResetState
 }
 
 

@@ -4,7 +4,7 @@ import React, {useEffect} from "react";
 import {connect} from 'react-redux'
 
 ///////////ACTIONS
-import {fetchSchools, specifyId, fetchMembers, singleSchoolStateMaker} from "../../actions"
+import {fetchSchools, specifyId, fetchMembers, singleSchoolStateMaker, updateResetState} from "../../actions"
 
 ////////////ORGANISMS
 import SchoolCard from "../Organisms/SchoolCard";
@@ -83,7 +83,7 @@ const storeClick = (office) => {
 
 useEffect(()=>{
   props.fetchSchools()
-
+  props.updateResetState()
 
 },[])
 
@@ -138,7 +138,8 @@ const mapDispatchToProps = {
     fetchSchools,
     specifyId,
     fetchMembers,
-    singleSchoolStateMaker
+    singleSchoolStateMaker,
+    updateResetState
 }
 
 

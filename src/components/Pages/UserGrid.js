@@ -9,7 +9,8 @@ import {fetchMembers,
   singleUserStateMaker, 
   specifyId,
   setMemberSchools,
-  fetchMemberSchools
+  fetchMemberSchools,
+  updateResetState
 } from "../../actions"
 
 ////////////ORGANISMS
@@ -86,7 +87,7 @@ console.log("my id", props.userID)
 
 useEffect(()=>{
   props.fetchMembers()
-
+  props.updateResetState()
 
 },[])
 
@@ -139,7 +140,8 @@ const mapDispatchToProps = {
     singleUserStateMaker,
     specifyId,
     setMemberSchools,
-    fetchMemberSchools
+    fetchMemberSchools,
+    updateResetState
 }
 
 
