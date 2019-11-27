@@ -51,7 +51,10 @@ function Dashtest() {
         <Link to='/dashboard/user'>Users Dashboard</Link>
     </li>
      
-    
+    <li>
+    <Link to='/dashboard/issue' >Issue Dashboard</Link>
+  </li>
+
     <li>
     <Link to='/dashboard' >Dashboard</Link>
   </li>

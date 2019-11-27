@@ -54,7 +54,13 @@ import {
     SET_USER_ID,
     SET_USER_SCHOOLS,
     ISSUE_ATTENTION,
-    ISSUE_SCHEDULE
+    ISSUE_SCHEDULE,
+    LOAD_ISSUE_SUCCESS,
+    LOAD_ISSUE_FAILURE,
+    LOADING_ISSUE,
+    ISSUE_ATTENTION_STATUS,
+    ISSUE_COMPLETION_STATUS,
+    ISSUE_SCHEDULE_STATUS
                 } from "../actions"
 
 
@@ -125,6 +131,7 @@ const initialState = {
     completed: false,
     needs_attention: false,
     scheduled: false,
+    issues: [],
     ///////////
     id: "",
     singleSchool: {},
@@ -415,7 +422,30 @@ export function reducer(state = initialState, action){
                 singleSchool: action.payload
             }
         //////////////ISSUES
-
+        case LOAD_ISSUE_SUCCESS:
+            // let noDoubles = action.payload
+            //     console.log("this is noDoubles", noDoubles)
+            return {
+                ...state,
+                issues: action.payload,
+                // [...state.members].concat(noDoubles) BIG ISSUE #2
+                isFetching: false,
+                error: null
+            }
+         case LOAD_ISSUE_FAILURE:
+            return {
+                ...state,
+                issues: [...state.issues],
+                isFetching:false,
+                error: action.payload
+            }
+         case LOADING_ISSUE:
+            return {
+                ...state,
+                issues: [...state.issues],
+                isFetching: true,
+                error: null
+            }
 
         case ISSUE_PRIORITY:
                 return{
@@ -467,6 +497,21 @@ export function reducer(state = initialState, action){
                     completed: false,
                     scheduled: false,
                     needs_attention: true
+                }
+        case ISSUE_COMPLETION_STATUS:
+                return{
+                    ...state,
+                    completed: action.payload
+                }
+        case ISSUE_ATTENTION_STATUS:
+                return{
+                    ...state,
+                    needs_attention: action.payload
+                }
+        case ISSUE_SCHEDULE_STATUS:
+                return{
+                    ...state,
+                    scheduled :action.payload
                 }
         default:
             return state

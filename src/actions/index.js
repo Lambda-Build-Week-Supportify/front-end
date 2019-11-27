@@ -76,12 +76,19 @@ export const DESCRIPTION_SCHOOLS = "DESCRIPTION_SCHOOLS"
 
 ////////////////////////ISSUES
 
+export const LOAD_ISSUE_SUCCESS = "LOAD_ISSUE_SUCCESS"
+export const LOAD_ISSUE_FAILURE = "LOAD_ISSUE_FAILURE"
+export const LOADING_ISSUE = "LOADING_ISSUE"
+
 export const ISSUE_PRIORITY = "ISSUE_PRIORITY"
 export const ISSUE_TITLE = "ISSUE_TITLE"
 export const DESCRIPTION_ISSUE = "DESCRIPTION_ISSUE"
 export const EQUIPMENT_ISSUE = "EQUIPMENT_ISSUE"
 export const GENERAL_ISSUE = "GENERAL_ISSUE"
 export const EST_COSTS_ISSUE = "EST_COSTS_ISSUE"
+export const ISSUE_COMPLETION_STATUS = "ISSUE_COMPLETION_STATUS"
+export const ISSUE_ATTENTION_STATUS = "ISSUE_ATTENTION_STATUS"
+export const ISSUE_SCHEDULE_STATUS = "ISSUE_SCHEDULE_STATUS"
 
 export const ISSUE_COMPLETION = "ISSUE_COMPLETION"
 export const ISSUE_ATTENTION = "ISSUE_ATTENTION"
@@ -173,12 +180,23 @@ export const gradeLeveling = data => ({type: GRADE_LEVEL_SCHOOLS, payload: data}
 export const schoolDescribing = data => ({type: DESCRIPTION_SCHOOLS, payload: data})
 
 ///////////////////////////ISSUES
+export const issueSuccess = (data) => ({type: LOAD_ISSUE_SUCCESS, payload: data})
+export const issueFailure = (error) => ({type: LOAD_ISSUE_FAILURE, payload: error})
+export const issueLoading = () => ({type: LOADING_ISSUE})
+
 export const issuePrioritizing = data => ({type: ISSUE_PRIORITY, payload: data})
 export const issueTitling = data => ({type: ISSUE_TITLE, payload: data})
 export const issueDescribing = data => ({type: DESCRIPTION_ISSUE, payload: data})
 export const issueEquipmenter = data => ({type: EQUIPMENT_ISSUE, payload: data})
 export const issueGeneralizing = data => ({type: GENERAL_ISSUE, payload: data})
 export const issueCostEstimater = data => ({type: EST_COSTS_ISSUE, payload: data})
+
+export const issueCompleteStatus = data => ({type: ISSUE_COMPLETION_STATUS, payload: data})
+
+export const issueScheduleStatus = data => ({type: ISSUE_SCHEDULE_STATUS, payload: data})
+
+export const issueAttentionStatus = data => ({type: ISSUE_ATTENTION_STATUS, payload: data})
+
 
 ///CREATE ISSUE
 export const issueCompleter = () => ({type: ISSUE_COMPLETION})
@@ -457,17 +475,17 @@ export const postMemberSchool = (
 
 ///////////////////////////////////ISSUE ENDPOINT
 export const fetchIssues = () => dispatch => {
-    //dispatch(memberLoading()) //change to schools
+    dispatch(issueLoading()) //change to schools
     authAxios
         .get('/issues')
         .then(res => {
             console.log("this is all issues response", res)
-            //dispatch(memberSuccess(res.data))
+            dispatch(issueSuccess(res.data))
             //successGeneral()
         })
         .catch(error => {
            console.log("this is issues error", error.message)
-           //dispatch(memberFailure(error.message))
+           dispatch(issueFailure(error.message))
         })
 
 }
@@ -484,7 +502,7 @@ export const postIssue = (
     scheduled,
     id
 ) => dispatch => {
-    dispatch(memberLoading())
+    dispatch(issueLoading())
 
     authAxios
         .post('/issues', 
@@ -503,12 +521,12 @@ export const postIssue = (
         )
         .then(res => {
             console.log("this is postIssue response.data", res)
-           // dispatch(memberMaking(res.data))
+           // dispatch(issueMaking(res.data))
            //successGeneral()
         })
         .catch(error => {
            console.log("this is postIssue error", error.message)
-           //dispatch(memberFailure(error.message))
+           //dispatch(issueFailure(error.message))
         })
 
 }
@@ -539,12 +557,12 @@ export const putIssue= (
         )
         .then(res => {
             console.log("this is putIssue response", res)
-           // dispatch(memberMaking(res.data))
+           // dispatch(issueMaking(res.data))
           // successGeneral()
         })
         .catch(error => {
            console.log("this is putIssue error", error.message)
-           //dispatch(memberFailure(error.message))
+           //dispatch(issueFailure(error.message))
         })
 
 }
@@ -720,6 +738,20 @@ export const updateSchoolDesc = data => dispatch => {
 }
 
 /////////////////////ISSUES
+
+export const singleIssueStateMaker = ( title, priority, description, equipment, general_issues, estimated_cost, completed, needs_attention, scheduled)=> dispatch =>{
+    dispatch(issuePrioritizing(priority))
+    dispatch(issueTitling(title))
+    dispatch(issueDescribing(description))
+    dispatch(issueEquipmenter(equipment))
+    dispatch(issueGeneralizing(general_issues))
+    dispatch(issueCostEstimater(estimated_cost))
+    dispatch(issueCompleteStatus(completed))
+    dispatch(issueAttentionStatus(needs_attention))
+    dispatch(issueScheduleStatus(scheduled))
+    
+    console.log("setting issue props on redux store to", title, priority, description, equipment, general_issues, estimated_cost, completed, needs_attention, scheduled)
+}
 
 export const updateIssuePriority = data => dispatch => {
     dispatch(issuePrioritizing(data))

@@ -55,7 +55,7 @@ const useStyles = makeStyles(theme => ({
 
 
 function UserGrid(props) { //////////////////COMPONENT/////////////////////
-
+console.log("my id", props.userID)
   const classes = useStyles();
 
   const makeCards = (e) => {

@@ -9,13 +9,15 @@ import { connect } from "react-redux";
 
 //////PAGES////////
 import SingleSchoolPage from './components/Pages/SingleSchoolPage';
-import SingleUserPage from './components/Pages/SingleUserPage'
+import SingleUserPage from './components/Pages/SingleUserPage';
+import IssuePage from "./components/Pages/IssuePage"
 
 import DashTest from './components/Pages/DashTest'
 import DashboardGrid from "./components/Pages/DashboardGrid";
 import GreetingPage from "./components/Pages/GreetingPage";
 import UserGrid from "./components/Pages/UserGrid";
 import SchoolGrid from "./components/Pages/SchoolGrid";
+import IssueGrid from "./components/Pages/IssueGrid";
 
 ///ORGANISMS/MODULES//////
 import PrivateRoute from "./components/Organisms/PrivateRoute";
@@ -36,6 +38,7 @@ import SignUpButton from './components/Atoms/SignUpButton'
 import DeleteButton from "./components/Atoms/DeleteButtonCRUD";
 import EditButton from "./components/Atoms/EditButtonCRUD";
 import SnackbarOpen from "./components/Atoms/SnackbarOpen"; //this should actually be on this file!
+
 
 
 function App(props) {
@@ -63,6 +66,9 @@ function App(props) {
           <PrivateRoute path="/edit/user">
               <EditUserForm/>
           </PrivateRoute>
+          <PrivateRoute path="/edit/issue">
+          <EditIssueForm/>
+      </PrivateRoute>
           <PrivateRoute path="/create/issue">
             <CreateIssueForm/>
           </PrivateRoute>
@@ -76,6 +82,9 @@ function App(props) {
           <PrivateRoute path={`/users/:id`}>
               <SingleUserPage/>     
           </PrivateRoute>
+          <PrivateRoute path={`/issues/:id`}>
+          <IssuePage/>     
+      </PrivateRoute>
           <PrivateRoute path={`/users-schools`}>
                <UserSchoolList name={props.singleUser.first_name} schoolList={props.userOwned}/>     
           </PrivateRoute>
@@ -84,6 +93,8 @@ function App(props) {
           <Route path="/dashboard/school" component={SchoolGrid}/>
 
           <Route path="/dashboard/user" component={UserGrid}/>
+
+          <Route path='/dashboard/issue' component={IssueGrid}/>
 
 
           <Route path="/dashboard" component={DashboardGrid}/>
