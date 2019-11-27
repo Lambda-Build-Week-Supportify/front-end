@@ -12,9 +12,8 @@ import {
     updateIssueGeneral,
     updateIssueCosts,
     updateIssueCompletion,
-    issueAttention,
-    issueScheduler,
-    issueCompleter
+    updateIssueAttention,
+    updateIssueSchedule
 } from '../../actions'
 
 
@@ -43,14 +42,27 @@ function EditIssueForm(props){
     const handleNewIssueCosts = e => {
         props.updateIssueCosts(e.target.value)
     }
-    const handleCompletedIssue = e => {
-        props.updateIssueCompletion(e.target.value)
+    // const handleCompletedIssue = e => {
 
-        let issueStatusChange = e.target.name === 'needs-attention' ? props.issueAttention : (e.target.name === 'scheduled' ? props.issueScheduler : props.issueCompleter)
+    //     let issueStatusChange = e.target.name === 'needs-attention' ? props.updateIssueAttention : (e.target.name === 'scheduled' ? props.updateIssueSchedule : props.updateIssueCompletion)
 
-        issueStatusChange()
+    //     issueStatusChange()
  
+    // }
+
+    const handleCompletedIssue = e => {
+    props.updateIssueCompletion()
     }
+
+    const handleScheduleIssue = e => {
+        props.updateIssueSchedule()
+    }
+
+    const handleAttentionIssue = e => {
+        props.updateIssueAttention()
+    }
+
+
 
     return (
 
@@ -77,13 +89,13 @@ function EditIssueForm(props){
                 <input type="text" name='issue-costs' value={props.estimated_cost} onChange={handleNewIssueCosts}/>
  
                 <label name='needs-attention' >Needs Attention</label>
-                <input type="checkbox" name='needs-attention' value={props.needs_attention} onClick={handleCompletedIssue}/>
+                <input type="checkbox" name='needs-attention'  onClick={handleAttentionIssue}/>
 
                 <label name='scheduled' >Scheduled</label>
-                <input type="checkbox" name='scheduled' value={props.scheduled} onClick={handleCompletedIssue}/>
+                <input type="checkbox" name='scheduled' onClick={handleScheduleIssue}/>
 
                 <label name='completed' >Completed</label>
-                <input type="checkbox" name='completed' value={props.completed} onClick={handleCompletedIssue}/>
+                <input type="checkbox" name='completed'  onClick={handleCompletedIssue}/>
 
 
                 <Link to="/dashboard">
@@ -95,6 +107,8 @@ function EditIssueForm(props){
                     props.general_issues,
                     props.estimated_cost,
                     props.completed,
+                    props.needs_attention,
+                    props.scheduled,
                     props.id
                 )}>Edit an Issue</button>
                 </Link>
@@ -112,11 +126,13 @@ const mapDispatchToProps ={
     updateIssueGeneral,
     updateIssueCosts,
     updateIssueCompletion,
-    issueAttention,
-    issueScheduler,
-    issueCompleter
+    updateIssueAttention,
+    updateIssueSchedule
 }
 
 export default connect(state => state, mapDispatchToProps)(EditIssueForm)
 
 //This form is linked to the input fields of the edit form, THEY SHOULD NEVER DISPLAY AT THE SAME TIME!!!
+
+
+//TYPO IN PUT, description is discription on backend

@@ -133,3 +133,6 @@ const mapDispatchToProps ={
 export default connect(state => state, mapDispatchToProps)(EditUserForm)
 
 ///IS THIS PUT SUPPOSED TO BE ID SPECIFIC?
+
+
+//I have props.board as the value for the other two options, is this working!??
