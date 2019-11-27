@@ -492,7 +492,7 @@ export const fetchIssues = () => dispatch => {
 
 }
 
-export const postIssue = (
+export const postIssue = ( //have to login or sign up or issue post wont work because you wouldn't have set the userID on app's state (maybe make a function that sets it based on the token in local storage?)
     priority,
     title,
     description_issue, //should just be description for endpoint obj
