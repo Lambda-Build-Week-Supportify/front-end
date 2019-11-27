@@ -539,6 +539,8 @@ export const putIssue= (
     general_issues,
     estimated_cost_issues, //should just be estimated_cost for endpoint obj
     completed,
+    needs_attention,
+    scheduled,
     id
 ) => dispatch => {
     dispatch(memberLoading())
@@ -552,7 +554,9 @@ export const putIssue= (
             equipment: equipment,
             general_issues: general_issues,
             estimated_cost: estimated_cost_issues, 
-            completed: completed
+            completed: completed,
+            needs_attention: needs_attention,
+            scheduled: scheduled
         }
         )
         .then(res => {

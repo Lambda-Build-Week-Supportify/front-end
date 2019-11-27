@@ -135,4 +135,4 @@ export default connect(state => state, mapDispatchToProps)(EditIssueForm)
 //This form is linked to the input fields of the edit form, THEY SHOULD NEVER DISPLAY AT THE SAME TIME!!!
 
 
-//TYPO IN PUT, description is discription on backend
+//TYPO IN PUT, description is discription on backend, also equipment is equitment
