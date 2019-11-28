@@ -4,9 +4,13 @@ import {connect} from 'react-redux'
 
 import {specifyId} from "../../actions"
 
-
+////ATOMS
 import EditButton from '../Atoms/EditButtonCRUD'
 import DeleteButton from '../Atoms/DeleteButtonCRUD'
+
+
+////PAGES
+import IssueCommentsPage from './IssueCommentsPage'
 
 function IssuePage(props){
 
@@ -26,6 +30,8 @@ function IssuePage(props){
             <p>{props.needs_attention == true ? "Needs Attention" : null}</p>
             <p>{props.scheduled == true ? "Scheduled" : null}</p>
             <DeleteButton forPage={'issue'}/>
+
+            <IssueCommentsPage/>
         </div>
     )
 }

@@ -61,7 +61,10 @@ import {
     ISSUE_ATTENTION_STATUS,
     ISSUE_COMPLETION_STATUS,
     ISSUE_SCHEDULE_STATUS,
-    RESET
+    RESET,
+    COMMENT_FAILURE,
+    COMMENT_LOADING,
+    COMMENT_SUCCESS
                 } from "../actions"
 
 
@@ -138,7 +141,8 @@ const initialState = {
     singleSchool: {},
     singleUser: {},
     userID: "",
-    userOwned: []
+    userOwned: [],
+    comments: []
 }
 
 
@@ -554,6 +558,31 @@ export function reducer(state = initialState, action){
                 return{
                     ...state,
                     scheduled :action.payload
+                }
+        //////////////////////COMMENTS
+        case COMMENT_SUCCESS:
+                // let noDoubles = action.payload
+                //     console.log("this is noDoubles", noDoubles)
+                return {
+                    ...state,
+                    comments: action.payload,
+                    // [...state.members].concat(noDoubles) BIG ISSUE #2
+                    isFetching: false,
+                    error: null
+                }
+             case COMMENT_FAILURE:
+                return {
+                    ...state,
+                    comments: [...state.comments], //should I not do this so that it will definitely reduce the array to null?
+                    isFetching:false,
+                    error: action.payload
+                }
+             case COMMENT_LOADING:
+                return {
+                    ...state,
+                    comments: [...state.comments],
+                    isFetching: true,
+                    error: null
                 }
         default:
             return state

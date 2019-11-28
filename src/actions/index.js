@@ -94,6 +94,14 @@ export const ISSUE_COMPLETION = "ISSUE_COMPLETION"
 export const ISSUE_ATTENTION = "ISSUE_ATTENTION"
 export const ISSUE_SCHEDULE = "ISSUE_SCHEDULE"
 
+//////////////////COMMENTS
+
+export const COMMENT_SUCCESS = "COMMENT_SUCCESS" //do not concatentate (this will add comments from other issues to the issue you are on)
+export const COMMENT_FAILURE = "COMMENT_FAILURE"
+export const COMMENT_LOADING = "COMMENT_LOADING"
+
+
+
 //////////////////////////
 
 export const CRAZY_DAISY = "CRAZY_DAISY"
@@ -205,6 +213,12 @@ export const issueCompleter = () => ({type: ISSUE_COMPLETION})
 export const issueScheduler = () => ({type: ISSUE_SCHEDULE})
 export const issueAttention = () => ({type: ISSUE_ATTENTION})
 
+
+////////////COMMENTS
+
+export const commentSuccess = (data) => ({type: COMMENT_SUCCESS, payload: data})
+export const commentFailure = (data) => ({type: COMMENT_FAILURE, payload: data})
+export const commentLoading = (data) => ({type: COMMENT_LOADING, payload: data})
 
 //////////////////////////////////////////////USER ENDPOINT
 
@@ -609,10 +623,25 @@ export const putIssueBoard= (
 export const deleteIssue = (id) => dispatch => {
     authAxios
         .delete(`issues/${id}`)
-        .then(res => console.log("this is delete user res", res)
+        .then(res => console.log("this is delete user res", res))
         .catch(err => console.log("this is delete user error", err))
-        )
+        
 }
+
+//////////////////////////COMMENTS
+
+export const fetchComments = (id) => dispatch => {
+    authAxios
+        .get(`comments/issue/${id}`)
+        .then(res => {
+            console.log("This is issues comments", res)
+           // dispatch(commentSuccess(res.data))
+           res.data == 0 ? dispatch(commentSuccess(["Sorry no comments!"])) : dispatch(issueSuccess(res.data))
+        
+        })
+        .catch(err => console.log("this is issue err", err))
+}
+
 
 /////////////////////////////////////
 
