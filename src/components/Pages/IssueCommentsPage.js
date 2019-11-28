@@ -50,8 +50,8 @@ function IssueCommentsPage(props){
         <div>
         {console.log("comments on single page", props.comments)}
                 {props.comments.map(comment => {
-                    return  <Paper key={comment} className={classes.card2}>
-                                <p>{comment}</p>
+                    return  <Paper key={comment.comment_id} className={classes.card2}>
+                                <p>{comment.comment}</p>
                              </Paper>
                 })}
         </div>

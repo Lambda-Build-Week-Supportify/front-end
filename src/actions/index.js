@@ -638,7 +638,7 @@ export const fetchComments = (id) => dispatch => {
         .then(res => {
             console.log("This is issues comments", res)
            // dispatch(commentSuccess(res.data))
-           res.data == 0 ? dispatch(commentSuccess(["Sorry no comments!"])) : dispatch(issueSuccess(res.data))
+           res.data == 0 ? dispatch(commentSuccess([{comment:"Sorry no comments!", comment_id: "no comments"}])) : dispatch(commentSuccess(res.data))
         
         })
         .catch(err => console.log("this is issue err", err))
