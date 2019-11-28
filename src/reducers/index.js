@@ -65,7 +65,8 @@ import {
     COMMENT_FAILURE,
     COMMENT_LOADING,
     COMMENT_SUCCESS,
-    SINGLE_COMMENT
+    SINGLE_COMMENT,
+    RELOAD
                 } from "../actions"
 
 
@@ -144,13 +145,19 @@ const initialState = {
     userID: "",
     userOwned: [],
     comments: [],
-    comment: ""
+    comment: "",
+    shouldReload: false
 }
 
 
 
 export function reducer(state = initialState, action){
     switch(action.type){
+        case RELOAD:
+            return {
+                ...state,
+                shouldReload: !state.shouldReload
+            }
         case RESET:
             return{
                 ...state,

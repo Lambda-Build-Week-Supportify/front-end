@@ -102,6 +102,8 @@ export const COMMENT_LOADING = "COMMENT_LOADING"
 
 export const SINGLE_COMMENT = "SINGLE_COMMENT"
 
+
+export const RELOAD = "RELOAD"
 //////////////////////////
 
 export const CRAZY_DAISY = "CRAZY_DAISY"
@@ -221,6 +223,8 @@ export const commentFailure = (data) => ({type: COMMENT_FAILURE, payload: data})
 export const commentLoading = (data) => ({type: COMMENT_LOADING, payload: data})
 
 export const commentHandler = data => ({type: SINGLE_COMMENT, payload: data})
+
+
 
 //////////////////////////////////////////////USER ENDPOINT
 
@@ -653,7 +657,7 @@ export const postComment = (comment, userID, issues_id) => dispatch => {
         })
         .then(res => {
             console.log("this is comment post", res)
-            
+            dispatch(updateReload())
         })
         .catch(err => console.log("this is comment post err", err))
 }
@@ -901,4 +905,10 @@ export const resetState = () => ({type: RESET}) //resets issue school and user i
 
 export const updateResetState = () => dispatch => {
     dispatch(resetState())
+}
+
+
+export const reloadState =() => ({type:RELOAD})
+export const updateReload =() => dispatch => {
+    dispatch(reloadState())
 }

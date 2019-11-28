@@ -40,10 +40,13 @@ const useStyles = makeStyles(theme => ({
 function IssueCommentsPage(props){
  const classes = useStyles()
 
+
+
+
     useEffect(()=>{
 
         props.fetchComments(props.id)
-    }, [])
+    }, [, props.shouldReload])
 
 
     return (

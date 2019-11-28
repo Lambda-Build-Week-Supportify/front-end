@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import {connect} from 'react-redux'
 
@@ -20,7 +20,14 @@ function IssuePage(props){
 //console.log("this is school page props", schoolInfo)
 
 //console.log("this is super id", superId) // synced with card click!! now I can use this to edit or delete the proper pages
-    return(
+// if(props.shouldReload !== props.shouldReload){
+//     window.location.reload()
+//  }
+console.log("reload", props.shouldReload)
+
+
+
+return(
         <div>
             <EditButton forPage={"issue"} />
             <p>Title: {props.title}</p>
