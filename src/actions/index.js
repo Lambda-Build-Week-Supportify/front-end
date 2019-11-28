@@ -100,7 +100,7 @@ export const COMMENT_SUCCESS = "COMMENT_SUCCESS" //do not concatentate (this wil
 export const COMMENT_FAILURE = "COMMENT_FAILURE"
 export const COMMENT_LOADING = "COMMENT_LOADING"
 
-
+export const SINGLE_COMMENT = "SINGLE_COMMENT"
 
 //////////////////////////
 
@@ -219,6 +219,8 @@ export const issueAttention = () => ({type: ISSUE_ATTENTION})
 export const commentSuccess = (data) => ({type: COMMENT_SUCCESS, payload: data})
 export const commentFailure = (data) => ({type: COMMENT_FAILURE, payload: data})
 export const commentLoading = (data) => ({type: COMMENT_LOADING, payload: data})
+
+export const commentHandler = data => ({type: SINGLE_COMMENT, payload: data})
 
 //////////////////////////////////////////////USER ENDPOINT
 
@@ -622,7 +624,7 @@ export const putIssueBoard= (
 
 export const deleteIssue = (id) => dispatch => {
     authAxios
-        .delete(`issues/${id}`)
+        .delete(`/issues/${id}`)
         .then(res => console.log("this is delete user res", res))
         .catch(err => console.log("this is delete user error", err))
         
@@ -632,7 +634,7 @@ export const deleteIssue = (id) => dispatch => {
 
 export const fetchComments = (id) => dispatch => {
     authAxios
-        .get(`comments/issue/${id}`)
+        .get(`/comments/issue/${id}`)
         .then(res => {
             console.log("This is issues comments", res)
            // dispatch(commentSuccess(res.data))
@@ -642,6 +644,19 @@ export const fetchComments = (id) => dispatch => {
         .catch(err => console.log("this is issue err", err))
 }
 
+export const postComment = (comment, userID, issues_id) => dispatch => {
+    authAxios
+        .post(`/comments`, {
+            comment: comment,
+            user_id: Number(userID),
+            issues_id: Number(issues_id)
+        })
+        .then(res => {
+            console.log("this is comment post", res)
+            
+        })
+        .catch(err => console.log("this is comment post err", err))
+}
 
 /////////////////////////////////////
 
@@ -822,6 +837,14 @@ export const updateIssueSchedule = () => dispatch => {
     dispatch(issueScheduler())
 }
 
+//////////////////////////COMMENT
+
+export const updateComment = (comment) => dispatch => {
+    dispatch(commentHandler(comment))
+}
+
+
+////////////////////
 
 
 export const singleSchoolStateMaker = (school_name,

@@ -8,9 +8,12 @@ import {specifyId} from "../../actions"
 import EditButton from '../Atoms/EditButtonCRUD'
 import DeleteButton from '../Atoms/DeleteButtonCRUD'
 
+//////////MOLECULES
+import AddCommentForm from '../Molecules/AddCommentForm'
 
 ////PAGES
 import IssueCommentsPage from './IssueCommentsPage'
+
 
 function IssuePage(props){
 
@@ -30,7 +33,7 @@ function IssuePage(props){
             <p>{props.needs_attention == true ? "Needs Attention" : null}</p>
             <p>{props.scheduled == true ? "Scheduled" : null}</p>
             <DeleteButton forPage={'issue'}/>
-
+            <AddCommentForm/>
             <IssueCommentsPage/>
         </div>
     )

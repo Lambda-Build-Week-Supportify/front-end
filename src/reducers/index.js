@@ -64,7 +64,8 @@ import {
     RESET,
     COMMENT_FAILURE,
     COMMENT_LOADING,
-    COMMENT_SUCCESS
+    COMMENT_SUCCESS,
+    SINGLE_COMMENT
                 } from "../actions"
 
 
@@ -142,7 +143,8 @@ const initialState = {
     singleUser: {},
     userID: "",
     userOwned: [],
-    comments: []
+    comments: [],
+    comment: ""
 }
 
 
@@ -583,6 +585,11 @@ export function reducer(state = initialState, action){
                     comments: [...state.comments],
                     isFetching: true,
                     error: null
+                }
+            case SINGLE_COMMENT:
+                return{
+                    ...state,
+                    comment: action.payload
                 }
         default:
             return state
