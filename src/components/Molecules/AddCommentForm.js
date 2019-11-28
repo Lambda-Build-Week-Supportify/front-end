@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import {
+    fetchComments,
     postComment, 
     updateComment
 
@@ -12,6 +13,7 @@ function AddCommentForm(props){
 
     const handleNewComment = e => {
         props.updateComment(e.target.value)
+        //props.fetchComments() //NOT HERE
     }
 
 
@@ -34,6 +36,7 @@ function AddCommentForm(props){
 }
 
 const mapDispatchToProps ={
+    fetchComments,
     postComment,
     updateComment
 }
