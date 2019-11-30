@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import "../25-CSS/Molecules/SignUp.css"
+
 import {
     postMember, 
     updateName, 
@@ -58,9 +60,9 @@ function SignUpForm(props){
     return (
 
 
-        <div>
+        <div className="sign-up-form">
            SignUpForm
-           <form  >
+           <form className="sign-up-form" >
                 <label name='member-name' >First Name</label>
                 <input type="text" name='member-name' value={props.name} onChange={handleNewName}/>
 
