@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 
 import { Link } from "react-router-dom";
 
+import '../25-CSS/Molecules/Forms.css'
+
 import {
     putIssue, 
     updateIssuePriority,
@@ -67,9 +69,10 @@ function EditIssueForm(props){
     return (
 
 
-        <div>
-           Edit Issue Form
-           <form  >
+        <div className="edit-issue">
+           
+           <form  className="edit-issue-form">
+           Edit Issue
                 <label name='issue-priority' >Priority</label>
                 <input type="text" name='issue-priority' value={props.priority} onChange={handleNewIssuePriority}/>
 

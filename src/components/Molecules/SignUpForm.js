@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import "../25-CSS/Molecules/SignUp.css"
+import "../25-CSS/Molecules/Forms.css"
 
 import {
     postMember, 
@@ -60,9 +60,9 @@ function SignUpForm(props){
     return (
 
 
-        <div className="sign-up-form">
-           SignUpForm
-           <form className="sign-up-form" >
+        <div className="sign-up-form" style={{color:"#FFFFFF"}}>
+           Sign Up
+           <form className="sign-up-form" style={{color:"#000000"}}>
                 <label name='member-name' >First Name</label>
                 <input type="text" name='member-name' value={props.name} onChange={handleNewName}/>
 

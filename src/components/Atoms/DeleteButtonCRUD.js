@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
       color: "white"
     },
     input: {
-      display: 'none',
+      textDecoration: "none"
     },
   }));
 
@@ -44,7 +44,7 @@ function DeleteButton(props){
 console.log("THIS IS THE ID YOU ARE USING TO DELETE", props.id)
       const classes = useStyles();
     return(
-      <Link to={linkPath} >
+      <Link to={linkPath} className={classes.input} >
         <Button variant="contained" color="primary" className={classes.button} onClick={() => handleClick()}>DELETE</Button>
       </Link>
     )

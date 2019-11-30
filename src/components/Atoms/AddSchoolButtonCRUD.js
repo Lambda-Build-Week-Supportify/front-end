@@ -15,11 +15,11 @@ import { Link } from "react-router-dom";
 const useStyles = makeStyles(theme => ({
     button: {
       margin: theme.spacing(1),
-      backgroundColor: "#FFFFFF",
+      backgroundColor: "#25408F",
       color: "white"
     },
     input: {
-      display: 'none',
+      textDecoration: 'none',
     },
   }));
 
@@ -27,7 +27,7 @@ function AddButton(props){
 
       const classes = useStyles();
     return(
-      <Link to="/dashboard/school">
+      <Link to="/dashboard/school" className={classes.input}>
         <Button variant="contained" color="secondary" className={classes.button} onClick={() => props.postMemberSchool(props.userID, props.id)}>ADD SCHOOL</Button>
         </Link>
     )

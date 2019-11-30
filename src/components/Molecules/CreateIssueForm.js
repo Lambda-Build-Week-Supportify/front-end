@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import '../25-CSS/Molecules/Forms.css'
+
 import {
     postIssue, 
     updateIssuePriority,
@@ -54,9 +56,10 @@ function CreateIssueForm(props){
     return (
 
 
-        <div>
-           New Issue Form
-           <form  >
+        <div className="create-issue">
+           
+           <form className="create-issue-form" >
+           Create Issue
                 <label name='issue-priority' >Priority</label>
                 <input type="text" name='issue-priority' value={props.priority} onChange={handleNewIssuePriority}/>
 

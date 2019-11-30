@@ -1,0 +1,159 @@
+.sign-up {
+    background-color: #FFFFFF;
+    background-image: url('../../../img/amevi-wisdom-wiUl_NyafcY-unsplash.jpg');
+    background-size: 100vw 100vh;
+    background-repeat: no-repeat;
+    background-position-x: 0px;
+    min-height: 70vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    margin-top: 5vh;
+}
+
+.sign-up-form {
+    background-color: #C2C2C2;
+    border-radius: 15px;
+    min-width: 20vw;
+    opacity: 0.8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    font-size: calc(10px + 2vmin);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    padding: 10px;
+}
+
+.edit-school {
+    background-color: #FFFFFF;
+    background-size: 100vw 100vh;
+    background-repeat: no-repeat;
+    background-position-x: 0px;
+    min-height: 70vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    margin-top: 5vh;
+}
+
+.edit-school-form {
+    background-color: #C2C2C2;
+    border-radius: 15px;
+    min-width: 20vw;
+    max-width: 25vw;
+    opacity: 0.8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    font-size: calc(10px + 2vmin);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    padding: 10px;
+}
+
+.edit-user {
+    background-color: #FFFFFF;
+    background-size: 100vw 100vh;
+    background-repeat: no-repeat;
+    background-position-x: 0px;
+    min-height: 70vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    margin-top: 5vh;
+}
+
+.edit-user-form {
+    background-color: #C2C2C2;
+    border-radius: 15px;
+    min-width: 20vw;
+    max-width: 25vw;
+    opacity: 0.8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    font-size: calc(10px + 2vmin);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    padding: 10px;
+}
+
+.edit-issue {
+    background-color: #FFFFFF;
+    background-size: 100vw 100vh;
+    background-repeat: no-repeat;
+    background-position-x: 0px;
+    min-height: 70vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    margin-top: 5vh;
+}
+
+.edit-issue-form {
+    background-color: #C2C2C2;
+    border-radius: 15px;
+    min-width: 20vw;
+    max-width: 25vw;
+    opacity: 0.8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    font-size: calc(10px + 2vmin);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    padding: 10px;
+}
+
+.create-issue {
+    background-color: #FFFFFF;
+    background-size: 100vw 100vh;
+    background-repeat: no-repeat;
+    background-position-x: 0px;
+    min-height: 70vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    margin-top: 5vh;
+}
+
+.create-issue-form {
+    background-color: #C2C2C2;
+    border-radius: 15px;
+    min-width: 20vw;
+    max-width: 25vw;
+    opacity: 0.8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    font-size: calc(10px + 2vmin);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    padding: 10px;
+}

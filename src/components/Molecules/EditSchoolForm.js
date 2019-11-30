@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import "../25-CSS/Molecules/Forms.css"
+
 import { Link } from "react-router-dom";
 
 import {
@@ -20,7 +22,7 @@ import {
 
 
 
-function CreateSchoolForm(props){
+function EditSchoolForm(props){
 
     const handleNewSchoolName = e => {
         props.updateSchoolName(e.target.value)
@@ -68,9 +70,10 @@ function CreateSchoolForm(props){
     return (
 
 
-        <div>
-           Edit School Form
-           <form  >
+        <div className='edit-school'>
+       
+           <form  className='edit-school-form'>
+           Edit School 
                 <label name='school-name' >School Name</label>
                 <input type="text" name='school-name' value={props.schoolName} onChange={handleNewSchoolName}/>
 
@@ -104,7 +107,7 @@ function CreateSchoolForm(props){
                 <label name='description'>Description</label>
                 <input type="type" name='description' value={props.description} onChange={handleSchoolDescription}/>
 
-                <Link to="/dashboard/school">
+                <Link to="/dashboard/school" style={{textDecoration:"none"}}>
                 <button type="button" onClick={()=> props.putSchool(
                     props.schoolName,
                     props.numIssues,
@@ -143,7 +146,7 @@ const mapDispatchToProps ={
     updateSchoolDesc
 }
 
-export default connect(state => state, mapDispatchToProps)(CreateSchoolForm)
+export default connect(state => state, mapDispatchToProps)(EditSchoolForm)
 
 // <Link to='/dashboard/school' onClick={()=> props.putSchool(
 //     props.schoolName,

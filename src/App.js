@@ -60,7 +60,6 @@ function App(props) {
           </PrivateRoute>
           <PrivateRoute path="/edit/school">
               <EditSchoolForm/>
-              <p>Edit</p>
           </PrivateRoute>
           <PrivateRoute path="/edit/user">
               <EditUserForm/>
@@ -73,7 +72,7 @@ function App(props) {
           </PrivateRoute>
           <PrivateRoute path="/delete/school">
                 <DeleteButton/> 
-                <p>Delete</p>   
+                  
           </PrivateRoute>
           <PrivateRoute path={`/schools/:id`}>
               <SingleSchoolPage/> 

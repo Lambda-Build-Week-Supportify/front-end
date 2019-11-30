@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 
 import { Link } from "react-router-dom";
 
+import '../25-CSS/Molecules/Forms.css'
+
 import {
     putMember, 
     updateName, 
@@ -61,9 +63,10 @@ function EditUserForm(props){
     return (
 
 
-        <div>
-           Edit User Form
-           <form  >
+        <div className='edit-user'>
+           
+           <form  className='edit-user-form'>
+           Edit User 
                 <label name='member-name' >First Name</label>
                 <input type="text" name='member-name' value={props.name} onChange={handleNewName}/>
 

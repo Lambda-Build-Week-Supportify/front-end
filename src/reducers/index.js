@@ -78,8 +78,8 @@ const initialState = {
     isFetching: false,
     error: null,
     ///////////USER
-    name: "hi",
-    lastname: "bye",
+    name: "",
+    lastname: "",
     city: "",
     email: "",
     role: "",

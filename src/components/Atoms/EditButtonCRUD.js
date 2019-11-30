@@ -16,10 +16,11 @@ const useStyles = makeStyles(theme => ({
     button: {
       margin: theme.spacing(1),
       backgroundColor: "#CEE08F",
-      color: "white"
+      color: "white",
+      
     },
     input: {
-      display: 'none',
+      textDecoration: "none"
     },
   }));
 
@@ -43,7 +44,7 @@ function EditButton(props){
 
       const classes = useStyles();
     return(
-      <Link to={linkPath}>
+      <Link to={linkPath} className={classes.input}>
         <Button variant="contained" color="primary" className={classes.button}>EDIT</Button>
         </Link>
     )

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import "../25-CSS/Molecules/SignUp.css"
+import "../25-CSS/Molecules/Forms.css"
 
 ////////Molecules
 import SignUpForm from '../Molecules/SignUpForm'
