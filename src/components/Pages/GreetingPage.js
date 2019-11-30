@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import "../25-CSS/Pages/GreetingPage.css"
 
 import {connect} from 'react-redux'
 
@@ -25,10 +26,21 @@ import Box from '@material-ui/core/Box';
 const useStyles = makeStyles(theme => ({
     root: {
       flexGrow: 1,
+      marginTop: "5vh",
+      display: "flex",
+      justifyContent: "space-around",
+      alignContent: "center",
+      maxWidth: "100vw"
     },
      paper: {
-        color: "blue",
-        backgroundColor: "#FDC543"
+        color: "#FFFFFF",
+        backgroundColor: "#FCB614",
+        padding: "30px",
+        marginTop: "30px",
+        minWidth: 475,
+        borderRadius: 15,
+        fontFamily: "Roboto, sans-serif",
+        fontWeight: 600,
      },
     
     control: {
@@ -37,13 +49,18 @@ const useStyles = makeStyles(theme => ({
     },
   card: {
     minWidth: 275,
-    color: "red",
-    marginLeft: "25%"
+    backgroundColor: "#FCB614",
+     //marginLeft: "10%",
+    marginRight: 0,
+    maxHeight: "10px",
+    padding: "0px"
   },
   card2:{
     minWidth: 275,
-    color: "red",
-    marginLeft: "15%",
+    backgroundColor: "#FDC543",
+    marginTop: "30px",
+    padding: "30px",
+
     // boxShadow: "3" doesnt work
   }
 }
@@ -56,12 +73,10 @@ const useStyles = makeStyles(theme => ({
     return (
 
 
-        <div>
-            <header>
-            <SignUpButton/>
-            </header>
+        <div className="Greeting-page">
+
             <Grid container className={classes.root}  spacing={1}>
-                    <Box className={classes.card} boxShadow={3}>
+                    
                             <Paper className={classes.paper}>
                                 
                                     Ghana Admin
@@ -69,20 +84,23 @@ const useStyles = makeStyles(theme => ({
                                     passName="password"/>
                                
                             </Paper>
-                    </Box>  
+                   
                        
-                    <Box className={classes.card2} >   
+                      
                             <Paper className={classes.paper} boxShadow={3}>
                                 
                                     US Boardmember
                                     <Login {...props} status={false} greetName="boardname" passName="passwordBoard"/>
                           
                             </Paper>
-                     </Box> 
-                   
+                     
+                     <SignUpButton/>
               
             </Grid>
-              
+
+            
+            
+            
                
         </div>
     )
@@ -93,3 +111,7 @@ const mapDispatchToProps = {
 }
 
 export default connect(state => state, mapDispatchToProps)(GreetingPage)
+
+
+//<Box className={classes.card} boxShadow={3}> </Box>  
+//<Box className={classes.card2} > 

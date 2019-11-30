@@ -44,15 +44,14 @@ import SnackbarOpen from "./components/Atoms/SnackbarOpen"; //this should actual
 function App(props) {
   return (
     <div className="App" style={{backgroundColor:"#D03840", height: "100vh"}}>
+      <ul className="App-header">
+          
+            <Link to="/login" style={{color: "#000000", textDecoration: "none"}}>Login</Link>
+         
 
-      <ul style={{height: "20%"}}>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-
-          <li>
-            <Link to='/dashtest' >DashTest</Link>
-          </li>
+         
+            <Link to='/dashtest' style={{color: "#000000", textDecoration: "none"}}>Real Dashboard</Link>
+         
         </ul>
 
     <Switch style={{backgroundColor:"#D03840"}}>

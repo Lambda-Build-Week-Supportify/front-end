@@ -1,0 +1,17 @@
+.Greeting-page {
+    background-color: #FFFFFF;
+    background-image: url('../../../img/hello-lightbulb--0lm9r442zE-unsplash.jpg');
+    background-size: 100vw 71vh;
+    background-repeat: no-repeat;
+    background-position-x: 0px;
+    min-height: 70vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-size: calc(10px + 2vmin);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    margin-top: 5vh;
+  }
+

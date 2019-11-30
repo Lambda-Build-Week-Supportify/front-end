@@ -11,12 +11,20 @@ import { Link } from "react-router-dom";
 const useStyles = makeStyles(theme => ({
     button: {
       margin: theme.spacing(1),
-      backgroundColor: "#CEE08F",
-      color: "white"
+      backgroundColor: "#25408F",
+      color: "white",
+      padding: "1vw 4vw",
+      fontSize: "1.2vw",
+      fontFamily: "Roboto, sans-serif",
+      fontWeight: 600,
     },
     input: {
       display: 'none',
     },
+    link: {
+      textDecoration: "none",
+      width: "100%"
+    }
   }));
 
 function SignUpButton(props){
@@ -37,8 +45,8 @@ function SignUpButton(props){
 
       const classes = useStyles();
     return(
-      <Link to='/signup'>
-        <Button variant="contained" color="primary" className={classes.button}>Sign Up!</Button>
+      <Link to='/signup' className={classes.link}>
+        <Button variant="contained" color="secondary" className={classes.button}>Sign Up!</Button>
         </Link>
     )
 

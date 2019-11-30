@@ -116,7 +116,7 @@ const inputPass = props.admin === false ? "passboard": "password"
   return (
     <div >
 
-      <h1>Welcome to Supportify</h1>
+      <h1>Supportify</h1>
       <form onSubmit={handleLogin} style={{display:"flex", flexDirection: "column"}}>
       <label name={props.greetName}>Username</label>
       <input
