@@ -57,7 +57,7 @@ function App(props) {
          
         </ul>
        
-<div className="Align-as-row" style={{marginTop: "10vh"}}>
+<div  style={{marginTop: "10vh"}}>
     
 
     <Switch  >

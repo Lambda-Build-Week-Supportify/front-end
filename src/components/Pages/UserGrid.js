@@ -15,7 +15,7 @@ import {fetchMembers,
 
 ////////////ORGANISMS
 import UserCard from "../Organisms/UserCard";
-
+import UserInfo from "../Organisms/UserInfo"
 
 ////////////PAGES
 import SingleUserPage from "./SingleUserPage";
@@ -31,7 +31,8 @@ import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1
+    display: "flex",
+    flexDirection: "row"
   },
   paper: {
     color: "blue"
@@ -95,8 +96,9 @@ useEffect(()=>{
 
   
   return (
-
-    <div  style={{backgroundColor:"#25408F", marginTop: "15vh"}}>
+    <div className={classes.root}>
+    <UserInfo/>
+    <div  style={{backgroundColor:"#25408F", marginTop: "7vh", minHeight: "100vh", minWidth: "70vw", maxWidth: "70vw", marginLeft: "30vw"}}>
      
     
       <Grid container justify="center" spacing="10">
@@ -125,6 +127,7 @@ useEffect(()=>{
         })}
 
       </Grid>
+    </div>
     </div>
   );
 }

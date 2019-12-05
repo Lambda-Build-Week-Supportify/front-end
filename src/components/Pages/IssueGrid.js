@@ -11,7 +11,7 @@ import CreateButton from "../Atoms/CreateButtonCRUD";
 
 ////////////ORGANISMS
 import SingleIssueCard from "../Organisms/SingleIssueCard";
-
+import UserInfo from "../Organisms/UserInfo"
 
 ////////////PAGES
 //import SingleSchoolPage from "./SingleSchoolPage";
@@ -27,7 +27,8 @@ import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1
+    display: "flex",
+    flexDirection: "row"
   },
   paper: {
     color: "blue"
@@ -87,8 +88,9 @@ useEffect(()=>{
 },[])
 
   return (
-
-    <div style={{backgroundColor:"#FDC543", marginTop: "15vh"}}>
+    <div className={classes.root}>
+    <UserInfo/>
+    <div style={{backgroundColor:"#FDC543", marginTop: "7vh", minHeight: "100vh", minWidth: "70vw", maxWidth: "70vw", marginLeft: "30vw"}}>
         <CreateButton/>
       <Grid container justify="center" spacing="10">
         {props.issues.map(issue => {
@@ -121,6 +123,7 @@ useEffect(()=>{
         })}
 
       </Grid>
+    </div>
     </div>
   );
 }
