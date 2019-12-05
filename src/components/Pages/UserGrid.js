@@ -101,7 +101,7 @@ useEffect(()=>{
     <div  style={{backgroundColor:"#25408F", marginTop: "7vh", minHeight: "100vh", minWidth: "70vw", maxWidth: "70vw", marginLeft: "30vw"}}>
      
     
-      <Grid container justify="center" spacing="10">
+      <Grid container justify="center" spacing="10"  style={{marginBottom: 0}}>
         {props.members.map(user => {
           return (
             <Grid item key={user.user_id} className={classes.card2} boxShadow={3}>

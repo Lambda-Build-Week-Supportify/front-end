@@ -28,7 +28,8 @@ import Box from "@material-ui/core/Box";
 const useStyles = makeStyles(theme => ({
   root: {
     display: "flex",
-    flexDirection: "row"
+    flexDirection: "row",
+   margin: 0
   },
   paper: {
     color: "blue"
@@ -81,7 +82,7 @@ const storeClick = (issue) => {
     props.specifyId(issue.issues_id)
 }
 
-
+//aQ3181
 useEffect(()=>{
   props.fetchIssues()
   props.updateResetState()
@@ -90,9 +91,9 @@ useEffect(()=>{
   return (
     <div className={classes.root}>
     <UserInfo/>
-    <div style={{backgroundColor:"#FDC543", marginTop: "7vh", minHeight: "100vh", minWidth: "70vw", maxWidth: "70vw", marginLeft: "30vw"}}>
+    <div style={{backgroundColor:"#FDC543", marginTop: "3vh", minHeight: "100vh", minWidth: "70vw", maxWidth: "70vw", marginLeft: "30vw"}}>
         <CreateButton/>
-      <Grid container justify="center" spacing="10">
+      <Grid container justify="center" spacing="10" style={{marginBottom: 0}}>
         {props.issues.map(issue => {
           return (
             <Grid item key={issue.issues_id} className={classes.card} boxShadow={3}>

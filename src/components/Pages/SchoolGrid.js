@@ -93,7 +93,7 @@ useEffect(()=>{
     <UserInfo/>
     <div style={{backgroundColor:"#FDC543", marginTop: "7vh", minHeight: "100vh", minWidth: "70vw", marginLeft: "30vw"}}>
 
-      <Grid container justify="center" spacing="10">
+      <Grid container justify="center" spacing="10" style={{marginBottom: 0}}>
         {props.offices.map(office => {
           return (
             <Grid item key={office.school_id} className={classes.card} boxShadow={3}>
