@@ -246,6 +246,22 @@ export const fetchMembers = () => dispatch => {
 
 }
 
+export const fetchCurrentMember = (id) => dispatch => {
+    //dispatch(memberLoading())
+    authAxios
+        .get(`/users/${id}`)
+        .then(res => {
+            console.log("this is current member's response.data", res)
+            //dispatch(memberSuccess(res.data))
+            //successGeneral()
+        })
+        .catch(error => {
+           console.log("this is Current User error", error.message)
+          // dispatch(memberFailure(error.message))
+        })
+
+}
+
 export const postMember = (nameMember, 
     cityMember, 
     emailMember, 

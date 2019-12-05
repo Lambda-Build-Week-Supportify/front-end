@@ -88,7 +88,7 @@ useEffect(()=>{
 
   return (
 
-    <div style={{backgroundColor:"#FDC543"}}>
+    <div style={{backgroundColor:"#FDC543", marginTop: "15vh"}}>
         <CreateButton/>
       <Grid container justify="center" spacing="10">
         {props.issues.map(issue => {

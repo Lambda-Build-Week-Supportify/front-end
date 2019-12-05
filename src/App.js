@@ -22,6 +22,7 @@ import IssueGrid from "./components/Pages/IssueGrid";
 ///ORGANISMS/MODULES//////
 import PrivateRoute from "./components/Organisms/PrivateRoute";
 import SignUp from './components/Organisms/SignUp'
+import UserInfo from "./components/Organisms/UserInfo";
 ///////////MOLECULES/////////////////
 import CreateSchoolForm from "./components/Molecules/CreateSchoolForm";
 import EditSchoolForm from "./components/Molecules/EditSchoolForm";
@@ -41,10 +42,12 @@ import SnackbarOpen from "./components/Atoms/SnackbarOpen"; //this should actual
 
 
 
+
 function App(props) {
   return (
-    <div className="App" style={{backgroundColor:"#D03840", height: "100vh"}}>
-      <ul className="App-header">
+    <div className="App" style={{backgroundColor:"#D03840", minHeight: "100vh"}}>
+   
+      <ul className="App-header" style={{position:"fixed"}}>
           
             <Link to="/login" style={{color: "#000000", textDecoration: "none"}}>Login</Link>
          
@@ -53,49 +56,61 @@ function App(props) {
             <Link to='/dashtest' style={{color: "#000000", textDecoration: "none"}}>Real Dashboard</Link>
          
         </ul>
+       
+<div className="Align-as-row" style={{marginTop: "10vh"}}>
+    
 
-    <Switch style={{backgroundColor:"#D03840"}}>
-          <PrivateRoute path='/dashtest'>
+    <Switch  >
+          <PrivateRoute path='/dashtest' >
+         
             <DashTest/>
           </PrivateRoute>
-          <PrivateRoute path="/edit/school">
+          <PrivateRoute path="/edit/school" >
+         
               <EditSchoolForm/>
           </PrivateRoute>
-          <PrivateRoute path="/edit/user">
+          <PrivateRoute path="/edit/user" >
+         
               <EditUserForm/>
           </PrivateRoute>
-          <PrivateRoute path="/edit/issue">
+          <PrivateRoute path="/edit/issue" >
+         
           <EditIssueForm/>
       </PrivateRoute>
-          <PrivateRoute path="/create/issue">
+          <PrivateRoute path="/create/issue" >
+         
             <CreateIssueForm/>
           </PrivateRoute>
           <PrivateRoute path="/delete/school">
                 <DeleteButton/> 
                   
           </PrivateRoute>
-          <PrivateRoute path={`/schools/:id`}>
+          <PrivateRoute path={`/schools/:id`} > 
+         
               <SingleSchoolPage/> 
           </PrivateRoute>
-          <PrivateRoute path={`/users/:id`}>
+          <PrivateRoute path={`/users/:id`} >
+         
               <SingleUserPage/>     
           </PrivateRoute>
-          <PrivateRoute path={`/issues/:id`}>
+          <PrivateRoute path={`/issues/:id`} >
+         
           <IssuePage/>     
       </PrivateRoute>
-          <PrivateRoute path={`/users-schools`}>
+          <PrivateRoute path={`/users-schools`} >
+         
                <UserSchoolList name={props.singleUser.first_name} schoolList={props.userOwned}/>     
           </PrivateRoute>
 
 
-          <Route path="/dashboard/school" component={SchoolGrid}/>
+          <Route path="/dashboard/school"  component={SchoolGrid}/>
 
-          <Route path="/dashboard/user" component={UserGrid}/>
+          <Route path="/dashboard/user"  component={UserGrid}/>
 
-          <Route path='/dashboard/issue' component={IssueGrid}/>
+          <Route path='/dashboard/issue'  component={IssueGrid}/>
 
 
-          <Route path="/dashboard" component={DashboardGrid}/>
+          <Route path="/dashboard"  component={DashboardGrid}/>
 
           <Route path={`/signup`} component={SignUp}/>
               
@@ -104,7 +119,7 @@ function App(props) {
           <Route component={GreetingPage}/>
     </Switch>
 
-  
+    </div>
 
    
     </div>

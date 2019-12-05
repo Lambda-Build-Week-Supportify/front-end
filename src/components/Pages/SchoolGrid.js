@@ -8,7 +8,7 @@ import {fetchSchools, specifyId, fetchMembers, singleSchoolStateMaker, updateRes
 
 ////////////ORGANISMS
 import SchoolCard from "../Organisms/SchoolCard";
-
+import UserInfo from "../Organisms/UserInfo"
 
 ////////////PAGES
 import SingleSchoolPage from "./SingleSchoolPage";
@@ -18,13 +18,14 @@ import { Route, Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper"; //not using
-import { Card } from "@material-ui/core"; //fall back plan for better styling
+import { Card, FormHelperText } from "@material-ui/core"; //fall back plan for better styling
 import Box from "@material-ui/core/Box";
 
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1
+    display: "flex",
+    flexDirection: "row"
   },
   paper: {
     color: "blue"
@@ -37,7 +38,7 @@ const useStyles = makeStyles(theme => ({
     minWidth: 275,
     color: "red",
     margin: "10 50 10 0",
-    
+    minHeight: "100vh"
   },
   card2: {
     color: "red",
@@ -88,8 +89,9 @@ useEffect(()=>{
 },[])
 
   return (
-
-    <div style={{backgroundColor:"#FDC543"}}>
+<div className={classes.root}>
+    <UserInfo/>
+    <div style={{backgroundColor:"#FDC543", marginTop: "7vh", minHeight: "100vh", maxWidth: "70vw", marginLeft: "50vw"}}>
 
       <Grid container justify="center" spacing="10">
         {props.offices.map(office => {
@@ -125,6 +127,7 @@ useEffect(()=>{
         })}
 
       </Grid>
+    </div>
     </div>
   );
 }
