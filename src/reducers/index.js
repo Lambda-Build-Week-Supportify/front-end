@@ -66,7 +66,8 @@ import {
     COMMENT_LOADING,
     COMMENT_SUCCESS,
     SINGLE_COMMENT,
-    RELOAD
+    RELOAD,
+    THIS_USER_SUCCESS
                 } from "../actions"
 
 
@@ -146,13 +147,27 @@ const initialState = {
     userOwned: [],
     comments: [],
     comment: "",
-    shouldReload: false
+    shouldReload: false,
+    thisUser: {
+        // first_name: "",
+        // last_name: "",
+        // city: "",
+        // state: "",
+        // board: false,
+        // primary_admin: false,
+        // sec_admin: false
+    }
 }
 
 
 
 export function reducer(state = initialState, action){
     switch(action.type){
+        case THIS_USER_SUCCESS:
+            return{
+                ...state,
+                thisUser: action.payload
+            }
         case RELOAD:
             return {
                 ...state,

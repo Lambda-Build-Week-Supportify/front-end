@@ -16,16 +16,26 @@ function UserInfo(props){
 console.log(props.userID)
 //do not do a useeffect here to fetch members, it will reset loggedUser to null
 
-let loggedUser = {}
-loggedUser = props.members.filter(member => member.user_id === props.userID)
-console.log("this is loggedUser",loggedUser)
+
+ 
+//   props.fetchCurrentMember(props.userID)
+
+    
+    
+
+
+// let loggedUser = {}
+// //loggedUser = props.members.filter(member => member.user_id === props.userID)
+
+// loggedUser = props.fetchCurrentMember(props.userID).data
+//console.log("this is loggedUser",loggedUser)
     return (
         <div className="User-info">
                 
                        
-                        <h1>{`${loggedUser[0].first_name} ${loggedUser[0].last_name}`}</h1>
-                        <h2>{`Location: ${loggedUser[0].city} in ${loggedUser.state}`}</h2>
-                        <p>{`Your current roles include: ${loggedUser[0].board}, ${loggedUser[0].primary_admin}, ${loggedUser[0].sec_admin}`}</p>
+                        <h1>{`${props.thisUser.first_name} ${props.thisUser.last_name}`}</h1>
+                        <h2>{`Location: ${props.thisUser.city} in ${props.thisUser.state}`}</h2>
+                        <p>{`Your current roles include: ${props.thisUser.board}, ${props.thisUser.primary_admin}, ${props.thisUser.sec_admin}`}</p>
              
                    
 
@@ -42,3 +52,9 @@ fetchCurrentMember
 }
 
 export default connect(state=> state, mapDispatchToProps)(UserInfo)
+
+
+
+// <h1>{`${loggedUser.first_name} ${loggedUser.last_name}`}</h1>
+// <h2>{`Location: ${loggedUser.city} in ${loggedUser.state}`}</h2>
+// <p>{`Your current roles include: ${loggedUser.board}, ${loggedUser.primary_admin}, ${loggedUser.sec_admin}`}</p>

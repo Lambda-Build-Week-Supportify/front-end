@@ -42,9 +42,19 @@ const useStyles = makeStyles(theme => ({
      color: "#DDDDDD",
      marginRight: "5vw",
      marginBottom: "5vw",
-    textDecoration: "none"
-
+    textDecoration: "none",
+    display: "flex",
+    flexDirection: "column"
+  },
+  cardHeader:{
+      height: "10vh",
+      border: "2px solid black",
+      padding: 0
+  },
+  cardContent:{
+    height: "-webkit-fill-available"
   }
+
 }));
 
 
@@ -61,11 +71,11 @@ function Dashtest() {
     
           <Card className={classes.card2}>
           Schools
-            <CardHeader className={classes.card2}>
+            <CardHeader className={classes.cardHeader}>
         
-                <CardContent className={classes.card2}>
+                <CardContent className={classes.cardContent}>
                 
-                      <Typography variant="h5" className={classes.card2}  component="h1">
+                      <Typography variant="h5" className={classes.cardContent}  component="h1">
                       Schools
                       </Typography>
                   </CardContent>
@@ -78,11 +88,11 @@ function Dashtest() {
         <Link className={classes.card} to='/dashboard/user'>
         <Card className={classes.card2}>
         Users
-          <CardHeader className={classes.card2}>
+          <CardHeader className={classes.cardHeader}>
       
-              <CardContent className={classes.card2}>
+              <CardContent className={classes.cardContent}>
               
-                    <Typography variant="h5" className={classes.card2}  component="h1">
+                    <Typography variant="h5" className={classes.cardContent2}  component="h1">
                     Users
                     </Typography>
                 </CardContent>
@@ -93,11 +103,11 @@ function Dashtest() {
     <Link className={classes.card} to='/dashboard/issue' >
     <Card className={classes.card2}>
     Issues
-      <CardHeader className={classes.card2}>
+      <CardHeader className={classes.cardHeader}>
   
-          <CardContent className={classes.card2}>
+          <CardContent className={classes.cardContent}>
           
-                <Typography variant="h5" className={classes.card2}  component="h1">
+                <Typography variant="h5" className={classes.cardContent}  component="h1">
                 Issues
                 </Typography>
             </CardContent>

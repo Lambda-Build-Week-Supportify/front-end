@@ -4,6 +4,8 @@ import { BottomNavigationAction } from "@material-ui/core"
 
 export const TRIGGER_ID = "TRIGGER_ID"
 
+export const THIS_USER_SUCCESS = "THIS_USER_SUCCESS"
+
 export const LOAD_MEMBER_SUCCESS = "LOAD_MEMBER_SUCCESS"
 
 export const LOAD_MEMBER_FAILURE = "LOAD_MEMBER_FAILURE"
@@ -114,6 +116,8 @@ export const RESET = "RESET"
 //////////////////////////////////////////
 
 export const specifyId = id => ({type: TRIGGER_ID, payload: id})
+
+export const currentUserSuccess = (data) => ({type: THIS_USER_SUCCESS, payload: data})
 
 export const memberSuccess = (data) => ({type: LOAD_MEMBER_SUCCESS, payload: data})
 
@@ -252,7 +256,7 @@ export const fetchCurrentMember = (id) => dispatch => {
         .get(`/users/${id}`)
         .then(res => {
             console.log("this is current member's response.data", res)
-            //dispatch(memberSuccess(res.data))
+            dispatch(currentUserSuccess(res.data))
             //successGeneral()
         })
         .catch(error => {

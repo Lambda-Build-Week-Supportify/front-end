@@ -12,7 +12,8 @@ import {
   successGeneral,
   fetchSchools,
   fetchMembers,
-  setUserId
+  setUserId,
+  fetchCurrentMember
 } from "../../actions"
 
 import axios from "axios"
@@ -32,6 +33,7 @@ const Login = (props) => {
               //successGeneral()
               props.setUserId(res.data.user_id)
               //console.log("This is the userID", props.userID)
+             props.fetchCurrentMember(res.data.user_id)
                return props.history.push("/dashtest")
           })
           .catch(err => {
@@ -152,7 +154,8 @@ const mapDispatchToProps = {
   successGeneral,
   fetchSchools,
   fetchMembers,
-  setUserId
+  setUserId,
+  fetchCurrentMember
 }
 
 export default connect(state=> state, mapDispatchToProps)(Login);
