@@ -110,7 +110,7 @@ function App(props) {
           <Route path='/dashboard/issue'  component={IssueGrid}/>
 
 
-          <Route path="/dashboard"  component={DashboardGrid}/>
+          
 
           <Route path={`/signup`} component={SignUp}/>
               
@@ -164,3 +164,8 @@ export default connect(state => state, mapDispatchToProps)(App);
 // <DashboardGrid />
 //      <p>Hello</p>
 // </PrivateRoute>
+
+
+///////////////////REMOVING SKYE's WORK
+
+//<Route path="/dashboard"  component={DashboardGrid}/>

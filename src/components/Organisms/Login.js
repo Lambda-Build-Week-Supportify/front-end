@@ -32,7 +32,7 @@ const Login = (props) => {
               //successGeneral()
               props.setUserId(res.data.user_id)
               //console.log("This is the userID", props.userID)
-               return props.history.push("/dashboard")
+               return props.history.push("/dashtest")
           })
           .catch(err => {
               console.log("this is login error", err)

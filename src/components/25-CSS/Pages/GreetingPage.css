@@ -1,7 +1,7 @@
 .Greeting-page {
     background-color: #FFFFFF;
     background-image: url('../../../img/hello-lightbulb--0lm9r442zE-unsplash.jpg');
-    background-size: 100vw 71vh;
+    background-size: 100vw 71vh; /*need media query for this*/
     background-repeat: no-repeat;
     background-position-x: 0px;
     min-height: 70vh;
